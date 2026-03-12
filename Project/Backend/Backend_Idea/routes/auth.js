@@ -25,4 +25,14 @@ router.post('/register', async (req, res) => {
       'INSERT INTO users (email, password, username) VALUES (?, ?, ?)',
       [email, hashedPassword, username]
     );
-    db.run(
+    // Optionally, you can check result for success
+    // Generate JWT token
+    const token = jwt.sign({ email, username }, JWT_SECRET, { expiresIn: '1h' });
+    return res.status(201).json({ message: 'User registered successfully', token });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+module.exports = router;
