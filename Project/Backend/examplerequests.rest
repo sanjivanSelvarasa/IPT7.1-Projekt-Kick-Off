@@ -1,9 +1,9 @@
-@name = Gian
+@email = gian@example.com
 @password = 12345
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2lhbiIsImlhdCI6MTc3MzM2ODUxNSwiZXhwIjoxNzczMzY5NzE1fQ.RtNCSRnq9_l_e7vqE7trJ2mDedD3z6W23bADnudy4SI
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2lhbiIsImlhdCI6MTc3MzM2ODA1OH0.WkR6iaIw4Yr35NTwCtJQm1vOim4cU_L_Z_UJ4TyettU
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzMzOTA3MTUsImV4cCI6MTc3MzM5MTkxNX0.qhb4vtx0id51irp_0ZRom-FgKl1Bu-8IL7wLj75wS1k
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzMzOTA3NDR9.IX6GNpvgFyrmWJg1MhT9hFwb2ib6G0uY1fKKV9UhZ74
 
-### Get all usernames
+### Get all emails
 GET http://localhost:4000/users
 
 ### Register new user
@@ -11,7 +11,7 @@ POST http://localhost:4000/users/register
 Content-Type: application/json
 
 {
-	"name": "{{name}}",
+	"email": "{{email}}",
 	"password": "{{password}}"
 }
 
@@ -20,7 +20,7 @@ POST http://localhost:4000/users/login
 Content-Type: application/json
 
 {
-	"name": "{{name}}",
+	"email": "{{email}}",
 	"password": "{{password}}"
 }
 

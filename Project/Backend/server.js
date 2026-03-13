@@ -8,17 +8,17 @@ app.use(express.json())
 
 const posts = [
     {
-        username: 'Gian',
+        email: 'gian@example.com',
         title: 'Post 1'
     },
     {
-        username: 'Egor',
+        email: 'egor@example.com',
         title: 'Post 2' 
 }] // sql here
 //curl -X GET http://localhost:3000/posts/
 
 app.get('/posts',authenticateToken, (req, res) => {
-    res.json(posts.filter(post => post.username === req.user.name))
+    res.json(posts.filter(post => post.email === req.user.email))
 })
 
 // Authentication Middleware
