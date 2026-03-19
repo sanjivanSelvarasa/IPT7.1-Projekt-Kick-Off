@@ -4,37 +4,31 @@
 
 **Template:**
 
-### Funktion: createPortfolio()
+### Funktion: parse*Object*()
 
 **Beschreibung:**  
-Erstellt ein neues Portfolio
+Parsed das gegebene *Object* auf inkorrekte Angaben.
 
 **Parameter:**
-- userId: number
-- data: object
+- value
 
 **Rückgabewert:**
-- Portfolio-Objekt
+- *Object*
 
 **Fehler:**
-- Ungültige Daten
-- Benutzer nicht gefunden
-
-**Verwendete Technologien:**
-- Datenbank
-- Validierung
+- Ungültige Formatierung
 
 ---
 
-### Funktion: loginUser()
+### Funktion: generateAccessToken()
 
 **Beschreibung:**  
-
+Generiert einen AccessToken von einem gegbenen Refreshtoken. (falls der jetztige abgelaufen ist)
 **Parameter:**
-- attribut: datentyp
+- user: object
 
 **Rückgabe:**
-- Rückgabetyp
+- AccessToken
 
 **Verwendet:**
-- librarys usw.
+- JwT

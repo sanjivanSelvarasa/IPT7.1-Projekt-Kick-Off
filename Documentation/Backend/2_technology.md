@@ -2,6 +2,9 @@
 
 | Bereich | Technologie | Zweck |
 | --- | --- | --- |
-
-als zb.
-| Framework        | Express.js       | API & Routing |
+| Framework | Express.js | API & Routing |
+| Authentifizierung | jsonwebtoken (JWT) | Token-basierte Authentifizierung und Autorisierung |
+| Sicherheit | bcrypt | Passwort-Hashing und sichere Passwort-Verifikation |
+| Konfiguration | dotenv | Umgebungsvariablen aus .env-Datei laden |
+| Runtime | Node.js | JavaScript-Ausführungsumgebung |
+| Containerisierung | Docker | Containerisierung des Backends |
