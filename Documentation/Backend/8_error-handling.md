@@ -15,7 +15,7 @@ class ApiError extends Error {
 ```
 
 **Felder:**
-- `status` — HTTP-Statuscode (z. B. `400`, `401`, `403`, `409`)
+- `status` — HTTP-Statuscode (z. B. `404`)
 - `message` — Lesbare Fehlerbeschreibung
 - `details` *(optional)* — Zusätzliche Informationen zum Fehler
 
