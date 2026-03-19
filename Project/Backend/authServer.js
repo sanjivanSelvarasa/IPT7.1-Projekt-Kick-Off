@@ -141,13 +141,13 @@ app.post('/users/login', asyncHandler(async (req, res) => {
     }
 
     const accessToken = generateAccessToken({ email: user.email })
-    const refreshToken = jwt.sign({ email: user.email }, process.env.REFRESH_TOKEN_SECRET)
+    const refreshToken = jwt.sign({ email: user.email }, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '30d' })
     refreshTokens.push(refreshToken)
     res.json({ accessToken: accessToken, refreshToken: refreshToken })
 }))
 
 function generateAccessToken(user){
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '20m' })
+    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' })
 }
 
 app.use((req, res, next) => {
