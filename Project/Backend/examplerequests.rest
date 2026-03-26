@@ -1,13 +1,13 @@
 @email = gian@example.com
 @password = 123456789
 @accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzM0MDMxMzMsImV4cCI6MTc3MzQwNDMzM30.sUBu3VWtu4r5vlPhPYQZipctKV-svNimSCYk-AfI-d8
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzMzOTQ3Mjd9.sxoSgME9qjQUAsRsVU2N6DAja15RozmqqWtRO5tj80E
+@refreshToken = 
 
 ### Get all emails
-GET http://localhost:4000/users
+GET http://localhost:3000/users
 
 ### Register new user
-POST http://localhost:4000/users/register
+POST http://localhost:3000/users/register
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Login
-POST http://localhost:4000/users/login
+POST http://localhost:3000/users/login
 Content-Type: application/json
 
 {
@@ -25,19 +25,19 @@ Content-Type: application/json
 }
 
 ### Refresh token
-POST http://localhost:4000/token
+POST http://localhost:3000/token
 Content-Type: application/json
 
 {
     "token": "{{refreshToken}}"
 }
 
-### Get posts (using the JWT token)
-GET http://localhost:3000/posts
+### Get portfolios (using the JWT token)
+GET http://localhost:3000/portfolios
 Authorization: Bearer {{accessToken}}
 
 ### Logout (delete refresh token)
-DELETE http://localhost:4000/users/logout
+DELETE http://localhost:3000/users/logout
 Content-Type: application/json
 
 {

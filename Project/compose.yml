@@ -1,21 +1,10 @@
 services:
-  auth-backend:
+  backend:
     build:
       context: ./Backend
-    container_name: createyourself-auth-backend
-    command: ["node", "authServer.js"]
-    env_file:
-      - ./Backend/.env
-    ports:
-      - "4000:4000"
-    restart: unless-stopped
-
-  posts-backend:
-    build:
-      context: ./Backend
-    container_name: createyourself-posts-backend
+    container_name: createyourself-backend
     init: true
-    command: ["node", "server.js"]
+    command: ["node", "app.js"]
     env_file:
       - ./Backend/.env
     ports:
