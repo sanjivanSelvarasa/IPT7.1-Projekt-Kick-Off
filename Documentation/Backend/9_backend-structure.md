@@ -14,6 +14,12 @@ backend/
     |- app.js
 ```
 
+## Backend Flow
+
+```
+Route -> Middleware -> Controller -> Service -> Model -> Datenbank
+```
+
 ## Erklärung Backend Teilbereiche
 In der Erklärung wird dargelegt was welcher Bereich macht und welche Aufgaben er im Backend erfüllt zudem werden Beispiele gezeigt um die veranschaulichung zu fördern
 
@@ -167,12 +173,6 @@ app.listen(3000, () => {
 **Wichtig**: Verknüpft alle Teile des Backends zu einer funktionierenden Anwendung.
 
 ---
-
-## Backend Flow
-
-```
-Route -> Middleware -> Controller -> Service -> Model -> Datenbank
-```
 
 
 
