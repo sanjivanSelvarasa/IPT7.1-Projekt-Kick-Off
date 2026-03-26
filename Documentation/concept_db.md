@@ -87,7 +87,7 @@
 | name        | NVARCHAR(50)  | UQ           |
 | desc        | NVARCHAR(MAX) | -            |
 | layout_type | NVARCHAR(50)  | -            |
-| color_theme | NVARCHAR      | NVARCHAR(50) |
+| color_theme | NVARCHAR(50)  | -            |
 | created_at  | DATETIME2     | -            |
 
 ---
@@ -104,7 +104,7 @@
 
 ---
 
-### Expirience
+### Experience
 
 | Attribute    | Datentyp      | Schlüsseltyp       |
 | ------------ | ------------- | ------------------ |
