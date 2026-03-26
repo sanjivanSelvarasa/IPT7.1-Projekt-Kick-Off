@@ -50,7 +50,7 @@ Nach dem Login landet der Nutzer hier und sieht alle seine Projekte.
 - Account Einstellungen 
 
 ## Portfolio Editor (Kernelement)
-**Ziel**: Hauptfunktion - Portfolio erstellen
+**Ziel**: Hauptfunktion *Portfolio erstellen*
 
 **Beschreibung**:
 Der wichtigste Teil der App: ein Baukasten-Editor
