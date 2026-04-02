@@ -5,12 +5,12 @@ In der Strukturierung wird festgelegt, welche Aufgaben einzelne Scripte erledige
 
 ```
 backend/
-    |- controllers/
-    |- services/
-    |- routes/
-    |- models/
-    |- middleware/
-    |- utils/
+  |- 0_routes/
+  |- 1_middleware/
+  |- 2_controllers/
+  |- 3_services/
+  |- 4_models/
+  |- 5_utils/
     |- app.js
 ```
 

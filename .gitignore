@@ -2,3 +2,4 @@
 ~$*
 ~lock*
 *.tmp
+Project/Database/mssql-data/
