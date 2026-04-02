@@ -1,7 +1,10 @@
 use master;
 go
 
-create database CreateYourselfDB;
+if db_id('CreateYourselfDB') is null
+begin
+	create database CreateYourselfDB;
+end
 go
 
 use CreateYourselfDB;
@@ -28,9 +31,10 @@ last_name nvarchar(50),
 profile_img nvarchar(255),
 bio nvarchar(max),
 created_at datetime2,
-updated_at datetime2
+updated_at datetime2,
 
-unique(username, email)
+constraint UQ_User_Username unique(username),
+constraint UQ_User_Email unique(email)
 );
 
 create table Portfolio(
@@ -104,12 +108,12 @@ position nvarchar(100),
 [desc] nvarchar(max),
 [start_date] date,
 end_date date,
-created_at datetime2
+created_at datetime2,
 
 foreign key (portfolio_id) references Portfolio(id)
 );
 
-create table Edication(
+create table Education(
 id int primary key identity,
 portfolio_id int,
 institution_name nvarchar(100),
@@ -117,7 +121,18 @@ degree nvarchar(100),
 field_of_study nvarchar(100),
 [start_date] date,
 end_date date,
-created_at datetime2
+created_at datetime2,
 
 foreign key (portfolio_id) references Portfolio(id)
+);
+
+create table UserRefreshToken(
+id int primary key identity,
+user_id int,
+token nvarchar(2048),
+created_at datetime2,
+
+unique(token),
+
+foreign key (user_id) references [User](id)
 );
