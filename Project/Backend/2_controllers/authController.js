@@ -1,5 +1,5 @@
-const authService = require('../services/authService')
-const { parseEmail, parsePassword, parseTokenFromBody } = require('../utils/authParsers')
+const authService = require('../3_services/authService')
+const { parseEmail, parsePassword, parseTokenFromBody } = require('../5_utils/authParsers')
 
 async function refreshToken(req, res) {
     const refreshToken = parseTokenFromBody(req.body)
@@ -7,8 +7,8 @@ async function refreshToken(req, res) {
     res.json({ accessToken })
 }
 
-function getUsers(req, res) {
-    res.json(authService.listUserEmails())
+async function getUsers(req, res) {
+    res.json(await authService.listUserEmails())
 }
 
 async function registerUser(req, res) {
@@ -19,9 +19,9 @@ async function registerUser(req, res) {
     res.status(201).json({ message: 'User registered successfully.' })
 }
 
-function logoutUser(req, res) {
+async function logoutUser(req, res) {
     const refreshToken = parseTokenFromBody(req.body)
-    authService.logoutUser(refreshToken)
+    await authService.logoutUser(refreshToken)
     res.sendStatus(204)
 }
 

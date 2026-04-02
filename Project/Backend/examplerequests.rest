@@ -1,7 +1,7 @@
 @email = gian@example.com
 @password = 123456789
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzM0MDMxMzMsImV4cCI6MTc3MzQwNDMzM30.sUBu3VWtu4r5vlPhPYQZipctKV-svNimSCYk-AfI-d8
-@refreshToken = 
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzUxMjEyODIsImV4cCI6MTc3NTEyMjQ4Mn0.jeJI1gE8QRUdAi2Q5vGqb5TvETe3zzza3DBYcZfh1NE
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzUxMjEyNjh9.MD4boyddZ6mgNCc0S42qc786EGuDHbTCokc8ukAyOvE
 
 ### Get all emails
 GET http://localhost:3000/users
@@ -32,7 +32,11 @@ Content-Type: application/json
     "token": "{{refreshToken}}"
 }
 
-### Get portfolios (using the JWT token)
+### Create an empty portfolio (using the JWT token)
+POST http://localhost:3000/portfolios
+Authorization: Bearer {{accessToken}}
+
+### List your own portfolios (using the JWT token)
 GET http://localhost:3000/portfolios
 Authorization: Bearer {{accessToken}}
 

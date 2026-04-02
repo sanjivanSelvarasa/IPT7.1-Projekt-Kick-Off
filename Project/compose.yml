@@ -1,4 +1,39 @@
 services:
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: createyourself-database
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+      MSSQL_PID: "Developer"
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    healthcheck:
+      test:
+        ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P \"$$MSSQL_SA_PASSWORD\" -C -Q \"SELECT 1\""]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 40s
+    restart: unless-stopped
+    stop_grace_period: 5s
+
+  database-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: createyourself-database-init
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+    volumes:
+      - ./Database/CreateYourselfDB.sql:/init/CreateYourselfDB.sql:ro
+      - ./Database/init-db.sh:/init/init-db.sh:ro
+    command: ["/bin/bash", "/init/init-db.sh"]
+    restart: "no"
+
   backend:
     build:
       context: ./Backend
@@ -7,6 +42,22 @@ services:
     command: ["node", "app.js"]
     env_file:
       - ./Backend/.env
+    environment:
+      DB_SERVER: database
+      DB_PORT: 1433
+      DB_NAME: CreateYourselfDB
+      DB_USER: sa
+      DB_PASSWORD: "YourStrong!Passw0rd"
+      DB_ENCRYPT: "false"
+      DB_TRUST_SERVER_CERTIFICATE: "true"
+      PORT: 3000
+    depends_on:
+      database-init:
+        condition: service_completed_successfully
     ports:
       - "3000:3000"
     restart: unless-stopped
+    stop_grace_period: 5s
+
+volumes:
+  mssql-data:

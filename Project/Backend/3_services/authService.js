@@ -1,15 +1,15 @@
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-const ApiError = require('../utils/ApiError')
-const authModel = require('../models/authModel')
+const ApiError = require('../5_utils/ApiError')
+const authModel = require('../4_models/authModel')
 
 function generateAccessToken(user) {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '20m' })
 }
 
 async function refreshAccessToken(refreshToken) {
-    if (!authModel.hasRefreshToken(refreshToken)) {
+    if (!await authModel.hasRefreshToken(refreshToken)) {
         throw new ApiError(403, 'Refresh token is invalid or has been revoked.')
     }
 
@@ -27,39 +27,46 @@ async function refreshAccessToken(refreshToken) {
     return generateAccessToken({ email: user.email })
 }
 
-function listUserEmails() {
-    return authModel.getUsers().map(user => user.email)
+async function listUserEmails() {
+    const users = await authModel.getUsers()
+    return users.map(user => user.email)
 }
 
 async function registerUser(submittedEmail, submittedPassword) {
-    if (authModel.hasUserWithEmail(submittedEmail)) {
+    if (await authModel.hasUserWithEmail(submittedEmail)) {
         throw new ApiError(409, 'Email already registered.')
     }
 
     const hashedPassword = await bcrypt.hash(submittedPassword, 10)
-    authModel.addUser({ email: submittedEmail, password: hashedPassword })
+    const username = submittedEmail.split('@')[0]
+
+    await authModel.addUser({
+        username,
+        email: submittedEmail,
+        passwordHash: hashedPassword
+    })
 }
 
 async function loginUser(submittedEmail, submittedPassword) {
-    const user = authModel.findUserByEmail(submittedEmail)
+    const user = await authModel.findUserByEmail(submittedEmail)
     if (!user) {
         throw new ApiError(401, 'Invalid email.')
     }
 
-    const isPasswordValid = await bcrypt.compare(submittedPassword, user.password)
+    const isPasswordValid = await bcrypt.compare(submittedPassword, user.passwordHash)
     if (!isPasswordValid) {
         throw new ApiError(401, 'Invalid password.')
     }
 
     const accessToken = generateAccessToken({ email: user.email })
     const refreshToken = jwt.sign({ email: user.email }, process.env.REFRESH_TOKEN_SECRET)
-    authModel.addRefreshToken(refreshToken)
+    await authModel.addRefreshToken(refreshToken, user.id)
 
     return { accessToken, refreshToken }
 }
 
-function logoutUser(refreshToken) {
-    authModel.removeRefreshToken(refreshToken)
+async function logoutUser(refreshToken) {
+    await authModel.removeRefreshToken(refreshToken)
 }
 
 module.exports = {

@@ -1,4 +1,4 @@
-const ApiError = require('../utils/ApiError')
+const ApiError = require('../5_utils/ApiError')
 
 function errorHandler(err, req, res, next) {
     if (res.headersSent) {
