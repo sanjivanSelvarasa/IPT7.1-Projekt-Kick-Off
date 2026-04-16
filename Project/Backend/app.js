@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+const path = require('path')
 
 const authRoutes = require('./0_routes/authRoutes')
 const portfolioRoutes = require('./0_routes/portfolioRoutes')
@@ -10,6 +11,7 @@ const database = require('./4_models/database')
 
 const app = express()
 app.use(express.json())
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 app.use('/', authRoutes)
 app.use('/', portfolioRoutes)

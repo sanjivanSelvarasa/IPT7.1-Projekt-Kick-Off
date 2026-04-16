@@ -3,7 +3,7 @@
 @password = password123
 
 # Nach dem Login aus der Antwort einsetzen
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzY1NDQsImV4cCI6MTc3NjM3Nzc0NH0.wLHMblU9npPiCtz0ERMdfGMsFXz9Mz6SiT3xpxf-01U
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzk3NTcsImV4cCI6MTc3NjM4MDk1N30.M9T7yAZZP3w10Hu9v4Cxw_qO_O1B6Yhh9mlrECh8sH0
 @refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzY1NTl9.BMbC0SLUr5rLHl5pyy5MVWt0nGbfzBdJ4BHYATh5YPI
 
 # Nach dem Erstellen aus der Antwort einsetzen

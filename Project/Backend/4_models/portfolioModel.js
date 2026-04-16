@@ -8,7 +8,9 @@ async function findUserByEmail(email) {
         .request()
         .input('email', sql.NVarChar(100), email)
         .query(`
-            SELECT TOP 1 id, email
+            SELECT TOP 1
+                id,
+                email
             FROM [User]
             WHERE LOWER(email) = LOWER(@email)
         `)
@@ -60,6 +62,7 @@ async function createPortfolioForUser(userId, portfolio) {
             )
             OUTPUT
                 inserted.id,
+                inserted.[user_id] AS userId,
                 inserted.title,
                 inserted.[desc] AS description,
                 inserted.slug,
@@ -81,14 +84,13 @@ async function createPortfolioForUser(userId, portfolio) {
     return result.recordset[0]
 }
 
-// Einzelnes Portfolio anhand der ID laden
 async function getPortfolioById(portfolioId) {
     const pool = await database.getPool()
     const result = await pool
         .request()
         .input('portfolioId', sql.Int, portfolioId)
         .query(`
-            SELECT
+            SELECT TOP 1
                 id,
                 [user_id] AS userId,
                 title,
@@ -104,7 +106,6 @@ async function getPortfolioById(portfolioId) {
     return result.recordset[0]
 }
 
-// Portfolio aktualisieren und das aktualisierte Portfolio zurückgeben
 async function updatePortfolio(portfolioId, portfolio) {
     const pool = await database.getPool()
     const result = await pool
@@ -117,32 +118,32 @@ async function updatePortfolio(portfolioId, portfolio) {
         .query(`
             UPDATE Portfolio
             SET
-                title        = @title,
-                [desc]       = @description,
-                slug         = @slug,
-                visibility   = @visibility,
-                updated_at   = SYSUTCDATETIME()
+                title = @title,
+                [desc] = @description,
+                slug = @slug,
+                visibility = @visibility,
+                updated_at = SYSUTCDATETIME()
             OUTPUT
                 inserted.id,
+                inserted.[user_id] AS userId,
                 inserted.title,
-                inserted.[desc]       AS description,
+                inserted.[desc] AS description,
                 inserted.slug,
                 inserted.visibility,
-                inserted.created_at   AS createdAt,
-                inserted.updated_at   AS updatedAt
+                inserted.created_at AS createdAt,
+                inserted.updated_at AS updatedAt
             WHERE id = @portfolioId
         `)
 
     return result.recordset[0]
 }
 
-// Portfolio anhand der ID löschen
 async function deletePortfolioById(portfolioId) {
     const pool = await database.getPool()
     await pool
         .request()
         .input('portfolioId', sql.Int, portfolioId)
-        .query(`DELETE FROM Portfolio WHERE id = @portfolioId`)
+        .query('DELETE FROM Portfolio WHERE id = @portfolioId')
 }
 
 module.exports = {

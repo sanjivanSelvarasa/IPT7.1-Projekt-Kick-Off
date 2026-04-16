@@ -1,0 +1,178 @@
+@baseUrl = http://localhost:3000
+
+# Voraussetzung: Gueltigen Access Token eintragen
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzk3NTcsImV4cCI6MTc3NjM4MDk1N30.M9T7yAZZP3w10Hu9v4Cxw_qO_O1B6Yhh9mlrECh8sH0
+
+# Voraussetzung: Bestehende Portfolio-ID eintragen
+@portfolioId = 2002
+
+# Nach Create-Antworten die IDs eintragen
+@projectId = INSERT_PROJECT_ID_HERE
+@portfolioSkillId = INSERT_PORTFOLIO_SKILL_ID_HERE
+@linkId = INSERT_LINK_ID_HERE
+@experienceId = INSERT_EXPERIENCE_ID_HERE
+@educationId = INSERT_EDUCATION_ID_HERE
+
+### Projekte im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/projects
+Authorization: Bearer {{accessToken}}
+
+### Projekt erstellen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/projects
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "title": "Backend API Projekt",
+    "description": "REST-API mit Node.js und MSSQL",
+    "imageUrl": "https://example.com/images/project-api.png",
+    "projectUrl": "https://example.com/project/backend-api",
+    "githubUrl": "https://github.com/example/backend-api",
+    "startDate": "2024-01-01",
+    "endDate": "2024-06-01"
+}
+
+### Projekt aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}/projects/{{projectId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "title": "Backend API Projekt v2",
+    "description": "Aktualisierte Beschreibung",
+    "githubUrl": "https://github.com/example/backend-api-v2"
+}
+
+### Projektbild hochladen (multipart/form-data)
+POST {{baseUrl}}/portfolio/{{portfolioId}}/projects/{{projectId}}/image
+Authorization: Bearer {{accessToken}}
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="image"; filename="projektbild.png"
+Content-Type: image/png
+
+< ./projektbild.png
+--WebAppBoundary--
+
+### Projekt loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/projects/{{projectId}}
+Authorization: Bearer {{accessToken}}
+
+### Skills im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/skills
+Authorization: Bearer {{accessToken}}
+
+### Skill zum Portfolio hinzufuegen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/skills
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "name": "Node.js",
+    "description": "JavaScript Runtime fuer Backend",
+    "level": 85
+}
+
+### Skill-Level aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}/skills/{{portfolioSkillId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "level": 90
+}
+
+### Skill-Zuordnung loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/skills/{{portfolioSkillId}}
+Authorization: Bearer {{accessToken}}
+
+### Social Links im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/links
+Authorization: Bearer {{accessToken}}
+
+### Social Link erstellen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/links
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "platform": "GitHub",
+    "url": "https://github.com/example"
+}
+
+### Social Link aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}/links/{{linkId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "platform": "LinkedIn",
+    "url": "https://www.linkedin.com/in/example"
+}
+
+### Social Link loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/links/{{linkId}}
+Authorization: Bearer {{accessToken}}
+
+### Experience-Eintraege im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/experiences
+Authorization: Bearer {{accessToken}}
+
+### Experience-Eintrag erstellen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/experiences
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "companyName": "Tech GmbH",
+    "position": "Backend Developer",
+    "description": "Entwicklung und Betrieb von APIs",
+    "startDate": "2022-03-01",
+    "endDate": "2024-02-29"
+}
+
+### Experience-Eintrag aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}/experiences/{{experienceId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "position": "Senior Backend Developer",
+    "description": "Mehr Verantwortung in Architektur und Deployment"
+}
+
+### Experience-Eintrag loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/experiences/{{experienceId}}
+Authorization: Bearer {{accessToken}}
+
+### Education-Eintraege im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/educations
+Authorization: Bearer {{accessToken}}
+
+### Education-Eintrag erstellen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/educations
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "institutionName": "FH Musterstadt",
+    "degree": "BSc",
+    "fieldOfStudy": "Informatik",
+    "startDate": "2019-09-01",
+    "endDate": "2022-07-31"
+}
+
+### Education-Eintrag aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}/educations/{{educationId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "degree": "MSc",
+    "fieldOfStudy": "Software Engineering"
+}
+
+### Education-Eintrag loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/educations/{{educationId}}
+Authorization: Bearer {{accessToken}}
