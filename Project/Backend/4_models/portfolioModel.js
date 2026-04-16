@@ -81,8 +81,75 @@ async function createPortfolioForUser(userId, portfolio) {
     return result.recordset[0]
 }
 
+// Einzelnes Portfolio anhand der ID laden
+async function getPortfolioById(portfolioId) {
+    const pool = await database.getPool()
+    const result = await pool
+        .request()
+        .input('portfolioId', sql.Int, portfolioId)
+        .query(`
+            SELECT
+                id,
+                [user_id] AS userId,
+                title,
+                [desc] AS description,
+                slug,
+                visibility,
+                created_at AS createdAt,
+                updated_at AS updatedAt
+            FROM Portfolio
+            WHERE id = @portfolioId
+        `)
+
+    return result.recordset[0]
+}
+
+// Portfolio aktualisieren und das aktualisierte Portfolio zurückgeben
+async function updatePortfolio(portfolioId, portfolio) {
+    const pool = await database.getPool()
+    const result = await pool
+        .request()
+        .input('portfolioId', sql.Int, portfolioId)
+        .input('title', sql.NVarChar(100), portfolio.title)
+        .input('description', sql.NVarChar(sql.MAX), portfolio.description)
+        .input('slug', sql.NVarChar(100), portfolio.slug)
+        .input('visibility', sql.NVarChar(20), portfolio.visibility)
+        .query(`
+            UPDATE Portfolio
+            SET
+                title        = @title,
+                [desc]       = @description,
+                slug         = @slug,
+                visibility   = @visibility,
+                updated_at   = SYSUTCDATETIME()
+            OUTPUT
+                inserted.id,
+                inserted.title,
+                inserted.[desc]       AS description,
+                inserted.slug,
+                inserted.visibility,
+                inserted.created_at   AS createdAt,
+                inserted.updated_at   AS updatedAt
+            WHERE id = @portfolioId
+        `)
+
+    return result.recordset[0]
+}
+
+// Portfolio anhand der ID löschen
+async function deletePortfolioById(portfolioId) {
+    const pool = await database.getPool()
+    await pool
+        .request()
+        .input('portfolioId', sql.Int, portfolioId)
+        .query(`DELETE FROM Portfolio WHERE id = @portfolioId`)
+}
+
 module.exports = {
     findUserByEmail,
     getPortfoliosByUserId,
-    createPortfolioForUser
+    createPortfolioForUser,
+    getPortfolioById,
+    updatePortfolio,
+    deletePortfolioById
 }

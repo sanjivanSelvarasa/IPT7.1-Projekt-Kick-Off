@@ -27,11 +27,10 @@ services:
       database:
         condition: service_healthy
     environment:
-      MSSQL_SA_PASSWORD: "YourStrong!Passw0rd"
+      SQLCMDPASSWORD: "YourStrong!Passw0rd"
     volumes:
       - ./Database/CreateYourselfDB.sql:/init/CreateYourselfDB.sql:ro
-      - ./Database/init-db.sh:/init/init-db.sh:ro
-    command: ["/bin/bash", "/init/init-db.sh"]
+    command: ["/opt/mssql-tools18/bin/sqlcmd", "-S", "database", "-U", "sa", "-C", "-b", "-i", "/init/CreateYourselfDB.sql"]
     restart: "no"
 
   backend:

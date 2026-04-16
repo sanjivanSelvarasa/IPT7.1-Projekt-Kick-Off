@@ -1,13 +1,16 @@
-@email = gian@example.com
-@password = 123456789
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzUxMjEyODIsImV4cCI6MTc3NTEyMjQ4Mn0.jeJI1gE8QRUdAi2Q5vGqb5TvETe3zzza3DBYcZfh1NE
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AZXhhbXBsZS5jb20iLCJpYXQiOjE3NzUxMjEyNjh9.MD4boyddZ6mgNCc0S42qc786EGuDHbTCokc8ukAyOvE
+@baseUrl = http://localhost:3000
+@email = gian@beispiel.ch
+@password = password123
 
-### Get all emails
-GET http://localhost:3000/users
+# Nach dem Login aus der Antwort einsetzen
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzY1NDQsImV4cCI6MTc3NjM3Nzc0NH0.wLHMblU9npPiCtz0ERMdfGMsFXz9Mz6SiT3xpxf-01U
+@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzY1NTl9.BMbC0SLUr5rLHl5pyy5MVWt0nGbfzBdJ4BHYATh5YPI
 
-### Register new user
-POST http://localhost:3000/users/register
+# Nach dem Erstellen aus der Antwort einsetzen
+@portfolioId = 2002
+
+### Benutzer registrieren
+POST {{baseUrl}}/users/register
 Content-Type: application/json
 
 {
@@ -15,8 +18,8 @@ Content-Type: application/json
 	"password": "{{password}}"
 }
 
-### Login
-POST http://localhost:3000/users/login
+### Benutzer einloggen
+POST {{baseUrl}}/users/login
 Content-Type: application/json
 
 {
@@ -24,26 +27,53 @@ Content-Type: application/json
 	"password": "{{password}}"
 }
 
-### Refresh token
-POST http://localhost:3000/token
+### Access Token mit Refresh Token erneuern
+POST {{baseUrl}}/token
 Content-Type: application/json
 
 {
-    "token": "{{refreshToken}}"
+	"token": "{{refreshToken}}"
 }
 
-### Create an empty portfolio (using the JWT token)
-POST http://localhost:3000/portfolios
+### Alle eigenen Portfolios abrufen
+GET {{baseUrl}}/portfolios
 Authorization: Bearer {{accessToken}}
 
-### List your own portfolios (using the JWT token)
-GET http://localhost:3000/portfolios
+### POST /portfolio - Portfolio erstellen
+POST {{baseUrl}}/portfolio
+Content-Type: application/json
 Authorization: Bearer {{accessToken}}
 
-### Logout (delete refresh token)
-DELETE http://localhost:3000/users/logout
+{
+	"title": "Mein Portfolio",
+	"description": "Kurzbeschreibung meines Portfolios",
+	"visibility": "public",
+	"slug": "mein-portfolio-slug"
+}
+
+### GET /portfolio/:id - Einzelnes Portfolio lesen
+GET {{baseUrl}}/portfolio/{{portfolioId}}
+Authorization: Bearer {{accessToken}}
+
+### PUT /portfolio/:id - Portfolio aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+	"title": "Aktualisierter Titel",
+	"description": "Aktualisierte Beschreibung",
+	"visibility": "private"
+}
+
+### DELETE /portfolio/:id - Portfolio loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}
+Authorization: Bearer {{accessToken}}
+
+### Benutzer ausloggen (Refresh Token loeschen)
+DELETE {{baseUrl}}/users/logout
 Content-Type: application/json
 
 {
-    "token": "{{refreshToken}}"
+	"token": "{{refreshToken}}"
 }

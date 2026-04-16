@@ -6,10 +6,19 @@ const asyncHandler = require('../5_utils/asyncHandler')
 
 const router = express.Router()
 
+// Alle Portfolios des angemeldeten Benutzers abrufen
 router.get('/portfolios', authenticateToken, asyncHandler(portfolioController.getPortfolios))
-router.post('/portfolios', authenticateToken, asyncHandler(portfolioController.createEmptyPortfolio))
-router.get('/portfolio', authenticateToken, asyncHandler(portfolioController.getPortfolios))
-router.post('/portfolio', authenticateToken, asyncHandler(portfolioController.createEmptyPortfolio))
-router.post('/portfolios/default', authenticateToken, asyncHandler(portfolioController.createEmptyPortfolio))
+
+// Portfolio erstellen
+router.post('/portfolio', authenticateToken, asyncHandler(portfolioController.createPortfolio))
+
+// Einzelnes Portfolio lesen
+router.get('/portfolio/:id', authenticateToken, asyncHandler(portfolioController.getPortfolioById))
+
+// Portfolio aktualisieren
+router.put('/portfolio/:id', authenticateToken, asyncHandler(portfolioController.updatePortfolio))
+
+// Portfolio löschen
+router.delete('/portfolio/:id', authenticateToken, asyncHandler(portfolioController.deletePortfolio))
 
 module.exports = router

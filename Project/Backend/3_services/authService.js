@@ -8,6 +8,32 @@ function generateAccessToken(user) {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '20m' })
 }
 
+function normalizeUsernameBase(email) {
+    const localPart = email.split('@')[0] || 'user'
+    return localPart.toLowerCase().replace(/\s+/g, '')
+}
+
+function buildUsernameCandidate(base, suffix = '') {
+    const suffixText = suffix === '' ? '' : String(suffix)
+    const maxBaseLength = Math.max(1, 50 - suffixText.length)
+    return `${base.slice(0, maxBaseLength)}${suffixText}`
+}
+
+async function generateAvailableUsername(email) {
+    const base = normalizeUsernameBase(email)
+
+    for (let attempt = 0; attempt <= 99; attempt += 1) {
+        const suffix = attempt === 0 ? '' : attempt
+        const candidate = buildUsernameCandidate(base, suffix)
+
+        if (!await authModel.hasUserWithUsername(candidate)) {
+            return candidate
+        }
+    }
+
+    throw new ApiError(409, 'Could not generate a unique username. Please try again.')
+}
+
 async function refreshAccessToken(refreshToken) {
     if (!await authModel.hasRefreshToken(refreshToken)) {
         throw new ApiError(403, 'Refresh token is invalid or has been revoked.')
@@ -38,13 +64,21 @@ async function registerUser(submittedEmail, submittedPassword) {
     }
 
     const hashedPassword = await bcrypt.hash(submittedPassword, 10)
-    const username = submittedEmail.split('@')[0]
+    const username = await generateAvailableUsername(submittedEmail)
 
-    await authModel.addUser({
-        username,
-        email: submittedEmail,
-        passwordHash: hashedPassword
-    })
+    try {
+        await authModel.addUser({
+            username,
+            email: submittedEmail,
+            passwordHash: hashedPassword
+        })
+    } catch (error) {
+        if (error.number === 2627 || error.number === 2601) {
+            throw new ApiError(409, 'Email or username already registered.')
+        }
+
+        throw error
+    }
 }
 
 async function loginUser(submittedEmail, submittedPassword) {

@@ -59,6 +59,27 @@ async function hasUserWithEmail(email) {
     return Boolean(await findUserByEmail(email))
 }
 
+async function findUserByUsername(username) {
+    const pool = await database.getPool()
+    const result = await pool
+        .request()
+        .input('username', sql.NVarChar(50), username)
+        .query(`
+            SELECT TOP 1
+                id,
+                username,
+                email
+            FROM [User]
+            WHERE LOWER(username) = LOWER(@username)
+        `)
+
+    return result.recordset[0]
+}
+
+async function hasUserWithUsername(username) {
+    return Boolean(await findUserByUsername(username))
+}
+
 async function addRefreshToken(token, userId) {
     const pool = await database.getPool()
 
@@ -104,6 +125,8 @@ module.exports = {
     addUser,
     findUserByEmail,
     hasUserWithEmail,
+    findUserByUsername,
+    hasUserWithUsername,
     addRefreshToken,
     hasRefreshToken,
     removeRefreshToken
