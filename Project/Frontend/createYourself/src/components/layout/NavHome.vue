@@ -5,32 +5,32 @@ import Logo from "@/components/ui/Logo.vue";
 
 <template>
   <div class="z-999 fixed top-0 left-0 w-full bg-[var(--surface-color)] shadow-sm h-[65px] flex items-center justify-center">
-    <div class="flex items-center justify-between w-[1400px] px-4 py-2">
+    <div class="flex items-center justify-between w-[1400px] px-4 py-2 h-full">
       <!-- Logo-->
       <Logo link="/"></Logo>
 
       <!-- Section Links-->
-      <div>
-        <ul class="flex items-center justify-center gap-8 text-sm text-[var(--text-color-light)] font-semibold">
-          <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a href="#">Funktionen</a>
+      <div class="h-full flex items-center">
+        <ul class="flex items-center justify-center gap-4 text-sm text-[var(--text-color-light)] font-semibold">
+          <li class="hover:text-[var(--text-color)] transition duration-200 cursor-pointer">
+            <a class="inline-block px-2 py-2" href="/#function">Funktionen</a>
           </li>
           <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a href="#">Editor</a>
+            <a class="inline-block px-2 py-2" href="/#editor">Editor</a>
           </li>
           <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a href="#">Wie es funktioniert</a>
+            <a class="inline-block px-2 py-2" href="/#howWorks">Wie es funktioniert</a>
           </li>
           <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a href="#">Veröffentlichen</a>
+            <a class="inline-block px-2 py-2" href="/#public">Veröffentlichen</a>
           </li>
         </ul>
       </div>
 
       <!-- Login / Register-->
       <div class="flex items-center justify-center gap-4">
-        <RouterLink to="/" class="px-4 py-2 border border-gray-200 rounded-lg text-[var(--text-color-light)] font-semibold">Anmelden</RouterLink>
-        <RouterLink to="/" class="px-4 py-2 bg-[var(--primary-color)] rounded-lg font-semibold text-[var(--text-color-white)]">Registrieren</RouterLink>
+        <RouterLink to="/login" class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] duration-150 transition px-4 py-2 border border-gray-200 rounded-lg text-[var(--text-color-light)] font-semibold">Anmelden</RouterLink>
+        <RouterLink to="/register" class="hover:-translate-y-0.5 hover:scale-101 hover:shadow-lg duration-150 transition px-4 py-2 bg-[var(--primary-color)] rounded-lg font-semibold text-[var(--text-color-white)]">Registrieren</RouterLink>
       </div>
     </div>
   </div>
