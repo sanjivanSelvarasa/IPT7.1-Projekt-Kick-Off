@@ -146,6 +146,16 @@ async function deleteEducation(req, res) {
     res.sendStatus(204)
 }
 
+async function getPublicPortfolioBySlug(req, res) {
+    const portfolio = await portfolioService.getPublicPortfolioBySlug(req.params.slug)
+    res.json(portfolio)
+}
+
+async function getPublicPortfolioFullBySlug(req, res) {
+    const portfolio = await portfolioService.getPublicPortfolioFullBySlug(req.params.slug)
+    res.json(portfolio)
+}
+
 module.exports = {
     getPortfolios,
     createPortfolio,
@@ -173,5 +183,7 @@ module.exports = {
     listEducations,
     createEducation,
     updateEducation,
-    deleteEducation
+    deleteEducation,
+    getPublicPortfolioBySlug,
+    getPublicPortfolioFullBySlug
 }

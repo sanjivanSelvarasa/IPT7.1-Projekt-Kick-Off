@@ -9,6 +9,19 @@ function parseId(rawId, label = 'ID') {
     return parsed
 }
 
+function parseOptionalId(value, label = 'ID') {
+    if (value === undefined || value === null) {
+        return null
+    }
+
+    const parsed = parseInt(value, 10)
+    if (Number.isNaN(parsed) || parsed <= 0) {
+        throw new ApiError(400, `${label} ist ungültig.`)
+    }
+
+    return parsed
+}
+
 function ensurePayloadObject(data) {
     if (!data || typeof data !== 'object' || Array.isArray(data)) {
         throw new ApiError(400, 'Request-Body muss ein JSON-Objekt sein.')
@@ -129,6 +142,7 @@ function validateVisibility(visibility, allowed = ['public', 'private']) {
 
 module.exports = {
     parseId,
+    parseOptionalId,
     ensurePayloadObject,
     parseRequiredText,
     parseOptionalText,

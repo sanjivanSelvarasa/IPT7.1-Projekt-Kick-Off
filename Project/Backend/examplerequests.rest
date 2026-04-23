@@ -8,6 +8,7 @@
 
 # Nach dem Erstellen aus der Antwort einsetzen
 @portfolioId = 1
+@portfolioSlug = mein-portfolio-slug
 
 ### Benutzer registrieren
 POST {{baseUrl}}/users/register
@@ -54,6 +55,16 @@ Authorization: Bearer {{accessToken}}
 ### GET /portfolio/:id - Einzelnes Portfolio lesen
 GET {{baseUrl}}/portfolio/{{portfolioId}}
 Authorization: Bearer {{accessToken}}
+
+### GET /portfolio/:id/full - Portfolio inkl. aller Module lesen (authentifiziert)
+GET {{baseUrl}}/portfolio/{{portfolioId}}/full
+Authorization: Bearer {{accessToken}}
+
+### GET /p/:slug - Öffentliches Portfolio abrufen (kein Login nötig)
+GET {{baseUrl}}/p/{{portfolioSlug}}
+
+### GET /p/:slug/full - Öffentliches Portfolio inkl. aller Module (kein Login nötig)
+GET {{baseUrl}}/p/{{portfolioSlug}}/full
 
 ### PUT /portfolio/:id - Portfolio aktualisieren
 PUT {{baseUrl}}/portfolio/{{portfolioId}}

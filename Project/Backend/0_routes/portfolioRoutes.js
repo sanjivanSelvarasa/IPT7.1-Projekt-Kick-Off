@@ -7,6 +7,10 @@ const asyncHandler = require('../5_utils/asyncHandler')
 
 const router = express.Router()
 
+// Öffentliche Portfolio-Ansicht (ohne Authentifizierung)
+router.get('/p/:slug', asyncHandler(portfolioController.getPublicPortfolioBySlug))
+router.get('/p/:slug/full', asyncHandler(portfolioController.getPublicPortfolioFullBySlug))
+
 // Alle Portfolios des angemeldeten Benutzers abrufen
 router.get('/portfolios', authenticateToken, asyncHandler(portfolioController.getPortfolios))
 

@@ -26,6 +26,7 @@ async function getPortfoliosByUserId(userId) {
         .query(`
             SELECT
                 id,
+                template_id AS templateId,
                 title,
                 description,
                 slug,
@@ -45,6 +46,7 @@ async function createPortfolioForUser(userId, portfolio) {
     const result = await pool
         .request()
         .input('userId', sql.Int, userId)
+        .input('templateId', sql.Int, portfolio.templateId ?? null)
         .input('title', sql.NVarChar(100), portfolio.title)
         .input('description', sql.NVarChar(sql.MAX), portfolio.description)
         .input('slug', sql.NVarChar(100), portfolio.slug)
@@ -63,6 +65,7 @@ async function createPortfolioForUser(userId, portfolio) {
             OUTPUT
                 inserted.id,
                 inserted.[user_id] AS userId,
+                inserted.template_id AS templateId,
                 inserted.title,
                 inserted.description,
                 inserted.slug,
@@ -71,7 +74,7 @@ async function createPortfolioForUser(userId, portfolio) {
                 inserted.updated_at AS updatedAt
             VALUES (
                 @userId,
-                NULL,
+                @templateId,
                 @title,
                 @description,
                 @slug,
@@ -97,6 +100,7 @@ async function getPortfolioById(portfolioId) {
                 description,
                 slug,
                 visibility,
+                template_id AS templateId,
                 created_at AS createdAt,
                 updated_at AS updatedAt
             FROM Portfolio
@@ -111,6 +115,7 @@ async function updatePortfolio(portfolioId, portfolio) {
     const result = await pool
         .request()
         .input('portfolioId', sql.Int, portfolioId)
+        .input('templateId', sql.Int, portfolio.templateId ?? null)
         .input('title', sql.NVarChar(100), portfolio.title)
         .input('description', sql.NVarChar(sql.MAX), portfolio.description)
         .input('slug', sql.NVarChar(100), portfolio.slug)
@@ -118,6 +123,7 @@ async function updatePortfolio(portfolioId, portfolio) {
         .query(`
             UPDATE Portfolio
             SET
+                template_id = @templateId,
                 title = @title,
                 description = @description,
                 slug = @slug,
@@ -126,6 +132,7 @@ async function updatePortfolio(portfolioId, portfolio) {
             OUTPUT
                 inserted.id,
                 inserted.[user_id] AS userId,
+                inserted.template_id AS templateId,
                 inserted.title,
                 inserted.description,
                 inserted.slug,
@@ -146,11 +153,35 @@ async function deletePortfolioById(portfolioId) {
         .query('DELETE FROM Portfolio WHERE id = @portfolioId')
 }
 
+async function getPortfolioBySlug(slug) {
+    const pool = await database.getPool()
+    const result = await pool
+        .request()
+        .input('slug', sql.NVarChar(100), slug)
+        .query(`
+            SELECT TOP 1
+                id,
+                [user_id] AS userId,
+                template_id AS templateId,
+                title,
+                description,
+                slug,
+                visibility,
+                created_at AS createdAt,
+                updated_at AS updatedAt
+            FROM Portfolio
+            WHERE slug = @slug
+        `)
+
+    return result.recordset[0]
+}
+
 module.exports = {
     findUserByEmail,
     getPortfoliosByUserId,
     createPortfolioForUser,
     getPortfolioById,
+    getPortfolioBySlug,
     updatePortfolio,
     deletePortfolioById
 }

@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const path = require('path')
+const cors = require('cors')
 
 const authRoutes = require('./0_routes/authRoutes')
 const portfolioRoutes = require('./0_routes/portfolioRoutes')
@@ -10,6 +11,11 @@ const errorHandler = require('./1_middleware/errorHandler')
 const database = require('./4_models/database')
 
 const app = express()
+app.use(cors({
+    origin: process.env.CORS_ORIGIN || '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}))
 app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
