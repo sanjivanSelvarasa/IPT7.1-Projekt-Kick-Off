@@ -12,7 +12,7 @@
 </script>
 
 <template>
-  <div class="bg-[var(--background-color)] p-6 border border-gray-200 rounded-lg">
+  <div class="hover:shadow-lg hover:border-blue-300 duration-150 transition bg-[var(--background-color)] p-6 border border-gray-200 rounded-2xl">
     <div :style="{ backgroundColor: props.svgBgColor, color: props.svgColor}" class="flex items-center justify-center w-[45px] h-[45px] rounded-lg text-lg">
       <i :class="props.svg"></i>
     </div>
