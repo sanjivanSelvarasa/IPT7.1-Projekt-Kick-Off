@@ -9,7 +9,7 @@ Authentifizierung: 100% (JWT/Login bereit, Refresh-Token auch)
 
 Kern-Module (CRUD): 90% (Portfolio, Projekte, Skills, Social Links, Experience, Education weitgehend fertig)
 
-Bild-Upload & Validierung: 80% (Funktionen implementiert, noh nicht wirklich getestet)
+Bild-Upload & Validierung: 80% (Funktionen implementiert, noch nicht wirklich getestet)
 
 Sicherheit & Versionierung: 10% (Basis steht, Details fehlen)
 
