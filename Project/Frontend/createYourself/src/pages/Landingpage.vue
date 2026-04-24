@@ -70,14 +70,14 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
         </div>
       </div>
 
-      <div class="relative w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]">
+      <div class="select-none relative w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]">
 
-        <div class="levitate absolute flex flex-col items-start justify-center top-0 -left-50 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+        <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 levitate absolute flex flex-col items-start justify-center top-0 -left-50 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
           <span class="text-sm">Portfolio Aufrufe</span>
           <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">2.848</span>
         </div>
 
-        <div class="z-1 levitate absolute flex flex-col items-start justify-center bottom-0 -right-25 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+        <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 z-1 levitate absolute flex flex-col items-start justify-center bottom-0 -right-25 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
           <span class="text-sm">Status</span>
 
           <div class="flex items-center justify-center gap-2">
@@ -89,7 +89,7 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
           </div>
         </div>
 
-        <div class="z-1 levitate absolute flex flex-col items-start justify-center top-40 -right-45 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+        <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 z-1 levitate absolute flex flex-col items-start justify-center top-40 -right-45 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
           <span class="text-sm">Editor</span>
           <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">Blöcke bearbeiten</span>
         </div>
@@ -215,7 +215,82 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               </div>
             </div>
           </div>
-          <div class="w-[500px] h-[400px] bg-[var(--surface-color)] rounded-2xl"></div>
+          <div class="select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg border-2 overflow-hidden border-gray-200">
+            <div class="flex items-center justify-between px-4 py-2 w-full bg-gray-50">
+              <span class="font-bold">Mein Portfolio - Entwurf</span>
+              <div class="flex items-center justify-center text-sm font-bold text-[var(--text-color-light)] gap-2">
+                <button class="cursor-pointer px-3 py-1 bg-[var(--primary-color)] rounded-lg text-[var(--text-color-white)]">Bearbeiten</button>
+                <button class="cursor-pointer hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition duration-100 border border-transparent px-3 py-1 rounded-lg">Vorschau</button>
+                <button class="cursor-pointer hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition duration-100 border border-transparent px-3 py-1 rounded-lg">Einstellungen</button>
+              </div>
+            </div>
+
+            <div class="px-3 grid grid-rows-4 gap-3 mt-4">
+              <div class="cursor-pointer flex items-center h-full justify-start gap-4 px-4 py-4 w-full border border-gray-200 rounded-lg">
+                <div class="flex items-center justify-start gap-4 w-full">
+                  <div class="flex items-center justify-center w-[30px] h-[30px] bg-[var(--primary-color-light)] text-[var(--primary-color)] rounded-lg">
+                    <i class="fa-solid fa-align-left"></i>
+                  </div>
+                  <div class="flex flex-col items-start justify-center">
+                    <span class="text-sm font-semibold">Hero-Section</span>
+                    <span class="text-xs text-[var(--text-color-light)]">Name, Titel, Bild, CTA-Button</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-center w-[20px] h-[30px] text-[var(--text-color-light)]">
+                  <i class="fa-solid fa-align-justify"></i>
+                </div>
+              </div>
+
+              <div class="cursor-pointer flex items-center h-full justify-start gap-4 px-4 py-2 w-full border border-gray-200 rounded-lg">
+                <div class="flex items-center justify-start gap-4 w-full">
+                  <div class="flex items-center justify-center w-[30px] h-[30px] bg-[var(--secondary-color-light)] text-[var(--secondary-color)] rounded-lg">
+                    <i class="fa-regular fa-user"></i>
+                  </div>
+                  <div class="flex flex-col items-start justify-center">
+                    <span class="text-sm font-semibold">Über mich</span>
+                    <span class="text-xs text-[var(--text-color-light)]">Biografie & Porträtbild</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-center w-[20px] h-[30px] text-[var(--text-color-light)]">
+                  <i class="fa-solid fa-align-justify"></i>
+                </div>
+              </div>
+
+              <div class="cursor-pointer flex items-center h-full justify-start gap-4 px-4 py-2 w-full border border-gray-200 rounded-lg">
+                <div class="flex items-center justify-start gap-4 w-full">
+                  <div class="flex items-center justify-center w-[30px] h-[30px] bg-green-50 text-[var(--accent-color)] rounded-lg">
+                    <i class="fa-regular fa-folder"></i>
+                  </div>
+                  <div class="flex flex-col items-start justify-center">
+                    <span class="text-sm font-semibold">Projektgalerie</span>
+                    <span class="text-xs text-[var(--text-color-light)]">Projekte mit Beschreibung und Verweisen</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-center w-[20px] h-[30px] text-[var(--text-color-light)]">
+                  <i class="fa-solid fa-align-justify"></i>
+                </div>
+              </div>
+
+              <div class="cursor-pointer flex items-center h-full justify-start gap-4 px-4 py-2 w-full border border-gray-200 rounded-lg">
+                <div class="flex items-center justify-start gap-4 w-full">
+                  <div class="flex items-center justify-center w-[30px] h-[30px] bg-orange-50 text-orange-400 rounded-lg">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                  </div>
+                  <div class="flex flex-col items-start justify-center">
+                    <span class="text-sm font-semibold">Skills-Liste</span>
+                    <span class="text-xs text-[var(--text-color-light)]">Die derzeigen Erfahrungen und das Können</span>
+                  </div>
+                </div>
+
+                <div class="flex items-center justify-center w-[20px] h-[30px] text-[var(--text-color-light)]">
+                  <i class="fa-solid fa-align-justify"></i>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -451,8 +526,72 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
     </section>
 
     <section id="public">
-      <div class="flex items-start justify-center gap-8 max-w-[1200px]">
-        <div class="w-[500px] h-[400px] bg-[var(--background-color)] rounded-2xl" ></div>
+      <div class="flex items-start justify-between gap-8 w-[1200px]">
+        <div class="select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg text-sm overflow-hidden border-2 border-gray-200 ">
+          <div class="flex items-center justify-between w-full h-fit bg-gray-50 border border-transparent border-b-gray-200 px-6 py-6">
+            <span class="font-semibold">Veröffentlichung</span>
+            <div class="flex items-center justify-center gap-2">
+              <div class="relative w-[10px] h-[10px] rounded-full bg-green-500">
+                <div class="absolute w-full h-full t-0 left-0 animate-ping-slow bg-green-500 rounded-full"></div>
+              </div>
+              <span class="font-semibold text-[var(--accent-color)] text-xs">Bereit zur Veröffentlichung</span>
+            </div>
+          </div>
+
+          <div class="px-6 py-6">
+            <div class="flex items-center justify-start gap-2 px-4 py-4 border border-gray-200 rounded-lg bg-gray-50">
+              <div class="flex items-center justify-center text-gray-600">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+              <span class="flex items-center justify-center gap-2 font-semibold">
+                <span class="text-[var(--accent-color)]">https://</span>
+                <input class="w-[100px] outline-none" type="text" placeholder="kenan-ustalic" />
+                <span class="text-[var(--text-color-light)]">.createyourself.ch</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="px-6 py-6 pt-0 flex items-center justify-between gap-6">
+            <div class="w-full">
+              <div class="flex flex-col items-start justify-center gap-1 px-4 py-3 border border-gray-200 rounded-lg bg-gray-50">
+                <span class="uppercase text-[var(--text-color-light)] text-xs">Portfolio</span>
+                <span class="font-semibold">Persönliche URL</span>
+              </div>
+            </div>
+
+            <div class="w-full">
+              <div class="flex flex-col items-start justify-center gap-1 px-4 py-3 border border-gray-200 rounded-lg bg-gray-50">
+                <span class="uppercase text-[var(--text-color-light)] text-xs">Online</span>
+                <span class="font-semibold">Im Web erreichbar</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full h-[1px] bg-gray-200"></div>
+
+          <div class="px-6 py-6 flex flex-col gap-3">
+            <div class="flex items-center justify-between w-full">
+              <span>Portfolio sichbar</span>
+              <div class="cursor-pointer flex items-center justify-center text-[30px]">
+                <i class="fa-solid fa-toggle-on"></i>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between w-full">
+              <span>Inhalte aktualisieren</span>
+              <div class="cursor-pointer flex items-center justify-center text-[30px]">
+                <i class="fa-solid fa-toggle-on"></i>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between w-full">
+              <span>Entwurf bearbeiten</span>
+              <div class="cursor-pointer flex items-center justify-center text-[30px]">
+                <i class="fa-solid fa-toggle-off"></i>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="max-w-[600px] flex flex-col gap-2">
           <span class="text-[35px] leading-11 font-extrabold text-wrap">Online zeigen und später weiter bearbeiten</span>
@@ -583,5 +722,9 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
     100% {
       transform: translateY(0%);
     }
+  }
+
+  .animate-ping-slow {
+    animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 </style>
