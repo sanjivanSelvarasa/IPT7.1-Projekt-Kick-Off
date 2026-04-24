@@ -1,9 +1,16 @@
 <script lang="ts" setup>
-
 import NavHome from "@/components/layout/NavHome.vue";
 import Footer from "@/components/layout/Footer.vue";
 import FactsBox from "@/components/ui/FactsBox.vue";
 import SectionTitle from "@/components/ui/SectionTitle.vue";
+import {useI18n} from "vue-i18n";
+
+const { t, locale} = useI18n();
+
+function changeLanguage(lang: string) {
+  locale.value = lang
+  localStorage.setItem("language", lang)
+}
 </script>
 
 <template>
@@ -17,18 +24,18 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
       <div class="flex flex-col items-start justify-between gap-4 bg-">
         <!-- Title-->
         <div class="flex flex-col items-start justify-between font-extrabold text-[55px]">
-          <span class="leading-7">Dein Portfolio.</span>
+          <span class="leading-7">{{ t("hero.title") }}</span>
           <div class="overflow-hidden">
             <div class="hero-text flex flex-col items-start h-[80px] ">
-              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Identität.</span>
-              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Zukunft.</span>
-              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Inhalte.</span>
+              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ t("hero.title-sub-one") }}</span>
+              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ t("hero.title-sub-two") }}</span>
+              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ t("hero.title-sub-three") }}</span>
             </div>
           </div>
         </div>
         <!-- Hero Text-->
         <div class="text-[var(--text-color-light)] max-w-[550px] text-wrap">
-          <p>Erstelle dein Online-Portfolio mit einem modularen Editor. Inhalte können strukturiert aufgebaut, bearbeitet und als persönliche Seite dargestellt werden.</p>
+          <p>{{ t("hero.description") }}</p>
         </div>
 
         <!-- CTA Buttons -->
@@ -37,10 +44,10 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
             <div class="flex items-center justify-center text-[var(--text-color-white)]">
               <i class="fa-solid fa-plus"></i>
             </div>
-            <span>Jetzt starten</span>
+            <span>{{ t("hero.cta-one") }}</span>
           </RouterLink>
           <RouterLink to="/login" class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] duration-150 transition cursor-pointer gap-2 px-5 py-3 rounded-lg bg-[var(--surface-color)] text-[var(--text-color-light)] font-semibold border border-gray-200">
-            <span>Anmelden</span>
+            <span>{{ t("hero.cta-two") }}</span>
           </RouterLink>
         </div>
 
@@ -50,22 +57,22 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
         <!-- bullet points-->
         <div class="flex items-center justify-center gap-4">
           <div class="flex flex-col items-start justify-between gap-1">
-            <span class="font-semibold">Modular</span>
-            <span class="text-xs text-[var(--text-color-light)]">Portfolio in Blöcken aufbauen</span>
+            <span class="font-semibold">{{ t("hero.bp-one.title") }}</span>
+            <span class="text-xs text-[var(--text-color-light)]">{{ t("hero.bp-one.description") }}</span>
           </div>
 
           <div class="h-[35px] w-[1px] bg-gray-200"></div>
 
           <div class="flex flex-col items-start justify-between gap-1">
-            <span class="font-semibold">Flexibel</span>
-            <span class="text-xs text-[var(--text-color-light)]">Inhalte selbst anordnen</span>
+            <span class="font-semibold">{{ t("hero.bp-two.title") }}</span>
+            <span class="text-xs text-[var(--text-color-light)]">{{ t("hero.bp-two.description") }}</span>
           </div>
 
           <div class="h-[35px] w-[1px] bg-gray-200"></div>
 
           <div class="flex flex-col items-start justify-between gap-1">
-            <span class="font-semibold">Persönlich</span>
-            <span class="text-xs text-[var(--text-color-light)]">Eigene Seite gestalten</span>
+            <span class="font-semibold">{{ t("hero.bp-three.title") }}</span>
+            <span class="text-xs text-[var(--text-color-light)]">{{ t("hero.bp-two.description") }}</span>
           </div>
         </div>
       </div>
@@ -73,25 +80,25 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
       <div class="select-none relative w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]">
 
         <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 levitate absolute flex flex-col items-start justify-center top-0 -left-50 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
-          <span class="text-sm">Portfolio Aufrufe</span>
-          <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">2.848</span>
+          <span class="text-sm">{{ t("hero.fact-one.title") }}</span>
+          <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">{{ t("hero.fact-one.value") }}</span>
         </div>
 
         <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 z-1 levitate absolute flex flex-col items-start justify-center bottom-0 -right-25 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
-          <span class="text-sm">Status</span>
+          <span class="text-sm">{{ t("hero.fact-two.title") }}</span>
 
           <div class="flex items-center justify-center gap-2">
             <div class="relative flex items-center justify-center text-[8px] text-green-400">
               <div class="absolute w-[8px] h-[8px] translate-x-0.25 animate-ping bg-green-400 rounded-full"></div>
               <i class="fa-solid fa-circle"></i>
             </div>
-            <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">Live & sichtbar</span>
+            <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">{{ t("hero.fact-two.value") }}</span>
           </div>
         </div>
 
         <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 z-1 levitate absolute flex flex-col items-start justify-center top-40 -right-45 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
-          <span class="text-sm">Editor</span>
-          <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">Blöcke bearbeiten</span>
+          <span class="text-sm">{{ t("hero.fact-three.title") }}</span>
+          <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">{{ t("hero.fact-three.value") }}</span>
         </div>
 
         <div class="flex items-center justify-start px-4 py-4 bg-gray-50">
@@ -112,7 +119,7 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
           </div>
 
           <div class="mt-3">
-            <span class="uppercase font-bold text-[var(--text-color-light)]">Skills</span>
+            <span class="uppercase font-bold text-[var(--text-color-light)]">{{ t("hero.visual-one") }}</span>
 
             <div class="mt-2 flex items-center justify-start gap-2 flex-wrap">
               <button class="cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition duration-100 px-3 py-1 border border-gray-200 text-[var(--text-color-light)] rounded-full">UI Design</button>
@@ -124,7 +131,7 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
           </div>
 
           <div class="mt-3">
-            <span class="uppercase font-bold text-[var(--text-color-light)]">Projekte</span>
+            <span class="uppercase font-bold text-[var(--text-color-light)]">{{ t("hero.visual-two") }}</span>
 
             <div class="mt-2 flex items-center justify-start gap-2 flex-wrap">
               <div class="flex items-center justify-start gap-2 w-full">
@@ -160,19 +167,19 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
     </header>
 
     <section id="function" class="max-w-[1200px] flex flex-col items-center justify-center gap-4">
-      <SectionTitle svg="fa-regular fa-star" title="Alles, was du für dein Portfolio brauchst" tag-text="Kernfunktionen" description="Die Website konzentriert sich auf das strukturierte Erstellen, Bearbeiten und Darstellen persönlicher Portfolio-Inhalte."></SectionTitle>
+      <SectionTitle svg="fa-regular fa-star" :title="t('function.sectionTitle.title')" :tag-text="t('function.sectionTitle.tag')" :description="t('function.sectionTitle.description')"></SectionTitle>
 
       <div class="w-full max-w-[1400px] px-4 py-2 grid grid-cols-2 gap-4">
-        <FactsBox svg="fa-solid fa-boxes-stacked" svg-color="var(--primary-color)" svg-bg-color="var(--primary-color-light)" title="Baukasten-Editor" description="Erstelle dein Portfolio aus modulen Inhaltsblöcken. Abschnitte können hinzugefügt, bearbeite und in der Reihenfolge angepasst werden." fact-one="Modulare Inhaltsblöcke" fact-two="Reihenfolge anpassen" fact-three="Vorschau der Inhalte"></FactsBox>
-        <FactsBox svg="fa-regular fa-circle-check" svg-color="var(--secondary-color)" svg-bg-color="var(--secondary-color-light)" title="Persönliche Inhalte" description="Zeige Informationen über dich, deine Projekte, Fähigkeiten und weitere Inhalte in einer klaren und strukturierten Form." fact-one="Über-mich-Bereich" fact-two="Projekte und Skills darstellen" fact-three="Strukturierte Portfolio-Abschnitte"></FactsBox>
-        <FactsBox svg="fa-regular fa-pen-to-square" svg-color="oklch(76.5% 0.177 163.223)" svg-bg-color="oklch(98.2% 0.018 155.826)" title="Einfache Bearbeitung" description="Inhalte sollen direkt im Editor verwaltet werden können. Der Fokus liegt auf einer verständlichen und übersichtlichen Bedienung." fact-one="Übersichtlicher Aufbau" fact-two="Inhalte bearbeiten" fact-three="Änderungen direkt sichbar"></FactsBox>
-        <FactsBox svg="fa-regular fa-clock" svg-color="oklch(83.7% 0.128 66.29)" svg-bg-color="oklch(98% 0.016 73.684)" title="Portfolio veröffentlichen" description="Das Portfolio soll nach dem Bearbeiten online aufrufbar sein, damit die eigene Arbeit digital präsentiert werden kann." fact-one="Online aufrufbare Portfolio-Seite" fact-two="Änderungen erneut veröffentlichen" fact-three="Persönliche Präsentation im Web"></FactsBox>
+        <FactsBox svg="fa-solid fa-boxes-stacked" svg-color="var(--primary-color)" svg-bg-color="var(--primary-color-light)" :title="t('function.facts-box-one.title')" :description="t('function.facts-box-one.description')" :fact-one="t('function.facts-box-one.fact-one')" :fact-two="t('function.facts-box-one.fact-two')" :fact-three="t('function.facts-box-one.fact-three')"></FactsBox>
+        <FactsBox svg="fa-regular fa-circle-check" svg-color="var(--secondary-color)" svg-bg-color="var(--secondary-color-light)" :title="t('function.facts-box-two.title')" :description="t('function.facts-box-two.description')" :fact-one="t('function.facts-box-two.fact-one')" :fact-two="t('function.facts-box-two.fact-two')" :fact-three="t('function.facts-box-two.fact-three')"></FactsBox>
+        <FactsBox svg="fa-regular fa-pen-to-square" svg-color="oklch(76.5% 0.177 163.223)" svg-bg-color="oklch(98.2% 0.018 155.826)" :title="t('function.facts-box-three.title')" :description="t('function.facts-box-three.description')" :fact-one="t('function.facts-box-three.fact-one')" :fact-two="t('function.facts-box-three.fact-two')" :fact-three="t('function.facts-box-three.fact-three')"></FactsBox>
+        <FactsBox svg="fa-regular fa-clock" svg-color="oklch(83.7% 0.128 66.29)" svg-bg-color="oklch(98% 0.016 73.684)" :title="t('function.facts-box-four.title')" :description="t('function.facts-box-four.description')" :fact-one="t('function.facts-box-four.fact-one')" :fact-two="t('function.facts-box-four.fact-two')" :fact-three="t('function.facts-box-four.fact-three')"></FactsBox>
       </div>
     </section>
 
     <section id="editor" class="flex flex-col justify-center items-center bg-[var(--background-color)]">
       <div class="max-w-[1200px] w-full flex flex-col items-center justify-center gap-5">
-        <SectionTitle svg="fa-regular fa-pen-to-square" title="Wie der Baukasten-Editor funktioniert" tag-text="Der Editor" description="Jeder Abschnitt deines Portfolios ist als Block aufgebaut und kann im Editor bearbeitett und angeordnet werden."></SectionTitle>
+        <SectionTitle svg="fa-regular fa-pen-to-square" :title="t('editor.sectionTitle.title')" :tag-text="t('editor.sectionTitle.tag')" :description="t('editor.sectionTitle.description')"></SectionTitle>
         <div class="flex items-center justify-between w-full gap-8">
           <div class="flex flex-col gap-3">
             <div class="hover:bg-[var(--surface-color)] hover:border-gray-300 hover:shadow-lg duration-150 transition cursor-pointer flex items-start justify-center gap-4 font-bold max-w-[600px] px-4 py-4 rounded-2xl border border-transparent">
@@ -180,8 +187,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                 <i class="fa-solid fa-1"></i>
               </div>
               <div class="flex flex-col items-start justify-center gap-1">
-                <span class="font-bold">Block auswählen</span>
-                <p class="text-[var(--text-color-light)] text-sm font-normal">Wähle aus den verfügbaren Blocktypen den Abschnitt aus, den du in deinem Portfolio verwenden möchtest.</p>
+                <span class="font-bold">{{ t("editor.fact-one.title") }}</span>
+                <p class="text-[var(--text-color-light)] text-sm font-normal">{{ t("editor.fact-one.description") }}</p>
               </div>
             </div>
 
@@ -190,8 +197,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                 <i class="fa-solid fa-2"></i>
               </div>
               <div class="flex flex-col items-start justify-center gap-1">
-                <span class="font-bold">Inhalte bearbeiten</span>
-                <p class="text-[var(--text-color-light)] text-sm font-normal">Ergänze Texte, Bilder und weitere Informationen direkt im jeweiligen Abschnitt deines Portfolios.</p>
+                <span class="font-bold">{{ t("editor.fact-two.title") }}</span>
+                <p class="text-[var(--text-color-light)] text-sm font-normal">{{ t("editor.fact-two.description") }}</p>
               </div>
             </div>
 
@@ -200,8 +207,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                 <i class="fa-solid fa-3"></i>
               </div>
               <div class="flex flex-col items-start justify-center gap-1">
-                <span class="font-bold">Struktur anpassen</span>
-                <p class="text-[var(--text-color-light)] text-sm font-normal">Ordne die einzelnen Bereiche so an, dass dein Portfolio übersichtlich und passend zu deinen Inhalten aufgebaut ist.</p>
+                <span class="font-bold">{{ t("editor.fact-three.title") }}</span>
+                <p class="text-[var(--text-color-light)] text-sm font-normal">{{ t("editor.fact-three.description") }}</p>
               </div>
             </div>
 
@@ -210,18 +217,18 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                 <i class="fa-solid fa-4"></i>
               </div>
               <div class="flex flex-col items-start justify-center gap-1">
-                <span class="font-bold">Portfolio veröffentlichen</span>
-                <p class="text-[var(--text-color-light)] text-sm font-normal">Wenn dein Inhalt fertig ist, kann dein Portfolio online dargestellt und später weiter aktualisiert werden.</p>
+                <span class="font-bold">{{ t("editor.fact-four.title") }}</span>
+                <p class="text-[var(--text-color-light)] text-sm font-normal">{{ t("editor.fact-four.description") }}</p>
               </div>
             </div>
           </div>
           <div class="select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg border-2 overflow-hidden border-gray-200">
             <div class="flex items-center justify-between px-4 py-2 w-full bg-gray-50">
-              <span class="font-bold">Mein Portfolio - Entwurf</span>
+              <span class="font-bold">{{ t("editor.visual.title") }}</span>
               <div class="flex items-center justify-center text-sm font-bold text-[var(--text-color-light)] gap-2">
-                <button class="cursor-pointer px-3 py-1 bg-[var(--primary-color)] rounded-lg text-[var(--text-color-white)]">Bearbeiten</button>
-                <button class="cursor-pointer hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition duration-100 border border-transparent px-3 py-1 rounded-lg">Vorschau</button>
-                <button class="cursor-pointer hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition duration-100 border border-transparent px-3 py-1 rounded-lg">Einstellungen</button>
+                <button class="cursor-pointer px-3 py-1 bg-[var(--primary-color)] rounded-lg text-[var(--text-color-white)]">{{ t("editor.visual.nav-one") }}</button>
+                <button class="cursor-pointer hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition duration-100 border border-transparent px-3 py-1 rounded-lg">{{ t("editor.visual.nav-two") }}</button>
+                <button class="cursor-pointer hover:text-[var(--primary-color)] hover:border-[var(--primary-color)] transition duration-100 border border-transparent px-3 py-1 rounded-lg">{{ t("editor.visual.nav-three") }}</button>
               </div>
             </div>
 
@@ -232,8 +239,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                     <i class="fa-solid fa-align-left"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">Hero-Section</span>
-                    <span class="text-xs text-[var(--text-color-light)]">Name, Titel, Bild, CTA-Button</span>
+                    <span class="text-sm font-semibold">{{ t("editor.box-one.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ t("editor.box-one.subtitle") }}</span>
                   </div>
                 </div>
 
@@ -248,8 +255,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                     <i class="fa-regular fa-user"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">Über mich</span>
-                    <span class="text-xs text-[var(--text-color-light)]">Biografie & Porträtbild</span>
+                    <span class="text-sm font-semibold">{{ t("editor.box-two.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ t("editor.box-two.subtitle") }}</span>
                   </div>
                 </div>
 
@@ -264,8 +271,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                     <i class="fa-regular fa-folder"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">Projektgalerie</span>
-                    <span class="text-xs text-[var(--text-color-light)]">Projekte mit Beschreibung und Verweisen</span>
+                    <span class="text-sm font-semibold">{{ t("editor.box-three.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ t("editor.box-three.subtitle") }}</span>
                   </div>
                 </div>
 
@@ -280,8 +287,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
                     <i class="fa-solid fa-arrow-trend-up"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">Skills-Liste</span>
-                    <span class="text-xs text-[var(--text-color-light)]">Die derzeigen Erfahrungen und das Können</span>
+                    <span class="text-sm font-semibold">{{ t("editor.box-four.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ t("editor.box-four.subtitle") }}</span>
                   </div>
                 </div>
 
@@ -296,7 +303,7 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
     </section>
 
     <section id="howWorks" class="max-w-[1200px]">
-      <SectionTitle svg="fa-solid fa-check" title="Vom Konto zum eigenen Portfolio in drei Schritten" tag-text="Wie es funktioniert" description="Der Ablauf ist klar aufgebaut: registrieren, Inhalte erfassen und das Portfolio online darstellen"></SectionTitle>
+      <SectionTitle svg="fa-solid fa-check" :title="t('howWorks.sectionTitle.title')" :tag-text="t('howWorks.sectionTitle.tag')" :description="t('howWorks.sectionTitle.description')"></SectionTitle>
 
       <div class="p-4">
         <div class="grid grid-cols-3 gap-4 mt-3 border rounded-[30px] py-8 px-8 border-gray-200">
@@ -307,28 +314,28 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
             <div class="w-[45px] h-[45px] rounded-lg bg-[var(--primary-color-light)] text-[var(--primary-color)] flex items-center justify-center text-lg">
               <i class="fa-solid fa-arrow-right-to-bracket"></i>
             </div>
-            <span class="font-bold mt-3">Registrieren</span>
-            <span class="text-[var(--text-color-light)] text-sm text-wrap">Erstelle ein Konto, um deien persönlichen Bereich und den Portfolio-Editor zu nutzen.</span>
+            <span class="font-bold mt-3">{{ t("howWorks.fact-one.title") }}</span>
+            <span class="text-[var(--text-color-light)] text-sm text-wrap">{{ t("howWorks.fact-one.description") }}</span>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)] mt-3">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">E-Mail und Passwort eingeben</span>
+              <span class="">{{ t("howWorks.fact-one.bp-one") }}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Zugang zum Benutzerberiech erhalten</span>
+              <span class="">{{ t("howWorks.fact-one.bp-two") }}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Mit dem Portfolio beginnen</span>
+              <span class="">{{ t("howWorks.fact-one.bp-three") }}</span>
             </div>
           </div>
 
@@ -340,28 +347,28 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
             <div class="w-[45px] h-[45px] rounded-lg bg-[var(--secondary-color-light)] text-[var(--secondary-color)] flex items-center justify-center text-lg">
               <i class="fa-solid fa-plus"></i>
             </div>
-            <span class="font-bold mt-3">Portfolio erstellen</span>
-            <span class="text-[var(--text-color-light)] text-sm text-wrap">Füge Inhalte in Blöcken hinzu und stelle die Informationen so zusammen, wie du dich präsentieren möchtest.</span>
+            <span class="font-bold mt-3">{{ t("howWorks.fact-two.title") }}</span>
+            <span class="text-[var(--text-color-light)] text-sm text-wrap">{{ t("howWorks.fact-two.description") }}</span>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)] mt-3">
               <div class="text-[var(--secondary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Blöcke auswählen</span>
+              <span class="">{{ t("howWorks.fact-two.bp-one") }}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--secondary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Inhalte im Editor erfassen</span>
+              <span class="">{{ t("howWorks.fact-two.bp-two") }}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--secondary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Reihenfolge der Bereiche anpassen</span>
+              <span class="">{{ t("howWorks.fact-two.bp-three") }}</span>
             </div>
           </div>
 
@@ -372,28 +379,28 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
             <div class="w-[45px] h-[45px] rounded-lg bg-green-100 text-[var(--accent-color)] flex items-center justify-center text-lg">
               <i class="fa-regular fa-circle-check"></i>
             </div>
-            <span class="font-bold mt-3">Veröffentlichen</span>
-            <span class="text-[var(--text-color-light)] text-sm text-wrap">Sobald dein Portfolio fertig ist, kann es online angezeigt und bei Bedarf später weiter angepasst werden.</span>
+            <span class="font-bold mt-3">{{ t("howWorks.fact-three.title") }}</span>
+            <span class="text-[var(--text-color-light)] text-sm text-wrap">{{ t("howWorks.fact-three.description") }}</span>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)] mt-3">
               <div class="text-[var(--accent-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Portfolio online darstellen</span>
+              <span class="">{{ t("howWorks.fact-three.bp-one") }}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--accent-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Änderungen später anpassen</span>
+              <span class="">{{ t("howWorks.fact-three.bp-two") }}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--accent-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Eigene Inhalte digital präsentieren</span>
+              <span class="">{{ t("howWorks.fact-three.bp-three") }}</span>
             </div>
           </div>
         </div>
@@ -402,7 +409,7 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
 
     <section class="bg-[var(--background-color)]">
       <div class="max-w-[1200px] p-4">
-        <section-title svg="fa-regular fa-user" title="Gemacht für Menschen, die ihre Arbeit digital zeigen wollen" tag-text="Für wen ist createyourself" description="CreateYourself eignet sich für alle, die ihre Inhalte strukturiert online präsentieren wollen"></section-title>
+        <section-title svg="fa-regular fa-user" :title="t('target.sectionTitle.title')" :tag-text="t('target.sectionTitle.tag')" :description="t('target.sectionTitle.description')"></section-title>
 
         <div class="grid grid-cols-3 gap-4">
           <div class="group hover:shadow-lg overflow-hidden relative transition duration-150 flex flex-col items-start justify-center gap-4 bg-[var(--surface-color)] p-8 border border-gray-200 rounded-2xl">
@@ -413,11 +420,11 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <i class="fa-solid fa-briefcase"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-2">
-              <span class="uppercase text-xs text-[var(--text-color-light)] font-semibold">Lernende & Bewerbende</span>
-              <span class="font-bold text-lg">Zeige deinen Werdegang und deine Projekte übersichtlich</span>
+              <span class="uppercase text-xs text-[var(--text-color-light)] font-semibold">{{ t("target.fact-one.subtitle")}}</span>
+              <span class="font-bold text-lg">{{ t("target.fact-one.title")}}</span>
             </div>
             <div class="text-[var(--text-color-light)] text-sm text-wrap">
-              <p>Stelle Informationen über dich, deine Fähigkeiten und deine Arbeiten in einer eigenen Portfolio-Seite zusammen.</p>
+              <p>{{ t("target.fact-one.description")}}</p>
             </div>
 
             <div class="w-full h-[1px] bg-gray-200"></div>
@@ -426,21 +433,21 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Persönliche Informationen darstellen</span>
+              <span class="">{{ t("target.fact-one.bp-one")}}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Projekte und Skills zeigen</span>
+              <span class="">{{ t("target.fact-one.bp-two")}}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Portfolio als digitale Präsentation nutzen</span>
+              <span class="">{{ t("target.fact-one.bp-three")}}</span>
             </div>
           </div>
 
@@ -452,11 +459,11 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <i class="fa-solid fa-code"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-2">
-              <span class="uppercase text-xs text-[var(--text-color-light)] font-semibold">Entwicklerinnen & Entwickler</span>
-              <span class="font-bold text-lg">Präsentiere technische Projekte in einer eigenen Seite</span>
+              <span class="uppercase text-xs text-[var(--text-color-light)] font-semibold">{{ t("target.fact-two.subtitle")}}</span>
+              <span class="font-bold text-lg">{{ t("target.fact-two.title")}}</span>
             </div>
             <div class="text-[var(--text-color-light)] text-sm text-wrap">
-              <p>Beschreibe Projekte, zeige verwendete Technologien und gib einen strukturierten Überblick über deine Arbeiten.</p>
+              <p>{{ t("target.fact-two.description")}}</p>
             </div>
 
             <div class="w-full h-[1px] bg-gray-200"></div>
@@ -465,21 +472,21 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <div class="text-[var(--secondary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Projekte strukturiert darstellen</span>
+              <span class="">{{ t("target.fact-two.bp-one")}}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--secondary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Technologien und Skills auflisten</span>
+              <span class="">{{ t("target.fact-two.bp-two")}}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--secondary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Eigene Arbeiten online zeigen</span>
+              <span class="">{{ t("target.fact-two.bp-three")}}</span>
             </div>
           </div>
 
@@ -491,11 +498,11 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <i class="fa-solid fa-brush"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-2">
-              <span class="uppercase text-xs text-[var(--text-color-light)] font-semibold">Kreative & Gestaltende</span>
-              <span class="font-bold text-lg">Zeige Inhalte in einer klaren visuellen Struktur</span>
+              <span class="uppercase text-xs text-[var(--text-color-light)] font-semibold">{{ t("target.fact-three.subtitle")}}</span>
+              <span class="font-bold text-lg">{{ t("target.fact-three.title")}}</span>
             </div>
             <div class="text-[var(--text-color-light)] text-sm text-wrap">
-              <p>Nutze verschiedene Portfolio-Bereiche, um Arbeiten, Beschreibungen und persönliche Informationenübersichtlich aufzubauen.</p>
+              <p>{{ t("target.fact-three.description")}}</p>
             </div>
 
             <div class="w-full h-[1px] bg-gray-200"></div>
@@ -504,21 +511,21 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Inhalte visuell gliedern</span>
+              <span class="">{{ t("target.fact-three.bp-one")}}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Projekte und Texte kombinieren</span>
+              <span class="">{{ t("target.fact-three.bp-two")}}</span>
             </div>
 
             <div class="flex gap-2 text-xs text-[var(--text-color-light)]">
               <div class="text-[var(--primary-color)] flex items-center justify-center">
                 <i class="fa-solid fa-check"></i>
               </div>
-              <span class="">Eigene Präsentationsseite erstellen</span>
+              <span class="">{{ t("target.fact-three.bp-three")}}</span>
             </div>
           </div>
         </div>
@@ -529,12 +536,12 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
       <div class="flex items-start justify-between gap-8 w-[1200px]">
         <div class="select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg text-sm overflow-hidden border-2 border-gray-200 ">
           <div class="flex items-center justify-between w-full h-fit bg-gray-50 border border-transparent border-b-gray-200 px-6 py-6">
-            <span class="font-semibold">Veröffentlichung</span>
+            <span class="font-semibold">{{ t("public.visual.title")}}</span>
             <div class="flex items-center justify-center gap-2">
               <div class="relative w-[10px] h-[10px] rounded-full bg-green-500">
                 <div class="absolute w-full h-full t-0 left-0 animate-ping-slow bg-green-500 rounded-full"></div>
               </div>
-              <span class="font-semibold text-[var(--accent-color)] text-xs">Bereit zur Veröffentlichung</span>
+              <span class="font-semibold text-[var(--accent-color)] text-xs">{{ t("public.visual.public")}}</span>
             </div>
           </div>
 
@@ -554,15 +561,15 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
           <div class="px-6 py-6 pt-0 flex items-center justify-between gap-6">
             <div class="w-full">
               <div class="flex flex-col items-start justify-center gap-1 px-4 py-3 border border-gray-200 rounded-lg bg-gray-50">
-                <span class="uppercase text-[var(--text-color-light)] text-xs">Portfolio</span>
-                <span class="font-semibold">Persönliche URL</span>
+                <span class="uppercase text-[var(--text-color-light)] text-xs">{{ t("public.visual.box-one.title")}}</span>
+                <span class="font-semibold">{{ t("public.visual.box-one.value")}}</span>
               </div>
             </div>
 
             <div class="w-full">
               <div class="flex flex-col items-start justify-center gap-1 px-4 py-3 border border-gray-200 rounded-lg bg-gray-50">
-                <span class="uppercase text-[var(--text-color-light)] text-xs">Online</span>
-                <span class="font-semibold">Im Web erreichbar</span>
+                <span class="uppercase text-[var(--text-color-light)] text-xs">{{ t("public.visual.box-two.title")}}</span>
+                <span class="font-semibold">{{ t("public.visual.box-two.value")}}</span>
               </div>
             </div>
           </div>
@@ -571,21 +578,21 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
 
           <div class="px-6 py-6 flex flex-col gap-3">
             <div class="flex items-center justify-between w-full">
-              <span>Portfolio sichbar</span>
+              <span>{{ t("public.visual.bp-one")}}</span>
               <div class="cursor-pointer flex items-center justify-center text-[30px]">
                 <i class="fa-solid fa-toggle-on"></i>
               </div>
             </div>
 
             <div class="flex items-center justify-between w-full">
-              <span>Inhalte aktualisieren</span>
+              <span>{{ t("public.visual.bp-two")}}</span>
               <div class="cursor-pointer flex items-center justify-center text-[30px]">
                 <i class="fa-solid fa-toggle-on"></i>
               </div>
             </div>
 
             <div class="flex items-center justify-between w-full">
-              <span>Entwurf bearbeiten</span>
+              <span>{{ t("public.visual.bp-three")}}</span>
               <div class="cursor-pointer flex items-center justify-center text-[30px]">
                 <i class="fa-solid fa-toggle-off"></i>
               </div>
@@ -594,15 +601,15 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
         </div>
 
         <div class="max-w-[600px] flex flex-col gap-2">
-          <span class="text-[35px] leading-11 font-extrabold text-wrap">Online zeigen und später weiter bearbeiten</span>
+          <span class="text-[35px] leading-11 font-extrabold text-wrap">{{ t("public.title")}}</span>
 
           <div class="flex items-start justify-start gap-4 mt-4">
             <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-[var(--primary-color-light)] text-[var(--primary-color)]">
               <i class="fa-regular fa-circle-check"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">Persönliche Portfolio-Seite</span>
-              <span class="text-sm text-[var(--text-color-light)]">Das Ziel der Website ist, persönliche Inhalte als eigene Portfolio-Seite online darzustellen.</span>
+              <span class="font-semibold text-sm">{{ t("public.fact-one.title")}}</span>
+              <span class="text-sm text-[var(--text-color-light)]">{{ t("public.fact-one.description")}}</span>
             </div>
           </div>
 
@@ -611,8 +618,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <i class="fa-solid fa-briefcase"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">Bearbeiten und Veröffentlichen</span>
-              <span class="text-sm text-[var(--text-color-light)]">Inhalte werden im Editor vorbereitet und können anschliessend fpr die Portfolio-Seite übernommen werden.</span>
+              <span class="font-semibold text-sm">{{ t("public.fact-two.title")}}</span>
+              <span class="text-sm text-[var(--text-color-light)]">{{ t("public.fact-two.description")}}</span>
             </div>
           </div>
 
@@ -621,8 +628,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <i class="fa-regular fa-clock"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">Inhalte später anpassen</span>
-              <span class="text-sm text-[var(--text-color-light)]">Das Portfolio kann nach der Veröffentlichung weiter bearbeitet und erneut aktualisiert werden.</span>
+              <span class="font-semibold text-sm">{{ t("public.fact-three.title")}}</span>
+              <span class="text-sm text-[var(--text-color-light)]">{{ t("public.fact-three.description")}}</span>
             </div>
           </div>
 
@@ -631,8 +638,8 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
               <i class="fa-solid fa-crosshairs"></i>
             </div>
             <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">Digitale Präsentation</span>
-              <span class="text-sm text-[var(--text-color-light)]">CreateYourself soll es ermöglichen, persönliche Informationen und Projekte gesammelt online zu präsentieren.</span>
+              <span class="font-semibold text-sm">{{ t("public.fact-four.title")}}</span>
+              <span class="text-sm text-[var(--text-color-light)]">{{ t("public.fact-four.description")}}</span>
             </div>
           </div>
         </div>
@@ -647,17 +654,17 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
 
       <div class="max-w-[1200px]">
         <div class="flex flex-col items-center justify-center text-wrap gap-3">
-          <span class="text-[var(--text-color-white)] font-extrabold text-[35px]">Bereit, dein Portfolio zu erstellen?</span>
-          <span class="text-gray-200 max-w-[650px] text-center">Stelle deine Projekte, Fähigkeiten und Informationen in einer eigenen Portfolio-Seite zusammen. Alles an einem Ort, klar strukturiert und online präsentierbar.</span>
+          <span class="text-[var(--text-color-white)] font-extrabold text-[35px]">{{ t("cta.title") }}</span>
+          <span class="text-gray-200 max-w-[650px] text-center">{{ t("cta.subtitle") }}</span>
         </div>
       </div>
       <div class="z-10 flex items-center justify-center gap-4 mt-6">
         <RouterLink to="/register" class="hover:-translate-y-0.5 hover:shadow-lg duration-150 transition cursor-pointer shadow-lg flex items-center justify-center gap-2 text-[var(--primary-color)] font-semibold px-6 py-4 rounded-lg bg-[var(--surface-color)]">
           <i class="fa-solid fa-plus"></i>
-          <span>Jetzt starten</span>
+          <span>{{ t("cta.cta-one") }}</span>
         </RouterLink>
 
-        <RouterLink to="/login" class="hover:-translate-y-0.5 hover:shadow-lg duration-150 transition cursor-pointer shadow-lg glass-bg px-6 py-4 font-semibold rounded-lg text-[var(--text-color-white)]">Anmelden</RouterLink>
+        <RouterLink to="/login" class="hover:-translate-y-0.5 hover:shadow-lg duration-150 transition cursor-pointer shadow-lg glass-bg px-6 py-4 font-semibold rounded-lg text-[var(--text-color-white)]">{{ t("cta.cta-two") }}</RouterLink>
       </div>
     </section>
   </main>
