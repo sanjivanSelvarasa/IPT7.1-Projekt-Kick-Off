@@ -7,7 +7,7 @@ import Logo from "@/components/ui/Logo.vue";
   <div class="z-999 fixed top-0 left-0 w-full bg-[var(--surface-color)] shadow-sm h-[65px] flex items-center justify-center">
     <div class="flex items-center justify-between w-[1200px] px-4 py-2 h-full">
       <!-- Logo-->
-      <Logo link="/"></Logo>
+      <Logo class="no-link-active" link="/"></Logo>
 
       <!-- Section Links-->
       <div class="h-full flex items-center">
@@ -35,3 +35,10 @@ import Logo from "@/components/ui/Logo.vue";
     </div>
   </div>
 </template>
+
+<style>
+.router-link-exact-active:not(.no-link-active){
+  color: var(--primary-color);
+  background-color: var(--primary-color-light);
+}
+</style>
