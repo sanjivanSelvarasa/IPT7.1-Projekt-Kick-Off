@@ -5,7 +5,7 @@
 </script>
 
 <template>
-  <RouterLink :to="props.link" class="font-semibold text-lg">
+  <RouterLink :to="props.link" class="font-semibold text-lg !bg-transparent">
     Create<span class="bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">Yourself</span>
   </RouterLink>
 </template>
