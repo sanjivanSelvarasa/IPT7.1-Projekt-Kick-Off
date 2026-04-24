@@ -9,7 +9,7 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
 <template>
   <NavHome></NavHome>
 
-  <main>
+  <main class="overflow-x-hidden">
     <header id="header" class="relative w-full h-[100vh]">
       <div class="absolute top-0 left-0 grid-bg w-full h-full -z-999"></div>
       <div class="absolute top-0 left-0 header-bg w-full h-full -z-999"></div>
@@ -18,7 +18,13 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
         <!-- Title-->
         <div class="flex flex-col items-start justify-between font-extrabold text-[55px]">
           <span class="leading-7">Dein Portfolio.</span>
-          <span class="bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Identität.</span>
+          <div class="overflow-hidden">
+            <div class="hero-text flex flex-col items-start h-[80px] ">
+              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Identität.</span>
+              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Zukunft.</span>
+              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">Deine Inhalte.</span>
+            </div>
+          </div>
         </div>
         <!-- Hero Text-->
         <div class="text-[var(--text-color-light)] max-w-[550px] text-wrap">
@@ -64,7 +70,92 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
         </div>
       </div>
 
-      <div class="w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]"></div>
+      <div class="relative w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]">
+
+        <div class="levitate absolute flex flex-col items-start justify-center top-0 -left-50 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+          <span class="text-sm">Portfolio Aufrufe</span>
+          <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">2.848</span>
+        </div>
+
+        <div class="z-1 levitate absolute flex flex-col items-start justify-center bottom-0 -right-25 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+          <span class="text-sm">Status</span>
+
+          <div class="flex items-center justify-center gap-2">
+            <div class="relative flex items-center justify-center text-[8px] text-green-400">
+              <div class="absolute w-[8px] h-[8px] translate-x-0.25 animate-ping bg-green-400 rounded-full"></div>
+              <i class="fa-solid fa-circle"></i>
+            </div>
+            <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">Live & sichtbar</span>
+          </div>
+        </div>
+
+        <div class="z-1 levitate absolute flex flex-col items-start justify-center top-40 -right-45 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+          <span class="text-sm">Editor</span>
+          <span class="text-xl font-bold bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] text-transparent bg-clip-text">Blöcke bearbeiten</span>
+        </div>
+
+        <div class="flex items-center justify-start px-4 py-4 bg-gray-50">
+          <div class="flex items-center justify-center gap-2">
+            <div class="w-[10px] h-[10px] rounded-full bg-red-500"></div>
+            <div class="w-[10px] h-[10px] rounded-full bg-yellow-400"></div>
+            <div class="w-[10px] h-[10px] rounded-full bg-green-500"></div>
+          </div>
+        </div>
+
+        <div class="px-4 py-6">
+          <div class="h-[100px] w-[100px] rounded-full bg-linear-to-br from-[var(--primary-color)] to-[var(--secondary-color)]"></div>
+
+          <div class="mt-3 flex flex-col items-start justify-center gap-2">
+            <div class="animate-pulse w-full h-[20px] rounded-sm bg-gray-200"></div>
+            <div class="animate-pulse w-[75%] h-[20px] rounded-sm bg-gray-200"></div>
+            <div class="animate-pulse w-[90%] h-[20px] rounded-sm bg-gray-200"></div>
+          </div>
+
+          <div class="mt-3">
+            <span class="uppercase font-bold text-[var(--text-color-light)]">Skills</span>
+
+            <div class="mt-2 flex items-center justify-start gap-2 flex-wrap">
+              <button class="cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition duration-100 px-3 py-1 border border-gray-200 text-[var(--text-color-light)] rounded-full">UI Design</button>
+              <button class="cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition duration-100 px-3 py-1 border border-gray-200 text-[var(--text-color-light)] rounded-full">Figma</button>
+              <button class="cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition duration-100 px-3 py-1 border border-gray-200 text-[var(--text-color-light)] rounded-full">React</button>
+              <button class="cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition duration-100 px-3 py-1 border border-gray-200 text-[var(--text-color-light)] rounded-full">TypeScript</button>
+              <button class="cursor-pointer hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] transition duration-100 px-3 py-1 border border-gray-200 text-[var(--text-color-light)] rounded-full">Vue</button>
+            </div>
+          </div>
+
+          <div class="mt-3">
+            <span class="uppercase font-bold text-[var(--text-color-light)]">Projekte</span>
+
+            <div class="mt-2 flex items-center justify-start gap-2 flex-wrap">
+              <div class="flex items-center justify-start gap-2 w-full">
+                <div class="w-[8px] h-[8px] rounded-full bg-[var(--primary-color)]"></div>
+                <div class="animate-pulse w-[90%] h-[20px] rounded-sm bg-gray-200"></div>
+              </div>
+
+              <div class="w-full h-[1px] bg-gray-100"></div>
+
+              <div class="flex items-center justify-start gap-2 w-full">
+                <div class="w-[8px] h-[8px] rounded-full bg-[var(--primary-color)]"></div>
+                <div class="animate-pulse w-[90%] h-[20px] rounded-sm bg-gray-200"></div>
+              </div>
+
+              <div class="w-full h-[1px] bg-gray-100"></div>
+
+              <div class="flex items-center justify-start gap-2 w-full">
+                <div class="w-[8px] h-[8px] rounded-full bg-[var(--primary-color)]"></div>
+                <div class="animate-pulse w-[90%] h-[20px] rounded-sm bg-gray-200"></div>
+              </div>
+
+              <div class="w-full h-[1px] bg-gray-100"></div>
+
+              <div class="flex items-center justify-start gap-2 w-full">
+                <div class="w-[8px] h-[8px] rounded-full bg-[var(--primary-color)]"></div>
+                <div class="animate-pulse w-[90%] h-[20px] rounded-sm bg-gray-200"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </div>
     </header>
 
@@ -454,5 +545,43 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
 
   .header-bg{
     background: linear-gradient(to bottom right, rgba(37, 99, 235, 0.12), transparent, rgba(124, 58, 237, 0.12))
+  }
+
+  .levitate{
+    animation: levitate 5s ease-in-out infinite;
+  }
+
+  @keyframes levitate {
+    0%{
+      transform: translateY(0);
+    }
+    50%{
+      transform: translateY(-25%);
+    }
+    100%{
+      transform: translateY(0);
+    }
+  }
+
+  .hero-text{
+    animation: changetext 15s ease-in-out infinite;
+  }
+
+  @keyframes changetext {
+    0%, 15% {
+      transform: translateY(0%);
+    }
+    25%, 40% {
+      transform: translateY(-100%);
+    }
+    50%, 65% {
+      transform: translateY(-200%);
+    }
+    75%, 90% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
   }
 </style>
