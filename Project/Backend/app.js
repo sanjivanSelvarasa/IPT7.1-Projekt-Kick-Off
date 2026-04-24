@@ -11,10 +11,22 @@ const errorHandler = require('./1_middleware/errorHandler')
 const database = require('./4_models/database')
 
 const app = express()
+
+const configuredOrigins = process.env.CORS_ORIGIN
+    ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim()).filter(Boolean)
+    : ['http://localhost:5173']
+
 app.use(cors({
-    origin: process.env.CORS_ORIGIN || '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    origin(origin, callback) {
+        if (!origin || configuredOrigins.includes(origin)) {
+            return callback(null, true)
+        }
+
+        return callback(new Error(`CORS blocked for origin: ${origin}`))
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'credentials']
 }))
 app.use(express.json())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
