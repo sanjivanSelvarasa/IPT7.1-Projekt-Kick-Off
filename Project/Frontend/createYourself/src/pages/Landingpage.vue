@@ -452,13 +452,6 @@ import SectionTitle from "@/components/ui/SectionTitle.vue";
     border: 1px solid rgba(255, 255, 255, 0.65);
   }
 
-  .grid-bg{
-    background-color: #e5e5f7;
-    opacity: .05;
-    background-image:  linear-gradient(oklch(70.7% 0.022 261.325) 1px, transparent 1px), linear-gradient(to right, oklch(70.7% 0.022 261.325) 1px, var(--background-color) 1px);
-    background-size: 45px 45px;
-  }
-
   .header-bg{
     background: linear-gradient(to bottom right, rgba(37, 99, 235, 0.12), transparent, rgba(124, 58, 237, 0.12))
   }
