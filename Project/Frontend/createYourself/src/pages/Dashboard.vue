@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 import NavApp from "@/components/layout/NavApp.vue";
-import CardDashboard from "@/pages/auth/CardDashboard.vue";
+import CardDashboard from "@/components/ui/CardDashboard.vue";
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import CardDashboard from "@/pages/auth/CardDashboard.vue";
       </div>
 
       <div>
-        <button class="flex items-center justify-center gap-2 px-4 py-2 bg-[var(--primary-color)] rounded-lg shadow-lg text-[var(--text-color-white)] cursor-pointer">
+        <button class="hover:scale-101 hover:-translate-y-[1px] transition duration-100 flex items-center justify-center gap-2 px-4 py-2 bg-[var(--primary-color)] rounded-lg shadow-lg text-[var(--text-color-white)] cursor-pointer">
           <div class="flex items-center justify-center">
             <i class="fa-solid fa-plus"></i>
           </div>
@@ -50,7 +50,7 @@ import CardDashboard from "@/pages/auth/CardDashboard.vue";
       </div>
 
       <div class="flex items-center justify-center gap-4">
-        <div class="w-[450px] border border-gray-200 cursor-pointer flex items-center justify-center gap-4 px-4 py-2 rounded-lg bg-[var(--surface-color)] shadow-lg">
+        <div class="hover:border-[var(--primary-color)] transition duration-150 w-[450px] border border-gray-200 cursor-pointer flex items-center justify-center gap-4 px-4 py-2 rounded-lg bg-[var(--surface-color)] shadow-lg">
           <div class="text-[var(--text-color-light)] flex items-center justify-center">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
@@ -58,23 +58,34 @@ import CardDashboard from "@/pages/auth/CardDashboard.vue";
         </div>
 
         <div>
-          <select class="shadow-lg px-4 py-2 text-[var(--text-color-light)] outline-none border border-gray-200 rounded-lg bg-[var(--surface-color)] cursor-pointer" name="cars" id="cars">
+          <select class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] shadow-lg px-4 py-2 text-[var(--text-color-light)] outline-none border border-gray-200 rounded-lg bg-[var(--surface-color)] cursor-pointer" name="cars" id="cars">
             <option value="volvo">Alle Status</option>
             <option value="saab">Veröffentlicht</option>
             <option value="mercedes">Entwurf</option>
           </select>
         </div>
 
-        <div class="flex items-center justify-center gap-2 shadow-lg px-4 py-2 text-[var(--text-color-light)] outline-none border border-gray-200 rounded-lg bg-[var(--surface-color)] cursor-pointer">
+        <div class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] flex items-center justify-center gap-2 shadow-lg px-4 py-2 text-[var(--text-color-light)] outline-none border border-gray-200 rounded-lg bg-[var(--surface-color)] cursor-pointer">
           <div class="flex items-center justify-center">
             <i class="fa-solid fa-sort"></i>
           </div>
-          <span class="text-[var(--text-color-light)] ">Sortieren</span>
+          <span>Sortieren</span>
         </div>
       </div>
 
-      <div class="grid grid-cols-3 gap-4 grid-rows-[auto_1fr]">
+      <div class="grid grid-cols-3 gap-4 grid-rows-[auto_1fr] w-full mb-8">
         <CardDashboard v-for="i in 5"></CardDashboard>
+
+        <!-- create project-->
+        <div class="group hover:border-[var(--primary-color)] cursor-pointer transition duration-150 relative bg-transparent w-full h-[350px] aspect-square rounded-2xl overflow-hidden border-3 border-gray-200 border-dashed">
+          <div class="flex flex-col items-center justify-center h-full w-full gap-3">
+            <div class="group-hover:border-[var(--primary-color)] group-hover:text-[var(--primary-color)] transition duration-150 flex items-center justify-center w-[45px] h-[45px] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+            <span class="font-semibold text-gray-600">Neues Portfolio erstellen</span>
+            <span class="text-[var(--text-color-light)]">Klicken zum Starten</span>
+          </div>
+        </div>
       </div>
     </main>
   </div>
