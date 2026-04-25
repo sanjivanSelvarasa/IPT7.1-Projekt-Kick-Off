@@ -1,35 +1,40 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useAuthStore } from '@/stores/authStore'
+import { ref } from "vue";
+import { useRouter } from "vue-router";
+import { useAuthStore } from "@/stores/authStore";
 
-const router = useRouter()
-const authStore = useAuthStore()
+const router = useRouter();
+const authStore = useAuthStore();
 
-const email = ref<string>('')
-const password = ref<string>('')
+const email = ref<string>("");
+const password = ref<string>("");
 
-const showPassword = ref<boolean>(false)
-const isLoading = ref<boolean>(false)
-const error = ref<string | null>(null)
+const showPassword = ref<boolean>(false);
+const isLoading = ref<boolean>(false);
+const error = ref<string | null>(null);
 
 async function submit() {
-  error.value = null
-  isLoading.value = true
+  error.value = null;
+  isLoading.value = true;
 
   try {
-    await authStore.login(email.value, password.value)
+    await authStore.login(email.value, password.value);
 
     if (authStore.error) {
-      error.value = authStore.error
-      return
+      error.value = authStore.error;
+      return;
     }
 
-    await router.push('/dashboard')
+    if (!authStore.token) {
+      error.value = "Anmeldung ist fehlgeschlagen.";
+      return;
+    }
+
+    await router.push("/dashboard");
   } catch (err: any) {
-    error.value = err?.message ?? 'Anmeldung ist fehlgeschlagen.'
+    error.value = err?.message ?? "Anmeldung ist fehlgeschlagen.";
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
 }
 </script>
@@ -41,13 +46,12 @@ async function submit() {
 
     <main class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4">
       <div class="mb-8 text-center text-2xl font-bold">
-  <span class="text-[var(--text-color)]">Create</span>
-  <span
-    class="bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)]
-           bg-clip-text text-transparent"
-  >Yourself
-  </span>
-</div>
+        <span class="text-[var(--text-color)]">Create</span>
+        <span
+          class="bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent"
+          >Yourself
+        </span>
+      </div>
 
       <div class="mb-8 flex w-full max-w-[430px] rounded-lg bg-slate-200/70 p-1 shadow-sm">
         <button
@@ -71,9 +75,7 @@ async function submit() {
         @submit.prevent="submit"
       >
         <div class="mb-7">
-          <h1 class="text-2xl font-bold text-[var(--text-color)]">
-            Willkommen zurück
-          </h1>
+          <h1 class="text-2xl font-bold text-[var(--text-color)]">Willkommen zurück</h1>
           <p class="mt-2 text-sm text-[var(--text-color-light)]">
             Melde dich an, um dein Portfolio zu bearbeiten.
           </p>
@@ -147,7 +149,7 @@ async function submit() {
           :disabled="isLoading || !email || !password"
           class="w-full rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 py-3 font-semibold text-[var(--text-color-white)] shadow-lg transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {{ isLoading ? 'Lädt...' : 'Anmelden' }}
+          {{ isLoading ? "Lädt..." : "Anmelden" }}
         </button>
 
         <div class="my-6 flex items-center gap-4">
