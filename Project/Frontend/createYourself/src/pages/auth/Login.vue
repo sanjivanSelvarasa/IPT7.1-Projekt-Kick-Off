@@ -14,9 +14,6 @@ const isLoading = ref<boolean>(false);
 const error = ref<string | null>(null);
 
 async function submit() {
-  error.value = null;
-  isLoading.value = true;
-
   try {
     await authStore.login(email.value, password.value);
 
@@ -24,15 +21,14 @@ async function submit() {
       error.value = authStore.error;
       return;
     }
-
+    
     if (!authStore.token) {
       error.value = "Anmeldung ist fehlgeschlagen.";
       return;
     }
-
     await router.push("/dashboard");
-  } catch (err: any) {
-    error.value = err?.message ?? "Anmeldung ist fehlgeschlagen.";
+  } catch (err) {
+    error.value = err ? authStore.error : "Anmeldung ist fehlgeschlagen.";
   } finally {
     isLoading.value = false;
   }
