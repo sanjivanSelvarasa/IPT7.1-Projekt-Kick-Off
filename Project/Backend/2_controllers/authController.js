@@ -1,8 +1,15 @@
 const authService = require('../3_services/authService')
-const { parseEmail, parsePassword, parseTokenFromBody } = require('../5_utils/authParsers')
+const { parseEmail, parsePassword, parseTokenFromRequest } = require('../5_utils/authParsers')
+
+const REFRESH_TOKEN_COOKIE_NAME = 'refreshToken'
+const REFRESH_TOKEN_COOKIE_OPTIONS = {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none'
+}
 
 async function refreshToken(req, res) {
-    const refreshToken = parseTokenFromBody(req.body)
+    const refreshToken = parseTokenFromRequest(req)
     const accessToken = await authService.refreshAccessToken(refreshToken)
     res.json({ accessToken })
 }
@@ -20,8 +27,9 @@ async function registerUser(req, res) {
 }
 
 async function logoutUser(req, res) {
-    const refreshToken = parseTokenFromBody(req.body)
+    const refreshToken = parseTokenFromRequest(req)
     await authService.logoutUser(refreshToken)
+    res.clearCookie(REFRESH_TOKEN_COOKIE_NAME, REFRESH_TOKEN_COOKIE_OPTIONS)
     res.sendStatus(204)
 }
 
@@ -29,8 +37,14 @@ async function loginUser(req, res) {
     const submittedEmail = parseEmail(req.body?.email)
     const submittedPassword = parsePassword(req.body?.password)
 
-    const tokens = await authService.loginUser(submittedEmail, submittedPassword)
-    res.json(tokens)
+    const { accessToken, refreshToken, refreshTokenExpiresAt } = await authService.loginUser(submittedEmail, submittedPassword)
+
+    res.cookie(REFRESH_TOKEN_COOKIE_NAME, refreshToken, {
+        ...REFRESH_TOKEN_COOKIE_OPTIONS,
+        expires: refreshTokenExpiresAt
+    })
+
+    res.json({ accessToken })
 }
 
 module.exports = {

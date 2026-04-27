@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const path = require('path')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 const authRoutes = require('./0_routes/authRoutes')
 const portfolioRoutes = require('./0_routes/portfolioRoutes')
@@ -29,6 +30,7 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization', 'credentials']
 }))
 app.use(express.json())
+app.use(cookieParser())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 app.use('/', authRoutes)

@@ -44,8 +44,19 @@ function parseTokenFromBody(body) {
     return body.token.trim()
 }
 
+function parseTokenFromRequest(req) {
+    const cookieToken = req?.cookies?.refreshToken
+
+    if (typeof cookieToken === 'string' && cookieToken.trim().length > 0) {
+        return cookieToken.trim()
+    }
+
+    throw new ApiError(400, 'Refresh token cookie is missing or malformed.')
+}
+
 module.exports = {
     parseEmail,
     parsePassword,
-    parseTokenFromBody
+    parseTokenFromBody,
+    parseTokenFromRequest
 }

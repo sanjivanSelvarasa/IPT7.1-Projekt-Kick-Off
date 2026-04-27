@@ -4,7 +4,9 @@
 
 # Nach dem Login aus der Antwort einsetzen
 @accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzY5Mzg5OTQsImV4cCI6MTc3Njk0MDE5NH0.Qdi9J5I6LDltucslY8liAjRXYklg5sRXTITISWgGVDg
-@refreshToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzYzNzY1NTl9.BMbC0SLUr5rLHl5pyy5MVWt0nGbfzBdJ4BHYATh5YPI
+
+# Nach dem Login den refreshToken aus Set-Cookie uebernehmen
+@refreshTokenCookie = refreshToken=PASTE_REFRESH_TOKEN_HERE
 
 # Nach dem Erstellen aus der Antwort einsetzen
 @portfolioId = 1
@@ -31,10 +33,7 @@ Content-Type: application/json
 ### Access Token mit Refresh Token erneuern
 POST {{baseUrl}}/token
 Content-Type: application/json
-
-{
-	"token": "{{refreshToken}}"
-}
+Cookie: {{refreshTokenCookie}}
 
 ### Alle eigenen Portfolios abrufen
 GET {{baseUrl}}/portfolios
@@ -84,7 +83,4 @@ Authorization: Bearer {{accessToken}}
 ### Benutzer ausloggen (Refresh Token loeschen)
 DELETE {{baseUrl}}/users/logout
 Content-Type: application/json
-
-{
-	"token": "{{refreshToken}}"
-}
+Cookie: {{refreshTokenCookie}}

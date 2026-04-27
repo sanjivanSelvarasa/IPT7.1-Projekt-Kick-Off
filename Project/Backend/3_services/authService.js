@@ -93,10 +93,22 @@ async function loginUser(submittedEmail, submittedPassword) {
     }
 
     const accessToken = generateAccessToken({ email: user.email })
-    const refreshToken = jwt.sign({ email: user.email }, process.env.REFRESH_TOKEN_SECRET)
+    const refreshToken = jwt.sign(
+        { email: user.email },
+        process.env.REFRESH_TOKEN_SECRET,
+        { expiresIn: process.env.REFRESH_TOKEN_EXPIRES_IN || '7d' }
+    )
+
+    const decodedRefreshToken = jwt.decode(refreshToken)
+    if (!decodedRefreshToken || typeof decodedRefreshToken !== 'object' || typeof decodedRefreshToken.exp !== 'number') {
+        throw new ApiError(500, 'Failed to generate a refresh token expiration.')
+    }
+
+    const refreshTokenExpiresAt = new Date(decodedRefreshToken.exp * 1000)
+
     await authModel.addRefreshToken(refreshToken, user.id)
 
-    return { accessToken, refreshToken }
+    return { accessToken, refreshToken, refreshTokenExpiresAt }
 }
 
 async function logoutUser(refreshToken) {
