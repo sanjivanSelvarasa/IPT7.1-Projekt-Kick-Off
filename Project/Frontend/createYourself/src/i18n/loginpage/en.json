@@ -1,0 +1,23 @@
+{
+  "beginning": {
+    "Title": "CreateYourself",
+    "Choice-left": "Log in",
+    "Choice-right": "Register"
+  },
+  "card": {
+    "start": {
+      "title": "Welcome back",
+      "description": "sign in, to edit your portfolio."
+    },
+    "log-in-textboxes": {
+      "textbox-one": "E-mail-address",
+      "textbox-two": "Password",
+      "check-up": "Password forgotten?"
+    },
+    "log-in-and-register-help": {
+      "log-in-button": "Log in",
+      "other-Option": "or",
+      "help-for-register": "No Account? Register now"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "project-name": "CreateYourself",
+  "quick-view": {
+    "first": "Functions",
+    "second": "Editor",
+    "third": "How it works",
+    "fourth": "Publish"
+  },
+  "log-in-button": "Log in",
+  "register-button": "Register"
+}

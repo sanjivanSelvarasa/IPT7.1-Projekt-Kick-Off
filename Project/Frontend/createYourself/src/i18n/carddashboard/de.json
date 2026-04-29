@@ -1,0 +1,16 @@
+{
+  "saved-card": {
+    "top-right-addon-live": "Live",
+    "top-right-addon-draft": "Entwurf",
+    "top-left-choice-menu-rename": "Umbenennen",
+    "top-left-choice-menu-delete": "Löschen",
+    "date-change": "Geändert:19. Apr. 2026",
+    "view-number": "845 Aufrufe",
+    "edit-button": "Bearbeiten",
+    "depublish-button": "Depublizieren"
+  },
+  "new-card": {
+    "description": "Neues Portfolio erstellen",
+    "click-effect": "Klicken zum Starten"
+  }
+}

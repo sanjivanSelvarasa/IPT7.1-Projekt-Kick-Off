@@ -1,0 +1,19 @@
+{
+  "start": {
+    "Preview": "Übersicht",
+    "title": "Meine Portfolios",
+    "description": "Verwalte, bearbeite und veröffentliche deine Portfolios",
+    "create-button": "Neues Portfolio",
+    "listed-portfolios-one": "Gesamt",
+    "listed-portfolios-two": "Veröffentlicht",
+    "listed-portfolio-three": "Entwurf",
+    "bars-and-sort-functions":
+    {
+      "search-bar": "Portfolio suchen ...",
+      "status-sorter-standard": "Alle Status",
+      "status-sorter-published": "Veröffentlicht",
+      "status-sorter-draft": "Entwurf",
+      "sort": "Sortieren"
+    }
+  }
+}

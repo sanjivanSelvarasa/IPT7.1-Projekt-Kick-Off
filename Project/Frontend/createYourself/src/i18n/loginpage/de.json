@@ -1,0 +1,23 @@
+{
+"beginning": {
+  "Title": "CreateYourself",
+  "Choice-left": "Anmelden",
+  "Choice-right": "Registrieren"
+},
+  "card": {
+    "start": {
+      "title": "Wilkommen zurück",
+      "description": "Melde dich an, um dein Portfolio zu bearbeiten."
+    },
+    "log-in-textboxes": {
+      "textbox-one": "E-Mail-Adresse",
+      "textbox-two": "Passwort",
+      "check-up": "Passwort vergessen?"
+    },
+    "log-in-and-register-help": {
+      "log-in-button": "Anmelden",
+      "other-Option": "oder",
+      "help-for-register": "Noch kein Konto? Jetzt registrieren"
+    }
+  }
+}

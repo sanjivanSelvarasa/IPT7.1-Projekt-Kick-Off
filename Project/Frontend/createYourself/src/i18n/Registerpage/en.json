@@ -1,0 +1,25 @@
+{
+  "beginning": {
+    "Title": "CreateYourself",
+    "Choice-left": "Log in",
+    "Choice-right": "Register"
+  },
+  "card": {
+    "start": {
+      "title": "Create Account",
+      "description": "Start for free and build your first portfolio in minutes."
+    },
+    "register-textboxes": {
+      "textbox-one": "E-mail-address",
+      "textbox-two": "Password",
+      "textbox-two-content": "Min. 8 characters",
+      "textbox-three": "confirm Password",
+      "textbox-three-content": "repeat Password"
+    },
+    "register-and-log-in-help": {
+      "register-button": "Create Account",
+      "other-Option": "or",
+      "help-for-log-in": "Already registered? Sign in"
+    }
+  }
+}

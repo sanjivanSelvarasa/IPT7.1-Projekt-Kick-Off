@@ -1,0 +1,19 @@
+{
+  "start": {
+    "Preview": "Overview",
+    "title": "My portfolios",
+    "description": "manage, edit and publish your portfolios",
+    "create-button": "New portfolio",
+    "listed-portfolios-one": "All",
+    "listed-portfolios-two": "published",
+    "listed-portfolio-three": "draft",
+    "bars-and-sort-functions":
+    {
+      "search-bar": "search portfolio ...",
+      "status-sorter-standard": "All status",
+      "status-sorter-published": "published",
+      "status-sorter-draft": "draft",
+      "sort": "Sort"
+    }
+  }
+}
