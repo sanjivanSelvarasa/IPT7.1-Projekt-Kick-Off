@@ -22,14 +22,17 @@ export const useAuthStore = defineStore('auth', () => {
     try{
       const data = await loginApi(email, password)
       token.value = data.accessToken
+      localStorage.setItem("token", data.accessToken)
     }catch(err){
       error.value = err ? err.text : 'Login failed'
     }
   }
 
-  async function logout(token: string) {
+  async function logout() {
     try{
-      await logoutApi(token)
+      await logoutApi(localStorage.getItem("token") ?? "")
+      token.value = null
+      localStorage.removeItem("token")
     }catch(err){
       error.value = err ? err.text : 'Logout failed'
     }
