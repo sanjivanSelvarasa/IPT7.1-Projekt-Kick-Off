@@ -4,7 +4,7 @@ import type {PortfolioType} from "@/types/portfolioType.ts";
 import {
   createPortfolioApi, deletePortfolioApi,
   getPortfolioByIdApi,
-  getPortolioApi,
+  getPortoliosApi,
   updatePortfolioByIdApi
 } from "@/api/portfolio.api.ts";
 import type {CreatePortfolioType} from "@/types/createPortfolioType.ts";
@@ -13,14 +13,14 @@ export const usePortfolioStore = defineStore('portfolio', () => {
   const loading = ref<boolean>(false)
   const error = ref<string | null>(null)
 
-  const portfolios = ref<PortfolioType | null>(null)
+  const portfolios = ref<PortfolioType[] | null>(null)
 
   async function getPortfolio(){
     loading.value = true
     error.value = null
 
     try{
-      portfolios.value = await getPortolioApi()
+      portfolios.value = await getPortoliosApi()
       loading.value = false
     }catch(err){
       error.value = err ? err.message : 'Getting Portfolios failed.'
