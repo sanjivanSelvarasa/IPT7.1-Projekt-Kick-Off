@@ -12,6 +12,8 @@
 @linkId = INSERT_LINK_ID_HERE
 @experienceId = INSERT_EXPERIENCE_ID_HERE
 @educationId = INSERT_EDUCATION_ID_HERE
+@translationId = INSERT_TRANSLATION_ID_HERE
+@versionId = INSERT_VERSION_ID_HERE
 @themeId = INSERT_THEME_ID_HERE
 @templateId = INSERT_TEMPLATE_ID_HERE
 
@@ -24,6 +26,55 @@ GET {{baseUrl}}/templates
 
 ### Einzelnes Template abrufen
 GET {{baseUrl}}/templates/{{templateId}}
+
+### Uebersetzungen im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/translations
+Authorization: Bearer {{accessToken}}
+
+### Uebersetzung erstellen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/translations
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "languageCode": "en",
+    "title": "My Portfolio",
+    "description": "English translation"
+}
+
+### Uebersetzung aktualisieren
+PUT {{baseUrl}}/portfolio/{{portfolioId}}/translations/{{translationId}}
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+    "title": "My Updated Portfolio",
+    "description": "Updated English translation"
+}
+
+### Uebersetzung loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/translations/{{translationId}}
+Authorization: Bearer {{accessToken}}
+
+### Versionen im Portfolio auflisten
+GET {{baseUrl}}/portfolio/{{portfolioId}}/versions
+Authorization: Bearer {{accessToken}}
+
+### Version aus aktuellem Portfoliozustand erstellen
+POST {{baseUrl}}/portfolio/{{portfolioId}}/versions
+Authorization: Bearer {{accessToken}}
+
+### Einzelne Version abrufen
+GET {{baseUrl}}/portfolio/{{portfolioId}}/versions/{{versionId}}
+Authorization: Bearer {{accessToken}}
+
+### Version aktivieren
+POST {{baseUrl}}/portfolio/{{portfolioId}}/versions/{{versionId}}/activate
+Authorization: Bearer {{accessToken}}
+
+### Version loeschen
+DELETE {{baseUrl}}/portfolio/{{portfolioId}}/versions/{{versionId}}
+Authorization: Bearer {{accessToken}}
 
 ### Projekte im Portfolio auflisten
 GET {{baseUrl}}/portfolio/{{portfolioId}}/projects

@@ -7,6 +7,8 @@ Zentrale Entitäten:
 
 - User
 - Portfolio
+- PortfolioVersion
+- PortfolioTranslation
 - Project
 - Skill
 - PortfolioSkill
@@ -52,15 +54,35 @@ Zentrale Entitäten:
 - Beziehung: 1:n
 - Schlüssel: `Portfolio.template_id -> Template.id`
 
+9. Portfolio -> PortfolioVersion
+- Beziehung: 1:n
+- Schlüssel: `PortfolioVersion.portfolio_id -> Portfolio.id`
+
+10. Portfolio -> PortfolioTranslation
+- Beziehung: 1:n
+- Schlüssel: `PortfolioTranslation.portfolio_id -> Portfolio.id`
+
+11. Portfolio -> aktuelle Version / aktuelles Theme
+- Beziehung: 1:1 Referenz auf eine Auswahl innerhalb der abhängigen Tabellen
+- Schlüssel:
+	- `Portfolio.current_version_id -> PortfolioVersion.id`
+	- `Portfolio.current_theme_id -> Theme.id`
+
 ## Wichtige Constraints
 
 - `User.username` ist eindeutig (`UQ_User_Username`)
 - `User.email` ist eindeutig (`UQ_User_Email`)
 - `Portfolio.slug` ist eindeutig
 - `Skill.name` ist eindeutig
-- `UserRefreshToken.token` ist eindeutig
+- `UserRefreshToken.token_hash` ist eindeutig
 
 ## Hinweise zur Speicherung von Bildern
 
 - Projektbilder werden als URL in `Project.img_url` gespeichert.
 - Die eigentliche Datei liegt lokal im Backend-Upload-Verzeichnis.
+
+## Hinweise zu Versionen und Übersetzungen
+
+- `Portfolio.language_code` speichert die Hauptsprache des Portfolios.
+- Zusätzliche Sprachvarianten liegen in `PortfolioTranslation`.
+- `Portfolio.current_version_id` zeigt auf die aktuell aktive Version in `PortfolioVersion`.

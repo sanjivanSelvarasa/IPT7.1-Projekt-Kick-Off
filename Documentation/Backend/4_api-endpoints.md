@@ -139,6 +139,7 @@ Statuscodes:
 {
   "title": "Mein Portfolio",
   "description": "Kurzbeschreibung",
+  "languageCode": "de",
   "visibility": "private",
   "slug": "mein-portfolio"
 }
@@ -161,7 +162,7 @@ Statuscodes:
 - `403` Kein Zugriff
 
 ### [GET] /portfolio/:id/full
-**Beschreibung:** Einzelnes eigenes Portfolio inklusive aller aktuell implementierten Untermodule laden (Projects, Skills, SocialLinks, Experiences, Educations, Themes).
+**Beschreibung:** Einzelnes eigenes Portfolio inklusive aller aktuell implementierten Untermodule laden (Translations, Versions, Projects, Skills, SocialLinks, Experiences, Educations, Themes).
 
 Statuscodes:
 - `200` Erfolgreich
@@ -177,7 +178,7 @@ Statuscodes:
 - `404` Portfolio nicht gefunden oder nicht öffentlich
 
 ### [GET] /p/:slug/full
-**Beschreibung:** Öffentliches Portfolio inklusive aller aktuell implementierten Untermodule per Slug laden (Projects, Skills, SocialLinks, Experiences, Educations, Themes).
+**Beschreibung:** Öffentliches Portfolio inklusive aller aktuell implementierten Untermodule per Slug laden (Translations, Projects, Skills, SocialLinks, Experiences, Educations, Themes).
 
 Statuscodes:
 - `200` Erfolgreich
@@ -353,6 +354,85 @@ Statuscodes:
 
 ---
 
+## PortfolioTranslation Modul
+
+### [GET] /portfolio/:id/translations
+**Beschreibung:** Alle Übersetzungen eines Portfolios laden.
+
+### [POST] /portfolio/:id/translations
+**Beschreibung:** Neue Übersetzung für ein Portfolio erstellen.
+
+**Request Body (Beispiel):**
+```json
+{
+  "languageCode": "en",
+  "title": "My Portfolio",
+  "description": "English translation"
+}
+```
+
+### [PUT] /portfolio/:id/translations/:translationId
+**Beschreibung:** Bestehende Übersetzung aktualisieren.
+
+### [DELETE] /portfolio/:id/translations/:translationId
+**Beschreibung:** Übersetzung löschen.
+
+Statuscodes:
+- `200`, `201`, `204`
+- `400` Validierungsfehler
+- `401` Kein Token
+- `404` Übersetzung oder Portfolio nicht gefunden
+- `403` Kein Zugriff
+- `409` Sprache bereits vorhanden oder entspricht der Hauptsprache des Portfolios
+
+---
+
+## PortfolioVersion Modul
+
+### [GET] /portfolio/:id/versions
+**Beschreibung:** Alle Versionen eines Portfolios laden.
+
+### [POST] /portfolio/:id/versions
+**Beschreibung:** Neue Version aus dem aktuellen Portfoliozustand erstellen.
+
+**Response (201):**
+```json
+{
+  "id": 5,
+  "portfolioId": 10,
+  "versionNumber": 2,
+  "titleSnapshot": "Mein Portfolio",
+  "isPublished": false,
+  "createdAt": "2026-04-30T12:00:00.000Z"
+}
+```
+
+### [GET] /portfolio/:id/versions/:versionId
+**Beschreibung:** Konkrete Version laden.
+
+### [DELETE] /portfolio/:id/versions/:versionId
+**Beschreibung:** Version löschen.
+
+### [POST] /portfolio/:id/versions/:versionId/activate
+**Beschreibung:** Version als aktuelle Version setzen (`current_version_id`).
+
+**Response (200) bei Aktivierung:**
+```json
+{
+  "portfolioId": 10,
+  "currentVersionId": 5
+}
+```
+
+Statuscodes:
+- `200`, `201`, `204`
+- `400` Validierungsfehler
+- `401` Kein Token
+- `404` Version oder Portfolio nicht gefunden
+- `403` Kein Zugriff
+
+---
+
 ## Template Modul
 
 ### [GET] /templates
@@ -377,36 +457,6 @@ Hinweis:
 - Aktueller Status im laufenden Backend: `404 Endpoint not found`.
 - Die folgenden Statuscodes beschreiben den geplanten Soll-Zustand nach Implementierung.
 
-### PortfolioTranslation Modul
-
-### [GET] /portfolio/:id/translations
-**Beschreibung:** Alle Übersetzungen eines Portfolios laden.
-
-### [POST] /portfolio/:id/translations
-**Beschreibung:** Neue Übersetzung für ein Portfolio erstellen.
-
-**Request Body (Beispiel):**
-```json
-{
-  "languageCode": "en",
-  "title": "My Portfolio",
-  "description": "English translation"
-}
-```
-
-### [PUT] /portfolio/:id/translations/:translationId
-**Beschreibung:** Bestehende Übersetzung aktualisieren.
-
-### [DELETE] /portfolio/:id/translations/:translationId
-**Beschreibung:** Übersetzung löschen.
-
-Statuscodes (geplant):
-- `200`, `201`, `204`
-- `400` Validierungsfehler
-- `404` Übersetzung oder Portfolio nicht gefunden
-- `403` Kein Zugriff
-- `409` Sprache bereits vorhanden
-
 ---
 
 ### Media Modul
@@ -427,31 +477,6 @@ Statuscodes (geplant):
 - `200`, `201`, `204`
 - `400` Validierungsfehler / falscher Dateityp / Datei zu groß
 - `404` Medium oder Portfolio nicht gefunden
-- `403` Kein Zugriff
-
----
-
-### PortfolioVersion Modul
-
-### [GET] /portfolio/:id/versions
-**Beschreibung:** Alle Versionen eines Portfolios laden.
-
-### [POST] /portfolio/:id/versions
-**Beschreibung:** Neue Version aus dem aktuellen Portfoliozustand erstellen.
-
-### [GET] /portfolio/:id/versions/:versionId
-**Beschreibung:** Konkrete Version laden.
-
-### [DELETE] /portfolio/:id/versions/:versionId
-**Beschreibung:** Version löschen.
-
-### [POST] /portfolio/:id/versions/:versionId/activate
-**Beschreibung:** Version als aktuelle Version setzen (`current_version_id`).
-
-Statuscodes (geplant):
-- `200`, `201`, `204`
-- `400` Validierungsfehler
-- `404` Version oder Portfolio nicht gefunden
 - `403` Kein Zugriff
 
 ---

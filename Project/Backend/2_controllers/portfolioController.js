@@ -37,6 +37,57 @@ async function deletePortfolio(req, res) {
     res.sendStatus(204)
 }
 
+async function listTranslations(req, res) {
+    const translations = await portfolioService.listTranslations(req.user.email, req.params.id)
+    res.json(translations)
+}
+
+async function createTranslation(req, res) {
+    const translation = await portfolioService.createTranslation(req.user.email, req.params.id, req.body)
+    res.status(201).json(translation)
+}
+
+async function updateTranslation(req, res) {
+    const translation = await portfolioService.updateTranslation(
+        req.user.email,
+        req.params.id,
+        req.params.translationId,
+        req.body
+    )
+
+    res.json(translation)
+}
+
+async function deleteTranslation(req, res) {
+    await portfolioService.deleteTranslation(req.user.email, req.params.id, req.params.translationId)
+    res.sendStatus(204)
+}
+
+async function listVersions(req, res) {
+    const versions = await portfolioService.listVersions(req.user.email, req.params.id)
+    res.json(versions)
+}
+
+async function createVersion(req, res) {
+    const version = await portfolioService.createVersion(req.user.email, req.params.id)
+    res.status(201).json(version)
+}
+
+async function getVersionById(req, res) {
+    const version = await portfolioService.getVersionById(req.user.email, req.params.id, req.params.versionId)
+    res.json(version)
+}
+
+async function deleteVersion(req, res) {
+    await portfolioService.deleteVersion(req.user.email, req.params.id, req.params.versionId)
+    res.sendStatus(204)
+}
+
+async function activateVersion(req, res) {
+    const activation = await portfolioService.activateVersion(req.user.email, req.params.id, req.params.versionId)
+    res.json(activation)
+}
+
 async function listProjects(req, res) {
     const projects = await projectService.listProjects(req.user.email, req.params.id)
     res.json(projects)
@@ -200,6 +251,15 @@ module.exports = {
     getPortfolioFullById,
     updatePortfolio,
     deletePortfolio,
+    listTranslations,
+    createTranslation,
+    updateTranslation,
+    deleteTranslation,
+    listVersions,
+    createVersion,
+    getVersionById,
+    deleteVersion,
+    activateVersion,
     listProjects,
     createProject,
     updateProject,

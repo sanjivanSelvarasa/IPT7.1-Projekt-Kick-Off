@@ -27,6 +27,8 @@ Backend runs on:
 
 1. Create and manage portfolios
 2. Add modules inside a portfolio:
+	- Translations
+	- Versions
 	- Projects
 	- Skills
 	- Social Links
@@ -57,7 +59,7 @@ Result:
 Use VS Code REST Client with:
 
 1. `Project/Backend/examplerequests.rest` (auth + portfolio basics)
-2. `Project/Backend/examplerequests.modules.rest` (all module CRUD + upload)
+2. `Project/Backend/examplerequests.modules.rest` (translations, versions, module CRUD + upload)
 
 ## 6) Notes
 

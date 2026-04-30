@@ -49,6 +49,7 @@ Authorization: Bearer {{accessToken}}
 {
 	"title": "Mein Portfolio",
 	"description": "Kurzbeschreibung meines Portfolios",
+	"languageCode": "de",
 	"visibility": "public",
 	"slug": "mein-portfolio-slug"
 }
@@ -89,8 +90,17 @@ Authorization: Bearer {{accessToken}}
 {
 	"title": "Aktualisierter Titel",
 	"description": "Aktualisierte Beschreibung",
+	"languageCode": "de",
 	"visibility": "private"
 }
+
+### GET /portfolio/:id/translations - Uebersetzungen eines Portfolios abrufen
+GET {{baseUrl}}/portfolio/{{portfolioId}}/translations
+Authorization: Bearer {{accessToken}}
+
+### GET /portfolio/:id/versions - Versionen eines Portfolios abrufen
+GET {{baseUrl}}/portfolio/{{portfolioId}}/versions
+Authorization: Bearer {{accessToken}}
 
 ### DELETE /portfolio/:id - Portfolio loeschen
 DELETE {{baseUrl}}/portfolio/{{portfolioId}}

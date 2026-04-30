@@ -29,6 +29,19 @@ router.put('/portfolio/:id', authenticateToken, asyncHandler(portfolioController
 // Portfolio löschen
 router.delete('/portfolio/:id', authenticateToken, asyncHandler(portfolioController.deletePortfolio))
 
+// Übersetzungen im Portfolio verwalten
+router.get('/portfolio/:id/translations', authenticateToken, asyncHandler(portfolioController.listTranslations))
+router.post('/portfolio/:id/translations', authenticateToken, asyncHandler(portfolioController.createTranslation))
+router.put('/portfolio/:id/translations/:translationId', authenticateToken, asyncHandler(portfolioController.updateTranslation))
+router.delete('/portfolio/:id/translations/:translationId', authenticateToken, asyncHandler(portfolioController.deleteTranslation))
+
+// Versionen im Portfolio verwalten
+router.get('/portfolio/:id/versions', authenticateToken, asyncHandler(portfolioController.listVersions))
+router.post('/portfolio/:id/versions', authenticateToken, asyncHandler(portfolioController.createVersion))
+router.get('/portfolio/:id/versions/:versionId', authenticateToken, asyncHandler(portfolioController.getVersionById))
+router.delete('/portfolio/:id/versions/:versionId', authenticateToken, asyncHandler(portfolioController.deleteVersion))
+router.post('/portfolio/:id/versions/:versionId/activate', authenticateToken, asyncHandler(portfolioController.activateVersion))
+
 // Projekte im Portfolio verwalten
 router.get('/portfolio/:id/projects', authenticateToken, asyncHandler(portfolioController.listProjects))
 router.post('/portfolio/:id/projects', authenticateToken, asyncHandler(portfolioController.createProject))
