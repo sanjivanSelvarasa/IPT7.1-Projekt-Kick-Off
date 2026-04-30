@@ -2,8 +2,8 @@ import {apiFetch} from "@/api/api.ts";
 import type {CreatePortfolioType} from "@/types/createPortfolioType.ts";
 import type {PortfolioType} from "@/types/portfolioType.ts";
 
-export async function getPortolioApi() : Promise<PortfolioType>{
-    return await apiFetch(`/portfolio`, {
+export async function getPortoliosApi() : Promise<PortfolioType[]>{
+    return await apiFetch(`/portfolios`, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -11,7 +11,7 @@ export async function getPortolioApi() : Promise<PortfolioType>{
     });
 }
 
-export async function getPortfolioByIdApi(id: number){
+export async function getPortfolioByIdApi(id: number) : Promise<PortfolioType>{
   return await apiFetch(`/portfolio/${id}`, {
     method: 'GET',
     headers: {
