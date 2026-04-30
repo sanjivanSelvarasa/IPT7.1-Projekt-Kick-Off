@@ -1,7 +1,22 @@
 <script lang="ts" setup>
-
 import NavApp from "@/components/layout/NavApp.vue";
 import CardDashboard from "@/components/ui/CardDashboard.vue";
+import {computed, onMounted, ref} from "vue";
+import {usePortfolioStore} from "@/stores/portfolioStore.ts";
+
+const portfolioStore = usePortfolioStore();
+
+onMounted(async () => {
+  try{
+    await portfolioStore.getPortfolio()
+  }catch{}
+})
+
+const searchText = ref<string>("");
+
+const updatedPortfolios = computed(() => {
+  return portfolioStore.portfolios?.filter(t => t.title.toLowerCase().includes(searchText.value.toLowerCase()) || t.description.toLowerCase().includes(searchText.value.toLowerCase()));
+})
 </script>
 
 <template>
@@ -30,21 +45,21 @@ import CardDashboard from "@/components/ui/CardDashboard.vue";
         <div class="flex items-start justify-between gap-2">
           <span class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--surface-color)] shadow-lg">
             <div class="rounded-full w-[10px] h-[10px] bg-gray-500"></div>
-            <span class="text-sm text-[var(--text-color-light)]">Gesamt <span class="text-[var(--text-color)] font-bold ml-2">5</span> </span>
+            <span class="text-sm text-[var(--text-color-light)]">Gesamt <span class="text-[var(--text-color)] font-bold ml-2">{{ portfolioStore.portfolios?.length }}</span> </span>
           </span>
         </div>
 
         <div class="flex items-start justify-between gap-2">
           <span class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--surface-color)] shadow-lg">
             <div class="rounded-full w-[10px] h-[10px] bg-[var(--accent-color)]"></div>
-            <span class="text-sm text-[var(--text-color-light)]">Veröffentlicht <span class="text-[var(--text-color)] font-bold ml-2">3</span> </span>
+            <span class="text-sm text-[var(--text-color-light)]">Veröffentlicht <span class="text-[var(--text-color)] font-bold ml-2">{{ portfolioStore.portfolios?.filter(t => t.visibility === 'sdasdasds').length }}</span> </span>
           </span>
         </div>
 
         <div class="flex items-start justify-between gap-2">
           <span class="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[var(--surface-color)] shadow-lg">
             <div class="rounded-full w-[10px] h-[10px] bg-orange-400"></div>
-            <span class="text-sm text-[var(--text-color-light)]">Entwurf <span class="text-[var(--text-color)] font-bold ml-2">2</span> </span>
+            <span class="text-sm text-[var(--text-color-light)]">Entwurf <span class="text-[var(--text-color)] font-bold ml-2">{{ portfolioStore.portfolios?.filter(t => t.visibility === 'private').length }}</span> </span>
           </span>
         </div>
       </div>
@@ -54,14 +69,14 @@ import CardDashboard from "@/components/ui/CardDashboard.vue";
           <div class="text-[var(--text-color-light)] flex items-center justify-center">
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
-          <input class="outline-none w-full" type="search" placeholder="Portfolio suchen ..." />
+          <input v-model="searchText" class="outline-none w-full" type="search" placeholder="Portfolio suchen ..." />
         </div>
 
         <div>
           <select class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] shadow-lg px-4 py-2 text-[var(--text-color-light)] outline-none border border-gray-200 rounded-lg bg-[var(--surface-color)] cursor-pointer" name="cars" id="cars">
-            <option value="volvo">Alle Status</option>
-            <option value="saab">Veröffentlicht</option>
-            <option value="mercedes">Entwurf</option>
+            <option value="all">Alle Status</option>
+            <option value="public">Veröffentlicht</option>
+            <option value="private">Entwurf</option>
           </select>
         </div>
 
@@ -74,10 +89,10 @@ import CardDashboard from "@/components/ui/CardDashboard.vue";
       </div>
 
       <div class="grid grid-cols-3 gap-4 grid-rows-[auto_1fr] w-full mb-8">
-        <CardDashboard v-for="i in 5"></CardDashboard>
+        <CardDashboard v-for="portfolio in updatedPortfolios" :key="portfolio.id" :portfolio="portfolio"></CardDashboard>
 
         <!-- create project-->
-        <div class="group hover:border-[var(--primary-color)] cursor-pointer transition duration-150 relative bg-transparent w-full h-[350px] aspect-square rounded-2xl overflow-hidden border-3 border-gray-200 border-dashed">
+        <div class="select-none group hover:border-[var(--primary-color)] cursor-pointer transition duration-150 relative bg-transparent w-full h-[350px] aspect-square rounded-2xl overflow-hidden border-3 border-gray-200 border-dashed">
           <div class="flex flex-col items-center justify-center h-full w-full gap-3">
             <div class="group-hover:border-[var(--primary-color)] group-hover:text-[var(--primary-color)] transition duration-150 flex items-center justify-center w-[45px] h-[45px] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
               <i class="fa-solid fa-plus"></i>
