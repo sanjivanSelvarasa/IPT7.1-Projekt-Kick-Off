@@ -7,7 +7,7 @@ const asyncHandler = require('../5_utils/asyncHandler')
 
 const router = express.Router()
 
-// Öffentliche Portfolio-Ansicht (ohne Authentifizierung)
+// Öffentliche Portfolio-Ansicht (ohne Authentifizierung mit slug_link)
 router.get('/p/:slug', asyncHandler(portfolioController.getPublicPortfolioBySlug))
 router.get('/p/:slug/full', asyncHandler(portfolioController.getPublicPortfolioFullBySlug))
 
@@ -20,7 +20,7 @@ router.post('/portfolio', authenticateToken, asyncHandler(portfolioController.cr
 // Einzelnes Portfolio lesen
 router.get('/portfolio/:id', authenticateToken, asyncHandler(portfolioController.getPortfolioById))
 
-// Portfolio inkl. aller Module lesen
+// Einzelnes Portfolio inkl. aller Module lesen
 router.get('/portfolio/:id/full', authenticateToken, asyncHandler(portfolioController.getPortfolioFullById))
 
 // Portfolio aktualisieren
@@ -59,5 +59,16 @@ router.get('/portfolio/:id/educations', authenticateToken, asyncHandler(portfoli
 router.post('/portfolio/:id/educations', authenticateToken, asyncHandler(portfolioController.createEducation))
 router.put('/portfolio/:id/educations/:educationId', authenticateToken, asyncHandler(portfolioController.updateEducation))
 router.delete('/portfolio/:id/educations/:educationId', authenticateToken, asyncHandler(portfolioController.deleteEducation))
+
+// Themes im Portfolio verwalten
+router.get('/portfolio/:id/themes', authenticateToken, asyncHandler(portfolioController.listThemes))
+router.post('/portfolio/:id/themes', authenticateToken, asyncHandler(portfolioController.createTheme))
+router.put('/portfolio/:id/themes/:themeId', authenticateToken, asyncHandler(portfolioController.updateTheme))
+router.delete('/portfolio/:id/themes/:themeId', authenticateToken, asyncHandler(portfolioController.deleteTheme))
+router.post('/portfolio/:id/themes/:themeId/activate', authenticateToken, asyncHandler(portfolioController.activateTheme))
+
+// Verfügbare Templates abrufen
+router.get('/templates', asyncHandler(portfolioController.listTemplates))
+router.get('/templates/:templateId', asyncHandler(portfolioController.getTemplateById))
 
 module.exports = router

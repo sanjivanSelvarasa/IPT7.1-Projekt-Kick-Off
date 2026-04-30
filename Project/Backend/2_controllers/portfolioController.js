@@ -4,6 +4,8 @@ const skillService = require('../3_services/skillService')
 const socialLinkService = require('../3_services/socialLinkService')
 const experienceService = require('../3_services/experienceService')
 const educationService = require('../3_services/educationService')
+const themeService = require('../3_services/themeService')
+const templateService = require('../3_services/templateService')
 
 async function getPortfolios(req, res) {
     const portfolios = await portfolioService.getPortfoliosForUser(req.user.email)
@@ -146,6 +148,41 @@ async function deleteEducation(req, res) {
     res.sendStatus(204)
 }
 
+async function listThemes(req, res) {
+    const themes = await themeService.listThemes(req.user.email, req.params.id)
+    res.json(themes)
+}
+
+async function createTheme(req, res) {
+    const theme = await themeService.createTheme(req.user.email, req.params.id, req.body)
+    res.status(201).json(theme)
+}
+
+async function updateTheme(req, res) {
+    const theme = await themeService.updateTheme(req.user.email, req.params.id, req.params.themeId, req.body)
+    res.json(theme)
+}
+
+async function deleteTheme(req, res) {
+    await themeService.deleteTheme(req.user.email, req.params.id, req.params.themeId)
+    res.sendStatus(204)
+}
+
+async function activateTheme(req, res) {
+    const activation = await themeService.activateTheme(req.user.email, req.params.id, req.params.themeId)
+    res.json(activation)
+}
+
+async function listTemplates(req, res) {
+    const templates = await templateService.listTemplates()
+    res.json(templates)
+}
+
+async function getTemplateById(req, res) {
+    const template = await templateService.getTemplateById(req.params.templateId)
+    res.json(template)
+}
+
 async function getPublicPortfolioBySlug(req, res) {
     const portfolio = await portfolioService.getPublicPortfolioBySlug(req.params.slug)
     res.json(portfolio)
@@ -184,6 +221,13 @@ module.exports = {
     createEducation,
     updateEducation,
     deleteEducation,
+    listThemes,
+    createTheme,
+    updateTheme,
+    deleteTheme,
+    activateTheme,
+    listTemplates,
+    getTemplateById,
     getPublicPortfolioBySlug,
     getPublicPortfolioFullBySlug
 }

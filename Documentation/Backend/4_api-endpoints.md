@@ -161,7 +161,7 @@ Statuscodes:
 - `403` Kein Zugriff
 
 ### [GET] /portfolio/:id/full
-**Beschreibung:** Einzelnes eigenes Portfolio inklusive aller aktuell implementierten Untermodule laden (Projects, Skills, SocialLinks, Experiences, Educations).
+**Beschreibung:** Einzelnes eigenes Portfolio inklusive aller aktuell implementierten Untermodule laden (Projects, Skills, SocialLinks, Experiences, Educations, Themes).
 
 Statuscodes:
 - `200` Erfolgreich
@@ -177,7 +177,7 @@ Statuscodes:
 - `404` Portfolio nicht gefunden oder nicht öffentlich
 
 ### [GET] /p/:slug/full
-**Beschreibung:** Öffentliches Portfolio inklusive aller aktuell implementierten Untermodule per Slug laden.
+**Beschreibung:** Öffentliches Portfolio inklusive aller aktuell implementierten Untermodule per Slug laden (Projects, Skills, SocialLinks, Experiences, Educations, Themes).
 
 Statuscodes:
 - `200` Erfolgreich
@@ -306,6 +306,70 @@ Statuscodes (typisch):
 
 ---
 
+## Theme Modul
+
+### [GET] /portfolio/:id/themes
+**Beschreibung:** Alle Themes eines Portfolios laden.
+
+### [POST] /portfolio/:id/themes
+**Beschreibung:** Neues Theme für ein Portfolio anlegen.
+
+**Request Body (Beispiel):**
+```json
+{
+  "primaryColor": "#1f2937",
+  "secondaryColor": "#4b5563",
+  "backgroundColor": "#ffffff",
+  "surfaceColor": "#f9fafb",
+  "textColor": "#111827",
+  "accentColor": "#2563eb",
+  "fontFamily": "Poppins"
+}
+```
+
+### [PUT] /portfolio/:id/themes/:themeId
+**Beschreibung:** Theme aktualisieren.
+
+### [DELETE] /portfolio/:id/themes/:themeId
+**Beschreibung:** Theme löschen.
+
+### [POST] /portfolio/:id/themes/:themeId/activate
+**Beschreibung:** Theme als aktuelles Portfolio-Theme setzen (`current_theme_id`).
+
+**Response (200) bei Aktivierung:**
+```json
+{
+  "portfolioId": 10,
+  "currentThemeId": 3
+}
+```
+
+Statuscodes:
+- `200`, `201`, `204`
+- `400` Validierungsfehler
+- `401` Kein Token
+- `404` Theme oder Portfolio nicht gefunden
+- `403` Kein Zugriff
+
+---
+
+## Template Modul
+
+### [GET] /templates
+**Beschreibung:** Verfügbare Templates abrufen.
+
+### [GET] /templates/:templateId
+**Beschreibung:** Ein einzelnes Template mit Details abrufen.
+
+Hinweis:
+- Die Zuweisung eines Templates zum Portfolio ist bereits indirekt über `POST /portfolio` und `PUT /portfolio/:id` möglich (`template_id`).
+
+Statuscodes:
+- `200`
+- `404` Template nicht gefunden
+
+---
+
 ## Geplante Module (noch nicht implementiert)
 
 Hinweis:
@@ -342,44 +406,6 @@ Statuscodes (geplant):
 - `404` Übersetzung oder Portfolio nicht gefunden
 - `403` Kein Zugriff
 - `409` Sprache bereits vorhanden
-
----
-
-### Theme Modul
-
-### [GET] /portfolio/:id/themes
-**Beschreibung:** Alle Themes eines Portfolios laden.
-
-### [POST] /portfolio/:id/themes
-**Beschreibung:** Neues Theme für ein Portfolio anlegen.
-
-**Request Body (Beispiel):**
-```json
-{
-  "primaryColor": "#1f2937",
-  "secondaryColor": "#4b5563",
-  "backgroundColor": "#ffffff",
-  "surfaceColor": "#f9fafb",
-  "textColor": "#111827",
-  "accentColor": "#2563eb",
-  "fontFamily": "Poppins"
-}
-```
-
-### [PUT] /portfolio/:id/themes/:themeId
-**Beschreibung:** Theme aktualisieren.
-
-### [DELETE] /portfolio/:id/themes/:themeId
-**Beschreibung:** Theme löschen.
-
-### [POST] /portfolio/:id/themes/:themeId/activate
-**Beschreibung:** Theme als aktuelles Portfolio-Theme setzen (`current_theme_id`).
-
-Statuscodes (geplant):
-- `200`, `201`, `204`
-- `400` Validierungsfehler
-- `404` Theme oder Portfolio nicht gefunden
-- `403` Kein Zugriff
 
 ---
 
@@ -494,18 +520,3 @@ Statuscodes (geplant):
 - `403` Kein Zugriff
 
 ---
-
-### Template Modul
-
-### [GET] /templates
-**Beschreibung:** Verfügbare Templates abrufen.
-
-### [GET] /templates/:templateId
-**Beschreibung:** Ein einzelnes Template mit Details abrufen.
-
-Hinweis:
-- Die Zuweisung eines Templates zum Portfolio ist bereits indirekt über `POST /portfolio` und `PUT /portfolio/:id` möglich (`template_id`).
-
-Statuscodes (geplant):
-- `200`
-- `404` Template nicht gefunden

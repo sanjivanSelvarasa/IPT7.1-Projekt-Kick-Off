@@ -5,7 +5,7 @@ const asyncHandler = require('../5_utils/asyncHandler')
 
 const router = express.Router()
 
-//basic auth routes
+//basic auth routes for users
 router.post('/token', asyncHandler(authController.refreshToken))
 router.get('/users', asyncHandler(authController.getUsers))
 router.post('/users/register', asyncHandler(authController.registerUser))

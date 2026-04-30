@@ -117,6 +117,19 @@ function parseSkillLevel(value) {
     return parsed
 }
 
+function parseOptionalSortOrder(value, fieldLabel = 'Sortierung') {
+    if (value === undefined || value === null || value === '') {
+        return null
+    }
+
+    const parsed = Number(value)
+    if (!Number.isInteger(parsed) || parsed < 0) {
+        throw new ApiError(400, `${fieldLabel} muss eine ganze Zahl >= 0 sein.`)
+    }
+
+    return parsed
+}
+
 function parseSlug(value) {
     if (typeof value !== 'string' || value.trim() === '') {
         throw new ApiError(400, 'Slug ist erforderlich.')
@@ -151,6 +164,7 @@ module.exports = {
     parseRequiredUrl,
     parseOptionalUrl,
     parseSkillLevel,
+    parseOptionalSortOrder,
     parseSlug,
     validateVisibility
 }

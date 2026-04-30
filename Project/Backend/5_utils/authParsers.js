@@ -32,18 +32,6 @@ function parsePassword(value) {
     return value
 }
 
-function parseTokenFromBody(body) {
-    if (!body || typeof body !== 'object' || Array.isArray(body)) {
-        throw new ApiError(400, 'Token payload is missing or malformed. Expected JSON object with a token field.')
-    }
-
-    if (typeof body.token !== 'string' || body.token.trim().length === 0) {
-        throw new ApiError(400, 'Token payload is missing or malformed. "token" must be a non-empty string.')
-    }
-
-    return body.token.trim()
-}
-
 function parseTokenFromRequest(req) {
     const cookieToken = req?.cookies?.refreshToken
 
@@ -57,6 +45,5 @@ function parseTokenFromRequest(req) {
 module.exports = {
     parseEmail,
     parsePassword,
-    parseTokenFromBody,
     parseTokenFromRequest
 }

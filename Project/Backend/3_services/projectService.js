@@ -6,6 +6,7 @@ const {
     parseOptionalText,
     parseOptionalDate,
     parseOptionalUrl,
+    parseOptionalSortOrder,
     validateDateRange
 } = require('../5_utils/validators')
 const { getOwnedPortfolio } = require('./helpers/portfolioAccess')
@@ -25,6 +26,7 @@ async function createProject(email, rawPortfolioId, data) {
     const imageUrl = parseOptionalUrl(data.imageUrl, 'Bild-URL')
     const projectUrl = parseOptionalUrl(data.projectUrl, 'Projekt-URL')
     const githubUrl = parseOptionalUrl(data.githubUrl, 'GitHub-URL')
+    const sortOrder = parseOptionalSortOrder(data.sortOrder)
     const startDate = parseOptionalDate(data.startDate, 'Projekt-Startdatum')
     const endDate = parseOptionalDate(data.endDate, 'Projekt-Enddatum')
     validateDateRange(startDate, endDate)
@@ -35,6 +37,7 @@ async function createProject(email, rawPortfolioId, data) {
         imageUrl,
         projectUrl,
         githubUrl,
+        sortOrder,
         startDate,
         endDate
     })
@@ -65,6 +68,9 @@ async function updateProject(email, rawPortfolioId, rawProjectId, data) {
     const githubUrl = data.githubUrl !== undefined
         ? parseOptionalUrl(data.githubUrl, 'GitHub-URL')
         : existing.githubUrl
+    const sortOrder = data.sortOrder !== undefined
+        ? parseOptionalSortOrder(data.sortOrder)
+        : existing.sortOrder
     const startDate = data.startDate !== undefined
         ? parseOptionalDate(data.startDate, 'Projekt-Startdatum')
         : existing.startDate
@@ -79,6 +85,7 @@ async function updateProject(email, rawPortfolioId, rawProjectId, data) {
         imageUrl,
         projectUrl,
         githubUrl,
+        sortOrder,
         startDate,
         endDate
     })

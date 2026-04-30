@@ -60,11 +60,15 @@ async function getPortfolioSkillsByPortfolioId(portfolioId) {
                 s.[name] AS name,
                 s.description,
                 ps.[level] AS [level],
+                ps.sort_order AS sortOrder,
                 ps.created_at AS createdAt
             FROM PortfolioSkill ps
             INNER JOIN Skill s ON s.id = ps.skill_id
             WHERE ps.portfolio_id = @portfolioId
-            ORDER BY ps.id DESC
+            ORDER BY
+                CASE WHEN ps.sort_order IS NULL THEN 1 ELSE 0 END,
+                ps.sort_order ASC,
+                ps.id DESC
         `)
 
     return result.recordset
@@ -83,6 +87,7 @@ async function getPortfolioSkillById(portfolioSkillId) {
                 s.[name] AS name,
                 s.description,
                 ps.[level] AS [level],
+                ps.sort_order AS sortOrder,
                 ps.created_at AS createdAt
             FROM PortfolioSkill ps
             INNER JOIN Skill s ON s.id = ps.skill_id
@@ -104,6 +109,7 @@ async function getPortfolioSkillByPortfolioAndSkillId(portfolioId, skillId) {
                 portfolio_id AS portfolioId,
                 skill_id AS skillId,
                 [level] AS [level],
+                sort_order AS sortOrder,
                 created_at AS createdAt
             FROM PortfolioSkill
             WHERE portfolio_id = @portfolioId AND skill_id = @skillId
@@ -112,18 +118,20 @@ async function getPortfolioSkillByPortfolioAndSkillId(portfolioId, skillId) {
     return result.recordset[0]
 }
 
-async function addSkillToPortfolio(portfolioId, skillId, level) {
+async function addSkillToPortfolio(portfolioId, skillId, level, sortOrder) {
     const pool = await database.getPool()
     const result = await pool
         .request()
         .input('portfolioId', sql.Int, portfolioId)
         .input('skillId', sql.Int, skillId)
         .input('level', sql.TinyInt, level)
+        .input('sortOrder', sql.Int, sortOrder)
         .query(`
             INSERT INTO PortfolioSkill (
                 portfolio_id,
                 skill_id,
                 [level],
+                sort_order,
                 created_at
             )
             OUTPUT
@@ -131,11 +139,13 @@ async function addSkillToPortfolio(portfolioId, skillId, level) {
                 inserted.portfolio_id AS portfolioId,
                 inserted.skill_id AS skillId,
                 inserted.[level] AS [level],
+                inserted.sort_order AS sortOrder,
                 inserted.created_at AS createdAt
             VALUES (
                 @portfolioId,
                 @skillId,
                 @level,
+                @sortOrder,
                 SYSUTCDATETIME()
             )
         `)
@@ -143,20 +153,24 @@ async function addSkillToPortfolio(portfolioId, skillId, level) {
     return result.recordset[0]
 }
 
-async function updatePortfolioSkillLevel(portfolioSkillId, level) {
+async function updatePortfolioSkillLevel(portfolioSkillId, level, sortOrder) {
     const pool = await database.getPool()
     const result = await pool
         .request()
         .input('portfolioSkillId', sql.Int, portfolioSkillId)
         .input('level', sql.TinyInt, level)
+        .input('sortOrder', sql.Int, sortOrder)
         .query(`
             UPDATE PortfolioSkill
-            SET [level] = @level
+            SET
+                [level] = @level,
+                sort_order = @sortOrder
             OUTPUT
                 inserted.id,
                 inserted.portfolio_id AS portfolioId,
                 inserted.skill_id AS skillId,
                 inserted.[level] AS [level],
+                inserted.sort_order AS sortOrder,
                 inserted.created_at AS createdAt
             WHERE id = @portfolioSkillId
         `)

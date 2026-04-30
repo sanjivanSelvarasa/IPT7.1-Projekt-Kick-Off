@@ -5,6 +5,7 @@ const {
     parseRequiredText,
     parseOptionalText,
     parseOptionalDate,
+    parseOptionalSortOrder,
     validateDateRange
 } = require('../5_utils/validators')
 const { getOwnedPortfolio } = require('./helpers/portfolioAccess')
@@ -22,6 +23,7 @@ async function createEducation(email, rawPortfolioId, data) {
     const institutionName = parseRequiredText(data.institutionName, 'Institution', 100)
     const degree = parseRequiredText(data.degree, 'Abschluss', 100)
     const fieldOfStudy = parseOptionalText(data.fieldOfStudy, 'Studienfach', 100)
+    const sortOrder = parseOptionalSortOrder(data.sortOrder)
     const startDate = parseOptionalDate(data.startDate, 'Startdatum')
     const endDate = parseOptionalDate(data.endDate, 'Enddatum')
     validateDateRange(startDate, endDate)
@@ -30,6 +32,7 @@ async function createEducation(email, rawPortfolioId, data) {
         institutionName,
         degree,
         fieldOfStudy,
+        sortOrder,
         startDate,
         endDate
     })
@@ -54,6 +57,9 @@ async function updateEducation(email, rawPortfolioId, rawEducationId, data) {
     const fieldOfStudy = data.fieldOfStudy !== undefined
         ? parseOptionalText(data.fieldOfStudy, 'Studienfach', 100)
         : existing.fieldOfStudy
+    const sortOrder = data.sortOrder !== undefined
+        ? parseOptionalSortOrder(data.sortOrder)
+        : existing.sortOrder
     const startDate = data.startDate !== undefined
         ? parseOptionalDate(data.startDate, 'Startdatum')
         : existing.startDate
@@ -66,6 +72,7 @@ async function updateEducation(email, rawPortfolioId, rawEducationId, data) {
         institutionName,
         degree,
         fieldOfStudy,
+        sortOrder,
         startDate,
         endDate
     })

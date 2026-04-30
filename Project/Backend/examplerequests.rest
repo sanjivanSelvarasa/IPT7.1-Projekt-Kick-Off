@@ -11,6 +11,8 @@
 # Nach dem Erstellen aus der Antwort einsetzen
 @portfolioId = 1
 @portfolioSlug = mein-portfolio-slug
+@templateId = 1
+@themeId = 1
 
 ### Benutzer registrieren
 POST {{baseUrl}}/users/register
@@ -64,6 +66,20 @@ GET {{baseUrl}}/p/{{portfolioSlug}}
 
 ### GET /p/:slug/full - Öffentliches Portfolio inkl. aller Module (kein Login nötig)
 GET {{baseUrl}}/p/{{portfolioSlug}}/full
+
+### GET /templates - Verfügbare Templates abrufen
+GET {{baseUrl}}/templates
+
+### GET /templates/:templateId - Einzelnes Template abrufen
+GET {{baseUrl}}/templates/{{templateId}}
+
+### GET /portfolio/:id/themes - Themes eines Portfolios abrufen
+GET {{baseUrl}}/portfolio/{{portfolioId}}/themes
+Authorization: Bearer {{accessToken}}
+
+### POST /portfolio/:id/themes/:themeId/activate - Theme aktivieren
+POST {{baseUrl}}/portfolio/{{portfolioId}}/themes/{{themeId}}/activate
+Authorization: Bearer {{accessToken}}
 
 ### PUT /portfolio/:id - Portfolio aktualisieren
 PUT {{baseUrl}}/portfolio/{{portfolioId}}

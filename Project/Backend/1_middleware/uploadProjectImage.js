@@ -1,42 +1,27 @@
+const crypto = require('crypto')
 const fs = require('fs')
-const path = require('path')
 const multer = require('multer')
+const path = require('path')
 
 const uploadRoot = path.join(__dirname, '..', 'uploads', 'projects')
 
-function ensureUploadDirectory() {
-    fs.mkdirSync(uploadRoot, { recursive: true })
-}
-
 function resolveExtension(file) {
-    const extensionFromName = path.extname(file.originalname || '').toLowerCase()
-    if (extensionFromName) {
-        return extensionFromName
-    }
-
-    if (file.mimetype === 'image/png') {
-        return '.png'
-    }
-
-    if (file.mimetype === 'image/jpeg') {
-        return '.jpg'
-    }
-
-    if (file.mimetype === 'image/webp') {
-        return '.webp'
-    }
-
+    if (file.mimetype === 'image/png') return '.png'
+    if (file.mimetype === 'image/jpeg') return '.jpg'
+    if (file.mimetype === 'image/webp') return '.webp'
     return '.img'
 }
 
+// Ensure upload directory exists once at startup
+fs.mkdirSync(uploadRoot, { recursive: true })
+
 const storage = multer.diskStorage({
     destination(req, file, callback) {
-        ensureUploadDirectory()
         callback(null, uploadRoot)
     },
     filename(req, file, callback) {
         const extension = resolveExtension(file)
-        const uniqueName = `project-${Date.now()}-${Math.round(Math.random() * 1e9)}${extension}`
+        const uniqueName = `${crypto.randomUUID()}${extension}`
         callback(null, uniqueName)
     }
 })

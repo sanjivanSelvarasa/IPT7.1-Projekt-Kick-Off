@@ -4,7 +4,8 @@ const {
     parseId,
     parseRequiredText,
     parseOptionalText,
-    parseSkillLevel
+    parseSkillLevel,
+    parseOptionalSortOrder
 } = require('../5_utils/validators')
 const { getOwnedPortfolio } = require('./helpers/portfolioAccess')
 const skillModel = require('../4_models/skillModel')
@@ -21,6 +22,7 @@ async function createSkill(email, rawPortfolioId, data) {
     const name = parseRequiredText(data.name, 'Skill-Name', 50)
     const description = parseOptionalText(data.description, 'Skill-Beschreibung', 4000)
     const level = parseSkillLevel(data.level)
+    const sortOrder = parseOptionalSortOrder(data.sortOrder)
 
     let skill = await skillModel.findSkillByName(name)
     if (!skill) {
@@ -40,7 +42,7 @@ async function createSkill(email, rawPortfolioId, data) {
         throw new ApiError(409, 'Dieser Skill ist im Portfolio bereits vorhanden.')
     }
 
-    const relation = await skillModel.addSkillToPortfolio(portfolio.id, skill.id, level)
+    const relation = await skillModel.addSkillToPortfolio(portfolio.id, skill.id, level, sortOrder)
 
     return {
         id: relation.id,
@@ -49,6 +51,7 @@ async function createSkill(email, rawPortfolioId, data) {
         name: skill.name,
         description: skill.description,
         level: relation.level,
+        sortOrder: relation.sortOrder,
         createdAt: relation.createdAt
     }
 }
@@ -64,7 +67,10 @@ async function updateSkill(email, rawPortfolioId, rawPortfolioSkillId, data) {
     }
 
     const level = data.level !== undefined ? parseSkillLevel(data.level) : existing.level
-    const updated = await skillModel.updatePortfolioSkillLevel(portfolioSkillId, level)
+    const sortOrder = data.sortOrder !== undefined
+        ? parseOptionalSortOrder(data.sortOrder)
+        : existing.sortOrder
+    const updated = await skillModel.updatePortfolioSkillLevel(portfolioSkillId, level, sortOrder)
 
     return {
         id: updated.id,
@@ -73,6 +79,7 @@ async function updateSkill(email, rawPortfolioId, rawPortfolioSkillId, data) {
         name: existing.name,
         description: existing.description,
         level: updated.level,
+        sortOrder: updated.sortOrder,
         createdAt: updated.createdAt
     }
 }

@@ -14,6 +14,7 @@ const skillModel = require('../4_models/skillModel')
 const socialLinkModel = require('../4_models/socialLinkModel')
 const experienceModel = require('../4_models/experienceModel')
 const educationModel = require('../4_models/educationModel')
+const themeModel = require('../4_models/themeModel')
 
 function generateSlug(base) {
     return `${base}-${Date.now()}`
@@ -65,12 +66,13 @@ async function getPortfolioById(email, rawPortfolioId) {
 async function getPortfolioFullById(email, rawPortfolioId) {
     const portfolio = await getOwnedPortfolio(email, rawPortfolioId)
 
-    const [projects, skills, socialLinks, experiences, educations] = await Promise.all([
+    const [projects, skills, socialLinks, experiences, educations, themes] = await Promise.all([
         projectModel.getProjectsByPortfolioId(portfolio.id),
         skillModel.getPortfolioSkillsByPortfolioId(portfolio.id),
         socialLinkModel.getSocialLinksByPortfolioId(portfolio.id),
         experienceModel.getExperiencesByPortfolioId(portfolio.id),
-        educationModel.getEducationsByPortfolioId(portfolio.id)
+        educationModel.getEducationsByPortfolioId(portfolio.id),
+        themeModel.getThemesByPortfolioId(portfolio.id)
     ])
 
     return {
@@ -79,7 +81,8 @@ async function getPortfolioFullById(email, rawPortfolioId) {
         skills,
         socialLinks,
         experiences,
-        educations
+        educations,
+        themes
     }
 }
 
@@ -136,12 +139,13 @@ async function getPublicPortfolioBySlug(slug) {
 async function getPublicPortfolioFullBySlug(slug) {
     const portfolio = await getPublicPortfolioBySlug(slug)
 
-    const [projects, skills, socialLinks, experiences, educations] = await Promise.all([
+    const [projects, skills, socialLinks, experiences, educations, themes] = await Promise.all([
         projectModel.getProjectsByPortfolioId(portfolio.id),
         skillModel.getPortfolioSkillsByPortfolioId(portfolio.id),
         socialLinkModel.getSocialLinksByPortfolioId(portfolio.id),
         experienceModel.getExperiencesByPortfolioId(portfolio.id),
-        educationModel.getEducationsByPortfolioId(portfolio.id)
+        educationModel.getEducationsByPortfolioId(portfolio.id),
+        themeModel.getThemesByPortfolioId(portfolio.id)
     ])
 
     return {
@@ -150,7 +154,8 @@ async function getPublicPortfolioFullBySlug(slug) {
         skills,
         socialLinks,
         experiences,
-        educations
+        educations,
+        themes
     }
 }
 

@@ -1,8 +1,13 @@
 const bcrypt = require('bcrypt')
+const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 
 const ApiError = require('../5_utils/ApiError')
 const authModel = require('../4_models/authModel')
+
+function hashToken(token) {
+    return crypto.createHash('sha256').update(token).digest('hex')
+}
 
 function generateAccessToken(user) {
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '20m' })
@@ -35,7 +40,7 @@ async function generateAvailableUsername(email) {
 }
 
 async function refreshAccessToken(refreshToken) {
-    if (!await authModel.hasRefreshToken(refreshToken)) {
+    if (!await authModel.hasRefreshToken(hashToken(refreshToken))) {
         throw new ApiError(403, 'Refresh token is invalid or has been revoked.')
     }
 
@@ -106,13 +111,13 @@ async function loginUser(submittedEmail, submittedPassword) {
 
     const refreshTokenExpiresAt = new Date(decodedRefreshToken.exp * 1000)
 
-    await authModel.addRefreshToken(refreshToken, user.id)
+    await authModel.addRefreshToken(hashToken(refreshToken), user.id)
 
     return { accessToken, refreshToken, refreshTokenExpiresAt }
 }
 
 async function logoutUser(refreshToken) {
-    await authModel.removeRefreshToken(refreshToken)
+    await authModel.removeRefreshToken(hashToken(refreshToken))
 }
 
 module.exports = {

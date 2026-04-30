@@ -13,13 +13,17 @@ async function getExperiencesByPortfolioId(portfolioId) {
                 portfolio_id AS portfolioId,
                 company_name AS companyName,
                 position,
+                sort_order AS sortOrder,
                 description,
                 [start_date] AS startDate,
                 end_date AS endDate,
                 created_at AS createdAt
             FROM Experience
             WHERE portfolio_id = @portfolioId
-            ORDER BY id DESC
+            ORDER BY
+                CASE WHEN sort_order IS NULL THEN 1 ELSE 0 END,
+                sort_order ASC,
+                id DESC
         `)
 
     return result.recordset
@@ -36,6 +40,7 @@ async function getExperienceById(experienceId) {
                 portfolio_id AS portfolioId,
                 company_name AS companyName,
                 position,
+                sort_order AS sortOrder,
                 description,
                 [start_date] AS startDate,
                 end_date AS endDate,
@@ -54,6 +59,7 @@ async function createExperienceForPortfolio(portfolioId, experience) {
         .input('portfolioId', sql.Int, portfolioId)
         .input('companyName', sql.NVarChar(100), experience.companyName)
         .input('position', sql.NVarChar(100), experience.position)
+        .input('sortOrder', sql.Int, experience.sortOrder)
         .input('description', sql.NVarChar(sql.MAX), experience.description)
         .input('startDate', sql.Date, experience.startDate)
         .input('endDate', sql.Date, experience.endDate)
@@ -62,6 +68,7 @@ async function createExperienceForPortfolio(portfolioId, experience) {
                 portfolio_id,
                 company_name,
                 position,
+            sort_order,
                 description,
                 [start_date],
                 end_date,
@@ -72,6 +79,7 @@ async function createExperienceForPortfolio(portfolioId, experience) {
                 inserted.portfolio_id AS portfolioId,
                 inserted.company_name AS companyName,
                 inserted.position,
+                inserted.sort_order AS sortOrder,
                 inserted.description,
                 inserted.[start_date] AS startDate,
                 inserted.end_date AS endDate,
@@ -80,6 +88,7 @@ async function createExperienceForPortfolio(portfolioId, experience) {
                 @portfolioId,
                 @companyName,
                 @position,
+                @sortOrder,
                 @description,
                 @startDate,
                 @endDate,
@@ -97,6 +106,7 @@ async function updateExperience(experienceId, experience) {
         .input('experienceId', sql.Int, experienceId)
         .input('companyName', sql.NVarChar(100), experience.companyName)
         .input('position', sql.NVarChar(100), experience.position)
+        .input('sortOrder', sql.Int, experience.sortOrder)
         .input('description', sql.NVarChar(sql.MAX), experience.description)
         .input('startDate', sql.Date, experience.startDate)
         .input('endDate', sql.Date, experience.endDate)
@@ -105,6 +115,7 @@ async function updateExperience(experienceId, experience) {
             SET
                 company_name = @companyName,
                 position = @position,
+                sort_order = @sortOrder,
                 description = @description,
                 [start_date] = @startDate,
                 end_date = @endDate
@@ -113,6 +124,7 @@ async function updateExperience(experienceId, experience) {
                 inserted.portfolio_id AS portfolioId,
                 inserted.company_name AS companyName,
                 inserted.position,
+                inserted.sort_order AS sortOrder,
                 inserted.description,
                 inserted.[start_date] AS startDate,
                 inserted.end_date AS endDate,

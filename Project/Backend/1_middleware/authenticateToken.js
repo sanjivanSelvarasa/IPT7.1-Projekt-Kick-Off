@@ -8,6 +8,7 @@ function authenticateToken(req, res, next) {
         return res.sendStatus(401)
     }
 
+    // Verify the token and extract user information
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
             return res.sendStatus(403)

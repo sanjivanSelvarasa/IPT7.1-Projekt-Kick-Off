@@ -5,6 +5,7 @@ const {
     parseRequiredText,
     parseOptionalText,
     parseOptionalDate,
+    parseOptionalSortOrder,
     validateDateRange
 } = require('../5_utils/validators')
 const { getOwnedPortfolio } = require('./helpers/portfolioAccess')
@@ -22,6 +23,7 @@ async function createExperience(email, rawPortfolioId, data) {
     const companyName = parseRequiredText(data.companyName, 'Firmenname', 100)
     const position = parseRequiredText(data.position, 'Position', 100)
     const description = parseOptionalText(data.description, 'Beschreibung', 4000)
+    const sortOrder = parseOptionalSortOrder(data.sortOrder)
     const startDate = parseOptionalDate(data.startDate, 'Startdatum')
     const endDate = parseOptionalDate(data.endDate, 'Enddatum')
     validateDateRange(startDate, endDate)
@@ -30,6 +32,7 @@ async function createExperience(email, rawPortfolioId, data) {
         companyName,
         position,
         description,
+        sortOrder,
         startDate,
         endDate
     })
@@ -54,6 +57,9 @@ async function updateExperience(email, rawPortfolioId, rawExperienceId, data) {
     const description = data.description !== undefined
         ? parseOptionalText(data.description, 'Beschreibung', 4000)
         : existing.description
+    const sortOrder = data.sortOrder !== undefined
+        ? parseOptionalSortOrder(data.sortOrder)
+        : existing.sortOrder
     const startDate = data.startDate !== undefined
         ? parseOptionalDate(data.startDate, 'Startdatum')
         : existing.startDate
@@ -66,6 +72,7 @@ async function updateExperience(email, rawPortfolioId, rawExperienceId, data) {
         companyName,
         position,
         description,
+        sortOrder,
         startDate,
         endDate
     })

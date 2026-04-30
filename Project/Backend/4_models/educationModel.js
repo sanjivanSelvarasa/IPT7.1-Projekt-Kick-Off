@@ -14,12 +14,16 @@ async function getEducationsByPortfolioId(portfolioId) {
                 institution_name AS institutionName,
                 degree,
                 field_of_study AS fieldOfStudy,
+                sort_order AS sortOrder,
                 [start_date] AS startDate,
                 end_date AS endDate,
                 created_at AS createdAt
             FROM Education
             WHERE portfolio_id = @portfolioId
-            ORDER BY id DESC
+            ORDER BY
+                CASE WHEN sort_order IS NULL THEN 1 ELSE 0 END,
+                sort_order ASC,
+                id DESC
         `)
 
     return result.recordset
@@ -37,6 +41,7 @@ async function getEducationById(educationId) {
                 institution_name AS institutionName,
                 degree,
                 field_of_study AS fieldOfStudy,
+                sort_order AS sortOrder,
                 [start_date] AS startDate,
                 end_date AS endDate,
                 created_at AS createdAt
@@ -55,6 +60,7 @@ async function createEducationForPortfolio(portfolioId, education) {
         .input('institutionName', sql.NVarChar(100), education.institutionName)
         .input('degree', sql.NVarChar(100), education.degree)
         .input('fieldOfStudy', sql.NVarChar(100), education.fieldOfStudy)
+        .input('sortOrder', sql.Int, education.sortOrder)
         .input('startDate', sql.Date, education.startDate)
         .input('endDate', sql.Date, education.endDate)
         .query(`
@@ -63,6 +69,7 @@ async function createEducationForPortfolio(portfolioId, education) {
                 institution_name,
                 degree,
                 field_of_study,
+                sort_order,
                 [start_date],
                 end_date,
                 created_at
@@ -73,6 +80,7 @@ async function createEducationForPortfolio(portfolioId, education) {
                 inserted.institution_name AS institutionName,
                 inserted.degree,
                 inserted.field_of_study AS fieldOfStudy,
+                inserted.sort_order AS sortOrder,
                 inserted.[start_date] AS startDate,
                 inserted.end_date AS endDate,
                 inserted.created_at AS createdAt
@@ -81,6 +89,7 @@ async function createEducationForPortfolio(portfolioId, education) {
                 @institutionName,
                 @degree,
                 @fieldOfStudy,
+                @sortOrder,
                 @startDate,
                 @endDate,
                 SYSUTCDATETIME()
@@ -98,6 +107,7 @@ async function updateEducation(educationId, education) {
         .input('institutionName', sql.NVarChar(100), education.institutionName)
         .input('degree', sql.NVarChar(100), education.degree)
         .input('fieldOfStudy', sql.NVarChar(100), education.fieldOfStudy)
+        .input('sortOrder', sql.Int, education.sortOrder)
         .input('startDate', sql.Date, education.startDate)
         .input('endDate', sql.Date, education.endDate)
         .query(`
@@ -106,6 +116,7 @@ async function updateEducation(educationId, education) {
                 institution_name = @institutionName,
                 degree = @degree,
                 field_of_study = @fieldOfStudy,
+                sort_order = @sortOrder,
                 [start_date] = @startDate,
                 end_date = @endDate
             OUTPUT
@@ -114,6 +125,7 @@ async function updateEducation(educationId, education) {
                 inserted.institution_name AS institutionName,
                 inserted.degree,
                 inserted.field_of_study AS fieldOfStudy,
+                inserted.sort_order AS sortOrder,
                 inserted.[start_date] AS startDate,
                 inserted.end_date AS endDate,
                 inserted.created_at AS createdAt
