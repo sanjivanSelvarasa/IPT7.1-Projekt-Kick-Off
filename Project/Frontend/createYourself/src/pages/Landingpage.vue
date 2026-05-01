@@ -262,8 +262,8 @@ function changeLang(lang: string) {
                     <i class="fa-regular fa-user"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">{{ tl("editor.box-two.title") }}</span>
-                    <span class="text-xs text-[var(--text-color-light)]">{{ tl("editor.box-two.subtitle") }}</span>
+                    <span class="text-sm font-semibold">{{ tl("editor.visual.box-two.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ tl("editor.visual.box-two.subtitle") }}</span>
                   </div>
                 </div>
 
@@ -278,8 +278,8 @@ function changeLang(lang: string) {
                     <i class="fa-regular fa-folder"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">{{ tl("editor.box-three.title") }}</span>
-                    <span class="text-xs text-[var(--text-color-light)]">{{ tl("editor.box-three.subtitle") }}</span>
+                    <span class="text-sm font-semibold">{{ tl("editor.visual.box-three.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ tl("editor.visual.box-three.subtitle") }}</span>
                   </div>
                 </div>
 
@@ -294,8 +294,8 @@ function changeLang(lang: string) {
                     <i class="fa-solid fa-arrow-trend-up"></i>
                   </div>
                   <div class="flex flex-col items-start justify-center">
-                    <span class="text-sm font-semibold">{{ tl("editor.box-four.title") }}</span>
-                    <span class="text-xs text-[var(--text-color-light)]">{{ tl("editor.box-four.subtitle") }}</span>
+                    <span class="text-sm font-semibold">{{ tl("editor.visual.box-four.title") }}</span>
+                    <span class="text-xs text-[var(--text-color-light)]">{{ tl("editor.visual.box-four.subtitle") }}</span>
                   </div>
                 </div>
 
