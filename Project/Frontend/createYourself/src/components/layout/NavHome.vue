@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Logo from "@/components/ui/Logo.vue";
 import {ref} from "vue";
+import {useI18n} from "vue-i18n";
 
 const props = defineProps<{
   langSelected: string,
@@ -15,6 +16,11 @@ function onLang(): void{
 }
 
 const currLang = ref<string>(props.langSelected)
+
+// language
+const { t } = useI18n()
+
+const tl = (key: string) => t(`navHome.${key}`)
 </script>
 
 <template>
@@ -24,31 +30,32 @@ const currLang = ref<string>(props.langSelected)
       <Logo class="no-link-active" link="/"></Logo>
 
       <!-- Section Links-->
-      <div class="h-full flex items-center">
+      <div class="md:flex hidden h-full items-center">
         <ul class="flex items-center justify-center gap-4 text-sm text-[var(--text-color-light)] font-semibold">
           <li class="hover:text-[var(--text-color)] transition duration-200 cursor-pointer">
-            <a class="inline-block px-2 py-2" href="/#function">Funktionen</a>
+            <a class="inline-block px-2 py-2" href="/#function">{{ tl("quick-view.first") }}</a>
           </li>
           <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a class="inline-block px-2 py-2" href="/#editor">Editor</a>
+            <a class="inline-block px-2 py-2" href="/#editor">{{ tl("quick-view.second") }}</a>
           </li>
           <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a class="inline-block px-2 py-2" href="/#howWorks">Wie es funktioniert</a>
+            <a class="inline-block px-2 py-2" href="/#howWorks">{{ tl("quick-view.third") }}</a>
           </li>
           <li class="hover:text-[var(--text-color)] transition duration-200">
-            <a class="inline-block px-2 py-2" href="/#public">Veröffentlichen</a>
+            <a class="inline-block px-2 py-2" href="/#public">{{ tl("quick-view.fourth") }}</a>
           </li>
         </ul>
       </div>
 
       <!-- Login / Register-->
       <div class="flex items-center justify-center gap-4">
-        <RouterLink to="/login" class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] duration-150 transition px-4 py-2 border border-gray-200 rounded-lg text-[var(--text-color-light)] font-semibold">Anmelden</RouterLink>
-        <RouterLink to="/register" class="hover:-translate-y-0.5 hover:scale-101 hover:shadow-lg duration-150 transition px-4 py-2 bg-[var(--primary-color)] rounded-lg font-semibold text-[var(--text-color-white)]">Registrieren</RouterLink>
+        <RouterLink to="/login" class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] duration-150 transition px-4 py-2 border border-gray-200 rounded-lg text-[var(--text-color-light)] font-semibold">
+          {{ tl("log-in-button") }}</RouterLink>
+        <RouterLink to="/register" class="hover:-translate-y-0.5 hover:scale-101 hover:shadow-lg duration-150 transition px-4 py-2 bg-[var(--primary-color)] rounded-lg font-semibold text-[var(--text-color-white)]">{{ tl("register-button") }}</RouterLink>
       </div>
 
-      <div>
-        <select v-model="currLang" @change="onLang()" name="lang" id="lang" class="absolute top-0 right-0 p-2 m-2 cursor-pointer border border-gray-200 text-[var(--text-color-light)] rounded-lg">
+      <div class="absolute 2xl:top-0 top-17 right-0">
+        <select v-model="currLang" @change="onLang()" name="lang" id="lang" class="bg-[var(--surface-color)] outline-none p-2 m-2 cursor-pointer border border-gray-200 text-[var(--text-color-light)] rounded-lg">
           <option :selected="props.langSelected === 'de' || !props.langSelected" value="de" class="flex items-center justify-center gap-2">
             <div class="flex items-center justify-center">
               <i class="fa-solid fa-flag"></i>
