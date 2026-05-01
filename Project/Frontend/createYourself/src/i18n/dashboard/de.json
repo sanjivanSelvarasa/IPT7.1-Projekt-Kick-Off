@@ -6,7 +6,7 @@
     "create-button": "Neues Portfolio",
     "listed-portfolios-one": "Gesamt",
     "listed-portfolios-two": "Veröffentlicht",
-    "listed-portfolio-three": "Entwurf",
+    "listed-portfolios-three": "Entwurf",
     "bars-and-sort-functions":
     {
       "search-bar": "Portfolio suchen ...",
@@ -14,6 +14,10 @@
       "status-sorter-published": "Veröffentlicht",
       "status-sorter-draft": "Entwurf",
       "sort": "Sortieren"
+    },
+    "new-card": {
+      "description": "Neues Portfolio erstellen",
+      "click-effect": "Klicken zum Starten"
     }
   }
 }

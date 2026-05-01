@@ -4,13 +4,10 @@
     "top-right-addon-draft": "Draft",
     "top-left-choice-menu-rename": "Rename",
     "top-left-choice-menu-delete": "Delete",
-    "date-change": "Changed:19. Apr. 2026",
-    "view-number": "845 Views",
+    "date-change": "Changed",
+    "view-number": "Views",
     "edit-button": "Edit",
+    "publish": "pubish",
     "depublish-button": "Depublish"
-  },
-  "new-card": {
-    "description": "Create new Portfolio",
-    "click-effect": "Click to start"
   }
 }

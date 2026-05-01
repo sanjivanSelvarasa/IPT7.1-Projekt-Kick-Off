@@ -1,7 +1,7 @@
 {
   "beginning": {
     "Title": "CreateYourself",
-    "Choice-left": "Log in",
+    "Choice-left": "Login",
     "Choice-right": "Register"
   },
   "card": {

@@ -19,7 +19,8 @@
     "register-and-log-in-help": {
       "register-button": "Konto erstellen",
       "other-Option": "oder",
-      "help-for-log-in": "Bereits registriert? Anmelden"
+      "help": "Bereits registriert?",
+      "login": "Anmelden"
     }
   }
 }
