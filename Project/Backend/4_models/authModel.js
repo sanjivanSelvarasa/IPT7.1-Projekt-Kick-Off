@@ -120,6 +120,15 @@ async function removeRefreshToken(token) {
     .query('DELETE FROM UserRefreshToken WHERE token_hash = @token')
 }
 
+async function removeRefreshTokensByUserId(userId) {
+    const pool = await database.getPool()
+
+    await pool
+        .request()
+        .input('userId', sql.Int, userId)
+        .query('DELETE FROM UserRefreshToken WHERE user_id = @userId')
+}
+
 module.exports = {
     getUsers,
     addUser,
@@ -129,5 +138,6 @@ module.exports = {
     hasUserWithUsername,
     addRefreshToken,
     hasRefreshToken,
-    removeRefreshToken
+    removeRefreshToken,
+    removeRefreshTokensByUserId
 }

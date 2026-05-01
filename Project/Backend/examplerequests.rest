@@ -3,10 +3,10 @@
 @password = password123
 
 # Nach dem Login aus der Antwort einsetzen
-@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3NzY5Mzg5OTQsImV4cCI6MTc3Njk0MDE5NH0.Qdi9J5I6LDltucslY8liAjRXYklg5sRXTITISWgGVDg
+@accessToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3Nzc2NzE2OTQsImV4cCI6MTc3NzY3Mjg5NH0.R9zlRYFHgzpbWno1tCcQ13gQLN-OWoIy3ihFdneuFXE
 
 # Nach dem Login den refreshToken aus Set-Cookie uebernehmen
-@refreshTokenCookie = refreshToken=PASTE_REFRESH_TOKEN_HERE
+@refreshTokenCookie = refreshToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdpYW5AYmVpc3BpZWwuY2giLCJpYXQiOjE3Nzc2NzE5MTYsImV4cCI6MTc3ODI3NjcxNn0.NQeq_R33CBfeHBTq-P-uAfdf9LjNJxzKXc5Ptcup0cg
 
 # Nach dem Erstellen aus der Antwort einsetzen
 @portfolioId = 1
@@ -34,7 +34,7 @@ Content-Type: application/json
 
 ### Access Token mit Refresh Token erneuern
 POST {{baseUrl}}/token
-Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 Cookie: {{refreshTokenCookie}}
 
 ### Alle eigenen Portfolios abrufen
@@ -106,7 +106,6 @@ Authorization: Bearer {{accessToken}}
 DELETE {{baseUrl}}/portfolio/{{portfolioId}}
 Authorization: Bearer {{accessToken}}
 
-### Benutzer ausloggen (Refresh Token loeschen)
+### Benutzer ausloggen (Alle Refresh Tokens invalidieren)
 DELETE {{baseUrl}}/users/logout
-Content-Type: application/json
-Cookie: {{refreshTokenCookie}}
+Authorization: Bearer {{accessToken}}

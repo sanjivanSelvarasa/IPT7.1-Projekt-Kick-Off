@@ -27,10 +27,9 @@ async function registerUser(req, res) {
 }
 
 async function logoutUser(req, res) {
-    const refreshToken = parseTokenFromRequest(req)
-    await authService.logoutUser(refreshToken)
+    await authService.logoutUser(req.user.email)
     res.clearCookie(REFRESH_TOKEN_COOKIE_NAME, REFRESH_TOKEN_COOKIE_OPTIONS)
-    res.sendStatus(204)
+    res.json({ message: 'Logged out successfully.' })
 }
 
 async function loginUser(req, res) {
