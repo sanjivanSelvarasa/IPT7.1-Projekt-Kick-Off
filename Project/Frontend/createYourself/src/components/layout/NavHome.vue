@@ -1,6 +1,20 @@
 <script setup lang="ts">
-
 import Logo from "@/components/ui/Logo.vue";
+import {ref} from "vue";
+
+const props = defineProps<{
+  langSelected: string,
+}>()
+
+const emit = defineEmits<{
+  (e: 'lang', value: string): void
+}>()
+
+function onLang(): void{
+  emit('lang', currLang.value)
+}
+
+const currLang = ref<string>(props.langSelected)
 </script>
 
 <template>
@@ -31,6 +45,20 @@ import Logo from "@/components/ui/Logo.vue";
       <div class="flex items-center justify-center gap-4">
         <RouterLink to="/login" class="hover:border-[var(--primary-color)] hover:text-[var(--primary-color)] duration-150 transition px-4 py-2 border border-gray-200 rounded-lg text-[var(--text-color-light)] font-semibold">Anmelden</RouterLink>
         <RouterLink to="/register" class="hover:-translate-y-0.5 hover:scale-101 hover:shadow-lg duration-150 transition px-4 py-2 bg-[var(--primary-color)] rounded-lg font-semibold text-[var(--text-color-white)]">Registrieren</RouterLink>
+      </div>
+
+      <div>
+        <select v-model="currLang" @change="onLang()" name="lang" id="lang" class="absolute top-0 right-0 p-2 m-2 cursor-pointer border border-gray-200 text-[var(--text-color-light)] rounded-lg">
+          <option :selected="props.langSelected === 'de' || !props.langSelected" value="de" class="flex items-center justify-center gap-2">
+            <div class="flex items-center justify-center">
+              <i class="fa-solid fa-flag"></i>
+            </div>
+            <span>Deutsch</span>
+          </option>
+          <option :selected="props.langSelected === 'en' " value="en" class="flex items-center justify-center gap-2">
+            <span>English</span>
+          </option>
+        </select>
       </div>
     </div>
   </div>
