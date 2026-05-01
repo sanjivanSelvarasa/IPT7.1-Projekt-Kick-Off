@@ -30,11 +30,8 @@ export async function logoutApi(token: string){
   })
 }
 
-export async function tokenApi(token: string){
+export async function tokenApi() : Promise<string> {
   return await apiFetch(`/token`, {
     method: 'POST',
-    body: JSON.stringify({
-      token,
-    })
   })
 }
