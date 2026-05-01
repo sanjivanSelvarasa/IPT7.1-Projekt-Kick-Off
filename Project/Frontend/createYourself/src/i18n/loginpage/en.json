@@ -17,7 +17,8 @@
     "log-in-and-register-help": {
       "log-in-button": "Log in",
       "other-Option": "or",
-      "help-for-register": "No Account? Register now"
+      "help": "No Account?",
+      "register": "Register now"
     }
   }
 }

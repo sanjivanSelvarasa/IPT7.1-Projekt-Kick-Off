@@ -1,9 +1,9 @@
 {
-"beginning": {
-  "Title": "CreateYourself",
-  "Choice-left": "Anmelden",
-  "Choice-right": "Registrieren"
-},
+  "beginning": {
+    "Title": "CreateYourself",
+    "Choice-left": "Anmelden",
+    "Choice-right": "Registrieren"
+  },
   "card": {
     "start": {
       "title": "Wilkommen zurück",
@@ -17,7 +17,8 @@
     "log-in-and-register-help": {
       "log-in-button": "Anmelden",
       "other-Option": "oder",
-      "help-for-register": "Noch kein Konto? Jetzt registrieren"
+      "help": "Noch kein Konto?",
+      "register": "Jetzt registrieren"
     }
   }
 }
