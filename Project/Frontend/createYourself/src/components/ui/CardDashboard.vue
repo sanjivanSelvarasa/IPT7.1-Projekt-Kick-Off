@@ -1,10 +1,15 @@
 <script lang="ts" setup>
   import type {PortfolioType} from "@/types/portfolioType.ts";
   import {formatDate} from "@/utils/date.ts";
+  import {useI18n} from "vue-i18n";
 
   const props = defineProps<{
     portfolio: PortfolioType,
   }>()
+
+  const { t } = useI18n();
+
+  const tl = (key: string) => t(`cardDashboard.${key}`)
 </script>
 
 <template>
@@ -15,11 +20,11 @@
         <div class="absolute top-0 left-0 w-full h-full animate-slow-ping bg-green-300 rounded-full"></div>
         <i class="fa-solid fa-circle z-1"></i>
       </div>
-      <span>Live</span>
+      <span>{{ tl("saved-card.top-right-addon-live") }}</span>
     </div>
 
     <div v-if="props.portfolio.visibility === 'private' " class="absolute top-0 right-0 m-3 rounded-full flex items-center justify-center gap-2 text-sm bg-yellow-50 text-yellow-600 border border-yellow-400 px-3 py-1">
-      <span>Entwurf</span>
+      <span>{{ tl("saved-card.top-right-addon-draft") }}</span>
     </div>
 
     <div class="absolute flex items-start justify-center">
@@ -30,8 +35,8 @@
       </div>
 
       <div class="dropdown-menu hidden mt-5 p-3 flex-col items-start justify-start text-sm font-semibold bg-[var(--surface-color)] rounded-lg border border-gray-200">
-        <span class="hover:bg-[var(--background-color)] w-full transition duration-150 cursor-pointer rounded-lg px-2 py-1">Umbenennen</span>
-        <span class="hover:bg-red-50 hover:text-red-500 hover:border-red-500 border border-transparent w-full transition duration-150 cursor-pointer rounded-lg px-2 py-1">Löschen</span>
+        <span class="hover:bg-[var(--background-color)] w-full transition duration-150 cursor-pointer rounded-lg px-2 py-1">{{ tl("saved-card.top-left-choice-menu-rename") }}</span>
+        <span class="hover:bg-red-50 hover:text-red-500 hover:border-red-500 border border-transparent w-full transition duration-150 cursor-pointer rounded-lg px-2 py-1">{{ tl("saved-card.top-left-choice-menu-delete") }}</span>
       </div>
     </div>
 
@@ -55,14 +60,14 @@
         <div class="flex items-center justify-center">
           <i class="fa-regular fa-calendar"></i>
         </div>
-        <span>Geändert: {{ formatDate(new Date(portfolio.updatedAt)) }}</span>
+        <span>{{ tl("saved-card.date-change") }}: {{ formatDate(new Date(portfolio.updatedAt)) }}</span>
       </div>
 
       <div class="flex items-center justify-start gap-2 text-[var(--text-color-light)]">
         <div class="flex items-center justify-center">
           <i class="fa-regular fa-eye"></i>
         </div>
-        <span>845 Aufrufe</span>
+        <span>845 {{ tl("saved-card.view-number") }}</span>
       </div>
     </div>
 
@@ -71,21 +76,21 @@
         <div class="flex items-center justify-center">
           <i class="fa-regular fa-pen-to-square"></i>
         </div>
-        <span>Bearbeiten</span>
+        <span>{{ tl("saved-card.edit-button") }}</span>
       </button>
 
       <button v-if="props.portfolio.visibility === 'private'" class="hover:scale-101 hover:bg-green-100 transition duration-100 cursor-pointer mt-3 flex items-center justify-center gap-2 text-[var(--accent-color)] text-sm ml-4 px-3 py-1 bg-green-50 border border-green-200 rounded-lg">
         <div class="flex items-center justify-center">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
         </div>
-        <span>Veröffentlichen</span>
+        <span>{{ tl("saved-card.publish") }}</span>
       </button>
 
       <button v-if="props.portfolio.visibility === 'public'" class="hover:scale-101 hover:bg-yellow-100 transition duration-100 cursor-pointer mt-3 flex items-center justify-center gap-2 text-yellow-600 text-sm ml-4 px-3 py-1 bg-yellow-50 border border-yellow-400 rounded-lg">
         <div class="flex items-center justify-center">
           <i class="fa-solid fa-arrow-up-from-bracket"></i>
         </div>
-        <span>Depublizieren</span>
+        <span>{{ tl("saved-card.depublish-button") }}</span>
       </button>
     </div>
   </div>
