@@ -116,8 +116,11 @@ async function loginUser(submittedEmail, submittedPassword) {
     return { accessToken, refreshToken, refreshTokenExpiresAt }
 }
 
-async function logoutUser(refreshToken) {
-    await authModel.removeRefreshToken(hashToken(refreshToken))
+async function logoutUser(email) {
+    const user = await authModel.findUserByEmail(email)
+    if (user) {
+        await authModel.removeRefreshTokensByUserId(user.id)
+    }
 }
 
 module.exports = {

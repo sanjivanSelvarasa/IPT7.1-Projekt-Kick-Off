@@ -2,6 +2,7 @@ const express = require('express')
 
 const authController = require('../2_controllers/authController')
 const asyncHandler = require('../5_utils/asyncHandler')
+const authenticateToken = require('../1_middleware/authenticateToken')
 
 const router = express.Router()
 
@@ -9,7 +10,7 @@ const router = express.Router()
 router.post('/token', asyncHandler(authController.refreshToken))
 router.get('/users', asyncHandler(authController.getUsers))
 router.post('/users/register', asyncHandler(authController.registerUser))
-router.delete('/users/logout', asyncHandler(authController.logoutUser))
+router.delete('/users/logout', authenticateToken, asyncHandler(authController.logoutUser))
 router.post('/users/login', asyncHandler(authController.loginUser))
 
 module.exports = router

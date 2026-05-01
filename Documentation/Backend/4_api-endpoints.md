@@ -71,16 +71,22 @@ Statuscodes:
 ### [DELETE] /users/logout
 
 **Beschreibung:**  
-Meldet den Benutzer ab, indem der Refresh Token serverseitig invalidiert wird.
+Meldet den Benutzer ab. Alle Refresh Tokens des Benutzers werden serverseitig invalidiert und das Refresh-Token-Cookie wird gelöscht. Erfordert einen gültigen Access Token im `Authorization`-Header.
 
-**Cookie (erforderlich):**
-- `refreshToken=<token>`
+**Header (erforderlich):**
+- `Authorization: Bearer <accessToken>`
 
-**Response:** `204 No Content`
+**Response (200):**
+```json
+{
+  "message": "Logged out successfully."
+}
+```
 
 Statuscodes:
-- `204` Erfolgreich abgemeldet
-- `400` Refresh-Token-Cookie fehlt oder ist ungültig
+- `200` Erfolgreich abgemeldet
+- `401` Kein Access Token angegeben
+- `403` Access Token ungültig oder abgelaufen
 
 ---
 
