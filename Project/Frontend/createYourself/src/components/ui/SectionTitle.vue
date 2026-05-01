@@ -15,7 +15,7 @@
     </div>
 
     <div class="flex flex-col items-center justify-center gap-2 mt-4">
-      <h1>{{ props.title }}</h1>
+      <h1 class="text-center">{{ props.title }}</h1>
       <p class="text-[var(--text-color-light)] text-sm text-wrap max-w-[450px] text-center">{{ props.description }}</p>
     </div>
   </div>
