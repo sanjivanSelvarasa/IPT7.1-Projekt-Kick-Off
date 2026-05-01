@@ -28,20 +28,20 @@ function changeLang(lang: string) {
       <div class="absolute top-0 left-0 grid-bg w-full h-full -z-999"></div>
       <div class="absolute top-0 left-0 header-bg w-full h-full -z-999"></div>
       <div class="flex items-center justify-between gap-10 h-full max-w-[1200px] mx-auto">
-      <div class="flex flex-col items-start justify-between gap-4 bg-">
+      <div class="flex w-full flex-col lg:items-start items-center justify-between gap-4 px-3">
         <!-- Title-->
-        <div class="flex flex-col items-start justify-between font-extrabold text-[55px]">
+        <div class="flex flex-col items-start justify-between font-extrabold text-[55px] lg:text-[55px] sm:text-[80px]">
           <span class="leading-7">{{ tl("hero.title") }}</span>
           <div class="overflow-hidden">
-            <div class="hero-text flex flex-col items-start h-[80px] ">
-              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ tl("hero.title-sub-one") }}</span>
-              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ tl("hero.title-sub-two") }}</span>
-              <span class="h-[80px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ tl("hero.title-sub-three") }}</span>
+            <div class="hero-text flex flex-col items-start lg:h-[80px] sm:h-[100px] h-[75px]">
+              <span class="lg:h-[80px] sm:h-[100px] h-[75px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ tl("hero.title-sub-one") }}</span>
+              <span class="lg:h-[80px] sm:h-[100px] h-[75px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ tl("hero.title-sub-two") }}</span>
+              <span class="lg:h-[80px] sm:h-[100px] h-[75px] bg-linear-to-r from-[var(--primary-color)] to-[var(--secondary-color)] bg-clip-text text-transparent">{{ tl("hero.title-sub-three") }}</span>
             </div>
           </div>
         </div>
         <!-- Hero Text-->
-        <div class="text-[var(--text-color-light)] max-w-[550px] text-wrap">
+        <div class="lg:text-start text-center text-[var(--text-color-light)] max-w-[550px] text-wrap">
           <p>{{ tl("hero.description") }}</p>
         </div>
 
@@ -84,7 +84,7 @@ function changeLang(lang: string) {
         </div>
       </div>
 
-      <div class="select-none relative w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]">
+      <div class="lg:block hidden select-none relative w-[550px] h-[550px] rounded-2xl border border-gray-200 bg-[var(--surface-color)]">
 
         <div class="hover:border-[var(--primary-color)] hover:scale-102 cursor-pointer transition duration-100 levitate absolute flex flex-col items-start justify-center top-0 -left-50 m-4 px-4 py-2 bg-[var(--surface-color)] border border-gray-200 rounded-lg text-[var(--text-color-light)]">
           <span class="text-sm">{{ tl("hero.fact-one.title") }}</span>
@@ -176,7 +176,7 @@ function changeLang(lang: string) {
     <section id="function" class="max-w-[1200px] flex flex-col items-center justify-center gap-4">
       <SectionTitle svg="fa-regular fa-star" :title="tl('function.sectionTitle.title')" :tag-text="tl('function.sectionTitle.tag')" :description="tl('function.sectionTitle.description')"></SectionTitle>
 
-      <div class="w-full max-w-[1400px] px-4 py-2 grid grid-cols-2 gap-4">
+      <div class="w-full max-w-[1400px] px-4 py-2 grid md:grid-cols-2 grid-cols-1 gap-4">
         <FactsBox svg="fa-solid fa-boxes-stacked" svg-color="var(--primary-color)" svg-bg-color="var(--primary-color-light)" :title="tl('function.facts-box-one.title')" :description="tl('function.facts-box-one.description')" :fact-one="tl('function.facts-box-one.fact-one')" :fact-two="tl('function.facts-box-one.fact-two')" :fact-three="tl('function.facts-box-one.fact-three')"></FactsBox>
         <FactsBox svg="fa-regular fa-circle-check" svg-color="var(--secondary-color)" svg-bg-color="var(--secondary-color-light)" :title="tl('function.facts-box-two.title')" :description="tl('function.facts-box-two.description')" :fact-one="tl('function.facts-box-two.fact-one')" :fact-two="tl('function.facts-box-two.fact-two')" :fact-three="tl('function.facts-box-two.fact-three')"></FactsBox>
         <FactsBox svg="fa-regular fa-pen-to-square" svg-color="oklch(76.5% 0.177 163.223)" svg-bg-color="oklch(98.2% 0.018 155.826)" :title="tl('function.facts-box-three.title')" :description="tl('function.facts-box-three.description')" :fact-one="tl('function.facts-box-three.fact-one')" :fact-two="tl('function.facts-box-three.fact-two')" :fact-three="tl('function.facts-box-three.fact-three')"></FactsBox>
@@ -188,7 +188,7 @@ function changeLang(lang: string) {
       <div class="max-w-[1200px] w-full flex flex-col items-center justify-center gap-5">
         <SectionTitle svg="fa-regular fa-pen-to-square" :title="tl('editor.sectionTitle.title')" :tag-text="tl('editor.sectionTitle.tag')" :description="tl('editor.sectionTitle.description')"></SectionTitle>
         <div class="flex items-center justify-between w-full gap-8">
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-3 lg:w-fit w-full lg:items-start items-center">
             <div class="hover:bg-[var(--surface-color)] hover:border-gray-300 hover:shadow-lg duration-150 transition cursor-pointer flex items-start justify-center gap-4 font-bold max-w-[600px] px-4 py-4 rounded-2xl border border-transparent">
               <div class="flex items-center justify-center rounded-lg border min-w-[40px] min-h-[40px] text-[var(--primary-color)] bg-[var(--primary-color-light)] border-blue-200">
                 <i class="fa-solid fa-1"></i>
@@ -229,7 +229,9 @@ function changeLang(lang: string) {
               </div>
             </div>
           </div>
-          <div class="select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg border-2 overflow-hidden border-gray-200">
+
+          <!-- visual-->
+          <div class="lg:block hidden select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg border-2 overflow-hidden border-gray-200">
             <div class="flex items-center justify-between px-4 py-2 w-full bg-gray-50">
               <span class="font-bold">{{ tl("editor.visual.title") }}</span>
               <div class="flex items-center justify-center text-sm font-bold text-[var(--text-color-light)] gap-2">
@@ -313,8 +315,8 @@ function changeLang(lang: string) {
       <SectionTitle svg="fa-solid fa-check" :title="tl('howWorks.sectionTitle.title')" :tag-text="tl('howWorks.sectionTitle.tag')" :description="tl('howWorks.sectionTitle.description')"></SectionTitle>
 
       <div class="p-4">
-        <div class="grid grid-cols-3 gap-4 mt-3 border rounded-[30px] py-8 px-8 border-gray-200">
-          <div class="relative flex flex-col items-start justify-center gap-2 flex-wrap border pr-3 border-r-gray-200 border-transparent">
+        <div class="grid lg:grid-cols-3 grid-cols-1 gap-4 mt-3 border rounded-[30px] py-8 px-8 border-gray-200">
+          <div class="relative flex flex-col items-start justify-center gap-2 flex-wrap border pr-3 lg:border-r-gray-200 lg:pb-0 pb-5 border-b-gray-200 border-transparent">
             <div class="flex items-center justify-center absolute -top-5 right-5 text-[50px] font-extrabold">
               <span class="bg-linear-to-r from-blue-200 to-violet-200 bg-clip-text text-transparent">01</span>
             </div>
@@ -347,7 +349,7 @@ function changeLang(lang: string) {
           </div>
 
 
-          <div class="w-full relative flex flex-col items-start justify-center gap-2 flex-wrap pr-5 border-r-gray-200 border border-transparent">
+          <div class="w-full relative flex flex-col items-start justify-center gap-2 flex-wrap pr-5 lg:border-r-gray-200 border-b-gray-200 lg:pb-0 pb-5 border border-transparent">
             <div class="flex items-center justify-center absolute -top-5 right-5 text-[50px] font-extrabold">
               <span class="bg-linear-to-r from-blue-200 to-violet-200 bg-clip-text text-transparent">02</span>
             </div>
@@ -418,7 +420,7 @@ function changeLang(lang: string) {
       <div class="max-w-[1200px] p-4">
         <section-title svg="fa-regular fa-user" :title="tl('target.sectionTitle.title')" :tag-text="tl('target.sectionTitle.tag')" :description="tl('target.sectionTitle.description')"></section-title>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
           <div class="group hover:shadow-lg overflow-hidden relative transition duration-150 flex flex-col items-start justify-center gap-4 bg-[var(--surface-color)] p-8 border border-gray-200 rounded-2xl">
 
             <div class="group-hover:opacity-100 transition duration-150 opacity-0 absolute bottom-0 left-0 w-full h-0.75 bg-[var(--primary-color)]"></div>
@@ -541,7 +543,7 @@ function changeLang(lang: string) {
 
     <section id="public">
       <div class="flex items-start justify-between gap-8 w-[1200px]">
-        <div class="select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg text-sm overflow-hidden border-2 border-gray-200 ">
+        <div class="hidden lg:block select-none w-[600px] h-[450px] bg-[var(--surface-color)] rounded-[30px] shadow-lg text-sm overflow-hidden border-2 border-gray-200 ">
           <div class="flex items-center justify-between w-full h-fit bg-gray-50 border border-transparent border-b-gray-200 px-6 py-6">
             <span class="font-semibold">{{ tl("public.visual.title")}}</span>
             <div class="flex items-center justify-center gap-2">
@@ -607,46 +609,48 @@ function changeLang(lang: string) {
           </div>
         </div>
 
-        <div class="max-w-[600px] flex flex-col gap-2">
-          <span class="text-[35px] leading-11 font-extrabold text-wrap">{{ tl("public.title")}}</span>
+        <div class="w-full lg:max-w-[600px] flex flex-col lg:items-start items-center">
+          <div class="max-w-[600px] flex flex-col gap-2">
+            <span class="text-[35px] leading-11 font-extrabold text-wrap">{{ tl("public.title")}}</span>
 
-          <div class="flex items-start justify-start gap-4 mt-4">
-            <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-[var(--primary-color-light)] text-[var(--primary-color)]">
-              <i class="fa-regular fa-circle-check"></i>
+            <div class="flex items-start justify-start gap-4 mt-4">
+              <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-[var(--primary-color-light)] text-[var(--primary-color)]">
+                <i class="fa-regular fa-circle-check"></i>
+              </div>
+              <div class="flex flex-col items-start justify-center gap-1">
+                <span class="font-semibold text-sm">{{ tl("public.fact-one.title")}}</span>
+                <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-one.description")}}</span>
+              </div>
             </div>
-            <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">{{ tl("public.fact-one.title")}}</span>
-              <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-one.description")}}</span>
-            </div>
-          </div>
 
-          <div class="flex items-start justify-start gap-4 mt-4">
-            <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-[var(--secondary-color-light)] text-[var(--secondary-color)]">
-              <i class="fa-solid fa-briefcase"></i>
+            <div class="flex items-start justify-start gap-4 mt-4">
+              <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-[var(--secondary-color-light)] text-[var(--secondary-color)]">
+                <i class="fa-solid fa-briefcase"></i>
+              </div>
+              <div class="flex flex-col items-start justify-center gap-1">
+                <span class="font-semibold text-sm">{{ tl("public.fact-two.title")}}</span>
+                <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-two.description")}}</span>
+              </div>
             </div>
-            <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">{{ tl("public.fact-two.title")}}</span>
-              <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-two.description")}}</span>
-            </div>
-          </div>
 
-          <div class="flex items-start justify-start gap-4 mt-4">
-            <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-green-100 text-[var(--accent-color)]">
-              <i class="fa-regular fa-clock"></i>
+            <div class="flex items-start justify-start gap-4 mt-4">
+              <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-green-100 text-[var(--accent-color)]">
+                <i class="fa-regular fa-clock"></i>
+              </div>
+              <div class="flex flex-col items-start justify-center gap-1">
+                <span class="font-semibold text-sm">{{ tl("public.fact-three.title")}}</span>
+                <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-three.description")}}</span>
+              </div>
             </div>
-            <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">{{ tl("public.fact-three.title")}}</span>
-              <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-three.description")}}</span>
-            </div>
-          </div>
 
-          <div class="flex items-start justify-start gap-4 mt-4">
-            <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-orange-100 text-orange-400">
-              <i class="fa-solid fa-crosshairs"></i>
-            </div>
-            <div class="flex flex-col items-start justify-center gap-1">
-              <span class="font-semibold text-sm">{{ tl("public.fact-four.title")}}</span>
-              <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-four.description")}}</span>
+            <div class="flex items-start justify-start gap-4 mt-4">
+              <div class="flex items-center justify-center min-w-[45px] min-h-[45px] rounded-lg bg-orange-100 text-orange-400">
+                <i class="fa-solid fa-crosshairs"></i>
+              </div>
+              <div class="flex flex-col items-start justify-center gap-1">
+                <span class="font-semibold text-sm">{{ tl("public.fact-four.title")}}</span>
+                <span class="text-sm text-[var(--text-color-light)]">{{ tl("public.fact-four.description")}}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -661,8 +665,8 @@ function changeLang(lang: string) {
 
       <div class="max-w-[1200px]">
         <div class="flex flex-col items-center justify-center text-wrap gap-3">
-          <span class="text-[var(--text-color-white)] font-extrabold text-[35px]">{{ tl("cta.title") }}</span>
-          <span class="text-gray-200 max-w-[650px] text-center">{{ tl("cta.subtitle") }}</span>
+          <span class="text-[var(--text-color-white)] font-extrabold text-[35px] text-center">{{ tl("cta.title") }}</span>
+          <span class="text-gray-200 max-w-[650px] text-center sm:block hidden">{{ tl("cta.subtitle") }}</span>
         </div>
       </div>
       <div class="z-10 flex items-center justify-center gap-4 mt-6">
