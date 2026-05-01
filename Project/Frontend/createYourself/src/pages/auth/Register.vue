@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+import Logo from "@/components/ui/Logo.vue";
+import {useI18n} from "vue-i18n";
 
 const router = useRouter()
 const authStore = useAuthStore()
@@ -45,6 +47,11 @@ async function submit() {
     isLoading.value = false
   }
 }
+
+// language option
+const { t } = useI18n();
+
+const tl = (key: string) => t(`register.${key}`);
 </script>
 
 <template>
@@ -54,28 +61,23 @@ async function submit() {
 
     <main class="relative z-10 flex min-h-screen flex-col items-center justify-center px-4">
       <div class="mb-8 text-center text-2xl font-bold">
-  <span class="text-[var(--text-color)]">Create</span>
-  <span
-    class="bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)]
-           bg-clip-text text-transparent"
-  >Yourself
-  </span>
-</div>
+        <Logo link="/"></Logo>
+      </div>
 
       <div class="mb-8 flex w-full max-w-[430px] rounded-lg bg-slate-200/70 p-1 shadow-sm">
         <button
           type="button"
-          class="w-1/2 rounded-md py-3 text-sm font-semibold text-[var(--text-color-light)] transition hover:text-[var(--primary-color)]"
+          class="cursor-pointer w-1/2 rounded-md py-3 text-sm font-semibold text-[var(--text-color-light)] transition hover:text-[var(--primary-color)]"
           @click="router.push('/login')"
         >
-          Anmelden
+          {{ tl("beginning.Choice-left") }}
         </button>
 
         <button
           type="button"
-          class="w-1/2 rounded-md bg-[var(--surface-color)] py-3 text-sm font-semibold text-[var(--text-color)] shadow-sm"
+          class="cursor-pointer w-1/2 rounded-md bg-[var(--surface-color)] py-3 text-sm font-semibold text-[var(--text-color)] shadow-sm"
         >
-          Registrieren
+          {{ tl("beginning.Choice-right") }}
         </button>
       </div>
 
@@ -85,16 +87,16 @@ async function submit() {
       >
         <div class="mb-7">
           <h1 class="text-2xl font-bold text-[var(--text-color)]">
-            Konto erstellen
+            {{ tl("card.start.title") }}
           </h1>
           <p class="mt-2 text-sm text-[var(--text-color-light)]">
-            Starte kostenlos und baue dein erstes Portfolio in Minuten.
+            {{ tl("card.start.description") }}
           </p>
         </div>
 
         <div class="mb-5">
           <label class="mb-2 block text-sm font-semibold text-[var(--text-color)]">
-            E-Mail-Adresse
+            {{ tl("card.register-textboxes.textbox-one") }}
           </label>
 
           <div
@@ -115,7 +117,7 @@ async function submit() {
 
         <div class="mb-5">
           <label class="mb-2 block text-sm font-semibold text-[var(--text-color)]">
-            Passwort
+            {{ tl("card.register-textboxes.textbox-two") }}
           </label>
 
           <div
@@ -127,14 +129,14 @@ async function submit() {
               v-model="password"
               class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
               :type="showPassword ? 'text' : 'password'"
-              placeholder="Min. 8 Zeichen"
+              :placeholder=" tl('card.register-textboxes.textbox-two-content') "
               autocomplete="new-password"
               required
             />
 
             <button
               type="button"
-              class="text-[var(--text-color-light)] transition hover:text-[var(--primary-color)]"
+              class="cursor-pointer text-[var(--text-color-light)] transition hover:text-[var(--primary-color)]"
               @click="showPassword = !showPassword"
             >
               <i :class="showPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
@@ -144,7 +146,7 @@ async function submit() {
 
         <div class="mb-4">
           <label class="mb-2 block text-sm font-semibold text-[var(--text-color)]">
-            Passwort bestätigen
+            {{ tl("card.register-textboxes.textbox-three") }}
           </label>
 
           <div
@@ -156,14 +158,14 @@ async function submit() {
               v-model="confirmPassword"
               class="w-full bg-transparent text-sm outline-none placeholder:text-slate-400"
               :type="showConfirmPassword ? 'text' : 'password'"
-              placeholder="Passwort wiederholen"
+              :placeholder=" tl('card.register-textboxes.textbox-three-content') "
               autocomplete="new-password"
               required
             />
 
             <button
               type="button"
-              class="text-[var(--text-color-light)] transition hover:text-[var(--primary-color)]"
+              class="cursor-pointer text-[var(--text-color-light)] transition hover:text-[var(--primary-color)]"
               @click="showConfirmPassword = !showConfirmPassword"
             >
               <i :class="showConfirmPassword ? 'fa-regular fa-eye-slash' : 'fa-regular fa-eye'"></i>
@@ -180,23 +182,23 @@ async function submit() {
           :disabled="isLoading || !email || !password || !confirmPassword"
           class="w-full rounded-lg bg-gradient-to-r from-blue-600 to-violet-600 py-3 font-semibold text-[var(--text-color-white)] shadow-lg transition hover:scale-[1.01] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {{ isLoading ? 'Lädt...' : 'Konto erstellen' }}
+          {{ isLoading ? 'Lädt...' : tl("card.register-and-log-in-help.register-button") }}
         </button>
 
         <div class="my-6 flex items-center gap-4">
           <div class="h-px flex-1 bg-gray-200"></div>
-          <span class="text-xs text-[var(--text-color-light)]">oder</span>
+          <span class="text-xs text-[var(--text-color-light)]">{{ tl("card.register-and-log-in-help.other-Option") }}</span>
           <div class="h-px flex-1 bg-gray-200"></div>
         </div>
 
         <div class="text-center text-sm text-[var(--text-color-light)]">
-          Bereits registriert?
+          <span> {{ tl("card.register-and-log-in-help.help") + " " }} </span>
           <button
             type="button"
             class="font-semibold text-[var(--primary-color)] transition hover:underline"
             @click="router.push('/login')"
           >
-            Anmelden
+             {{tl("card.register-and-log-in-help.login") }}
           </button>
         </div>
       </form>
