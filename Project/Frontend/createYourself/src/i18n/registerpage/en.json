@@ -14,11 +14,11 @@
       "textbox-two": "Password",
       "textbox-two-content": "Min. 8 characters",
       "textbox-three": "confirm Password",
-      "textbox-three-content": "repeat Password"
+      "textbox-three-content": "Repeat Password"
     },
     "register-and-log-in-help": {
       "register-button": "Create Account",
-      "other-Option": "or",
+      "other-Option": "Or",
       "help": "Already registered?",
       "login": "Sign in"
     }

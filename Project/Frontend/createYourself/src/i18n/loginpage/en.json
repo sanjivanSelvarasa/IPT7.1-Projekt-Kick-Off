@@ -7,7 +7,7 @@
   "card": {
     "start": {
       "title": "Welcome back",
-      "description": "sign in, to edit your portfolio."
+      "description": "Sign in, to edit your portfolio."
     },
     "log-in-textboxes": {
       "textbox-one": "E-mail-address",
@@ -16,7 +16,7 @@
     },
     "log-in-and-register-help": {
       "log-in-button": "Log in",
-      "other-Option": "or",
+      "other-Option": "Or",
       "help": "No Account?",
       "register": "Register now"
     }

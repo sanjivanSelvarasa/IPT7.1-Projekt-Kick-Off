@@ -9,15 +9,15 @@
     "cta-two": "Log in",
     "bp-one": {
       "title": "Modular",
-      "description": "build a portfolio in blocks"
+      "description": "Build a portfolio in blocks"
     },
     "bp-two": {
       "title": "Flexible",
-      "description": "arrange content yourself"
+      "description": "Arrange content yourself"
     },
     "bp-three": {
       "title": "Personal",
-      "description": "design your own page"
+      "description": "Design your own page"
     },
     "fact-one": {
       "title": "Portfolio views",
@@ -29,7 +29,7 @@
     },
     "fact-three": {
       "title": "Editor",
-      "value": "edit blocks"
+      "value": "Edit blocks"
     },
     "visual-one": "Skills",
     "visual-two": "Projects"
@@ -51,36 +51,36 @@
       "title": "Personal Content",
       "description": "Show Information about you, your projects, abilities and additional content in clear and structural shape.",
       "fact-one": "About-you-Area",
-      "fact-two": "design projects and skills",
-      "fact-three": "structural portfolio-sections"
+      "fact-two": "Design projects and skills",
+      "fact-three": "Structural portfolio-sections"
     },
     "facts-box-three": {
-      "title": "easy editing",
+      "title": "Easy editing",
       "description": "Content is directly accessible and manageable in the editor.The focus lies on clear and understandable controls.",
       "fact-one": "Clear Structure",
-      "fact-two": "edit content",
+      "fact-two": "Edit content",
       "fact-three": "Changes visible immediately"
     },
     "facts-box-four": {
-      "title": "publish portfolio",
+      "title": "Publish portfolio",
       "description": "The portfolio is accessible online after editing, so that your own work can be digitally presented.",
-      "fact-one": "online accessible portfolio-page",
-      "fact-two": "changes are republished",
-      "fact-three": "personal presentation in the web"
+      "fact-one": "Online accessible portfolio-page",
+      "fact-two": "Changes are republished",
+      "fact-three": "Personal presentation in the web"
     }
   },
   "editor":{
     "sectionTitle": {
       "title": "How the modular block-editor works",
-      "tag": "the editor",
+      "tag": "The editor",
       "description": "Every section of your portfolio is registered as a block and can be edited and adjusted however you want."
     },
     "fact-one": {
-      "title": "choose block",
+      "title": "Choose block",
       "description": "Choose your preferred choice of block, that you want to use in your portfolio."
     },
     "fact-two": {
-      "title": "edit Content",
+      "title": "Edit Content",
       "description": "Add text, pictures and other information directly to the chosen section of your portfolio."
     },
     "fact-three": {
@@ -88,14 +88,14 @@
       "description": "Adjust the section accordingly, so that your portfolio is structured clearly and fitting to your content."
     },
     "fact-four": {
-      "title": "publish portfolio",
+      "title": "Publish portfolio",
       "description": "Once your content is finished, you can publish your portfolio online and later update it accordingly."
     },
     "visual": {
       "title": "My Portfolio - Draft",
-      "nav-one": "edit",
+      "nav-one": "Edit",
       "nav-two": "Preview",
-      "nav-three": "settings",
+      "nav-three": "Settings",
       "box-one": {
         "title": "Hero-Section",
         "subtitle": "Name, Title, picture, CTA-Button"
@@ -105,8 +105,8 @@
         "subtitle": "Biography and portrait image"
       },
       "box-three": {
-        "title": "project gallery",
-        "subtitle": "projects with descriptions and references"
+        "title": "Project gallery",
+        "subtitle": "Projects with descriptions and references"
       },
       "box-four": {
         "title": "Skill-list",
@@ -121,56 +121,56 @@
       "description": "The Sequence is clearly build: register, record your content and publish your portfolio online."
     },
     "fact-one": {
-      "title": "register",
+      "title": "Register",
       "description": "Create an account to use your personal area and portfolio-editor.",
-      "bp-one": "enter youre-mail and password",
-      "bp-two": ", Gain Access to your User-Space",
+      "bp-one": "Enter your e-mail and password",
+      "bp-two": "Gain Access to your User-Space",
       "bp-three": "Start building your Portfolio"
     },
     "fact-two": {
       "title": "Create Portfolio",
       "description": "Add Content in form of blocks and place your information however you want to present yourself.",
-      "bp-one": "choose blocks",
-      "bp-two": "enter your Content in the editor",
-      "bp-three": "adjust the order to your preference"
+      "bp-one": "Choose blocks",
+      "bp-two": "Enter your Content in the editor",
+      "bp-three": "Adjust the order to your preference"
     },
     "fact-three": {
-      "title": "publish",
+      "title": "Publish",
       "description": "As soon as your portfolio is finished you publish it online and later update it accordingly.",
-      "bp-one": "display portfolio online",
+      "bp-one": "Display portfolio online",
       "bp-two": "Changes later adjustable",
       "bp-three": "Present your own Content digitally"
     }
   },
   "target": {
     "sectionTitle": {
-      "title": "made for humans, who want to show their work digitally.",
+      "title": "Made for humans, who want to show their work digitally.",
       "tag": "For whom is createyourself",
       "description": "CreateYourself is suitable for all, who have the desire to present their content structurally and online."
     },
     "fact-one": {
-      "subtitle": "apprentices and applicants",
-      "title": "show your career and your projects clearly",
-      "description": "put information about you, your skills and your experience in your own portfolio page together.",
-      "bp-one": "display personal information",
-      "bp-two": "display projects and skills",
-      "bp-three": "use your portfolio as a digital presentation"
+      "subtitle": "Apprentices and applicants",
+      "title": "Show your career and your projects clearly",
+      "description": "Put information about you, your skills and your experience in your own portfolio page together.",
+      "bp-one": "Display personal information",
+      "bp-two": "Display projects and skills",
+      "bp-three": "Use your portfolio as a digital presentation"
     },
     "fact-two": {
       "subtitle": "Developers",
-      "title": "present technical projects on your own page.",
-      "description": "describe projects, show different technologies and give structural overview about your work.",
-      "bp-one": "structurally display projects",
-      "bp-two": "show lists of technologies and skills",
+      "title": "Present technical projects on your own page.",
+      "description": "Describe projects, show different technologies and give structural overview about your work.",
+      "bp-one": "Structurally display projects",
+      "bp-two": "Show lists of technologies and skills",
       "bp-three": "Present your own work online"
     },
     "fact-three": {
-      "subtitle": "creative and design oriented people",
-      "title": "show content with a clear visual structure.",
-      "description": "use different portfolio-sections to display projects, descriptions and personal information clearly.",
-      "bp-one": "design visual appealing content",
-      "bp-two": "combine projects and texts",
-      "bp-three": "create your own presentation-page"
+      "subtitle": "Creative and design oriented people",
+      "title": "Show content with a clear visual structure.",
+      "description": "Use different portfolio-sections to display projects, descriptions and personal information clearly.",
+      "bp-one": "Design visual appealing content",
+      "bp-two": "Combine projects and texts",
+      "bp-three": "Create your own presentation-page"
     }
   },
   "public": {
@@ -179,38 +179,38 @@
       "public": "Ready to publish",
       "box-one": {
         "title": "Portfolio",
-        "value": "personal URL"
+        "value": "Personal URL"
       },
       "box-two": {
         "title": "Online",
-        "value": "reachable through the Web"
+        "value": "Reachable through the Web"
       },
       "bp-one": "Portfolio visible",
-      "bp-two": "update content",
-      "bp-three": "edit draft"
+      "bp-two": "Update content",
+      "bp-three": "Edit draft"
     },
-    "title": "show online and edit further later.",
+    "title": "Show online and edit further later.",
     "fact-one": {
-      "title": "personal portfolio-page",
+      "title": "Personal portfolio-page",
       "description": "The goal of the website is to display personal content as your own portfolio-page online."
     },
     "fact-two": {
-      "title": "edit and publish",
+      "title": "Edit and Publish",
       "description": "Content is prepared in the editor and can then be used for the portfolio-page."
     },
     "fact-three": {
-      "title": "update content later",
+      "title": "Update content later",
       "description": "The portfolio can be updated further, even after it has been published."
     },
     "fact-four": {
-      "title": "digital presentation",
+      "title": "Digital Presentation",
       "description": "CreateYourself allows you to save and present personal information and your projects online."
     }
   },
   "cta": {
     "title": "Ready to create your own Portfolio?",
-    "subtitle": "put your projects, skills and information in your own portfolio-page together. Everything at one place, clearly structured and presentable online.",
+    "subtitle": "Put your projects, skills and information in your own portfolio-page together. Everything at one place, clearly structured and presentable online.",
     "cta-one": "Start now",
-    "cta-two": "log in"
+    "cta-two": "Log in"
   }
 }

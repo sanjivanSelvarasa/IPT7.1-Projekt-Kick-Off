@@ -8,17 +8,17 @@ import dashboardEn from "./dashboard/en.json"
 import cardDashboardDe from "./carddashboard/de.json"
 import cardDashboardEn from "./carddashboard/en.json"
 
-import footerDe from "./footer/de.json"
-import footerEn from "./footer/en.json"
+import footerDe from "@/i18n/footer/de.json"
+import footerEn from "@/i18n/footer/en.json"
 
 import loginDe from "./loginpage/de.json"
 import loginEn from "./loginpage/en.json"
 
-import navDe from "./nav/de.json"
-import navEn from "./nav/en.json"
+import navDe from "@/i18n/nav/de.json"
+import navEn from "@/i18n/nav/en.json"
 
-import registerDe from "./registerpage/de.json"
-import registerEn from "./registerpage/en.json"
+import registerDe from "@/i18n/registerpage/de.json"
+import registerEn from "@/i18n/registerpage/en.json"
 
 
 const savedLang = localStorage.getItem("lang") ?? (navigator.language === ('de' || 'en') ? navigator.language : "de");
