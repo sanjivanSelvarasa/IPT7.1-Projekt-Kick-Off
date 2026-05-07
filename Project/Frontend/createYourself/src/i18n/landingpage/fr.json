@@ -1,0 +1,216 @@
+{
+  "hero": {
+    "title": "Ton portfolio.",
+    "title-sub-one": "Ton identité.",
+    "title-sub-two": "Ton avenir.",
+    "title-sub-three": "Ton contenu.",
+    "description": "Créez votre portfolio en ligne à l'aide d'un éditeur modulaire. Vous pouvez organiser et modifier vos contenus de manière structurée, puis les présenter sous la forme d'une page personnelle.",
+    "cta-one": "Commencer maintenant",
+    "cta-two": "Se connecter",
+    "bp-one": {
+      "title": "Modulaire",
+      "description": "Construire son portefeuille par blocs"
+    },
+    "bp-two": {
+      "title": "Flexible",
+      "description": "Organiser soi-même le contenu"
+    },
+    "bp-three": {
+      "title": "Personnel",
+      "description": "Créer sa propre page"
+    },
+    "fact-one": {
+      "title": "Consultations du portfolio",
+      "value": "2.848"
+    },
+    "fact-two": {
+      "title": "Statut",
+      "value": "En direct et visible"
+    },
+    "fact-three": {
+      "title": "Rédacteur",
+      "value": "Modifier les blocs"
+    },
+    "visual-one": "Compétences",
+    "visual-two": "Projets"
+  },
+  "function": {
+    "sectionTitle": {
+      "title": "Tout ce dont tu as besoin pour ton portfolio",
+      "tag": "Fonctions principales",
+      "description": "Ce site web est dédié à la création, à la modification et à la présentation structurées de contenus de portfolio personnels."
+    },
+    "facts-box-one": {
+      "title": "éditeur modulaire",
+      "description": "Créez votre portfolio à partir de modules et de blocs de contenu. Vous pouvez ajouter des sections, les modifier et les réorganiser à votre guise.",
+      "fact-one": "Blocs de contenu modulaires",
+      "fact-two": "Modifier l'ordre",
+      "fact-three": "Aperçu du contenu"
+    },
+    "facts-box-two": {
+      "title": "Contenu personnel",
+      "description": "Présentez des informations sur vous-même, vos projets, vos compétences et d'autres contenus de manière claire et structurée.",
+      "fact-one": "Section « À propos de moi »",
+      "fact-two": "Présenter ses projets et ses compétences",
+      "fact-three": "Segments structurés du portefeuille"
+    },
+    "facts-box-three": {
+      "title": "Facile à utiliser",
+      "description": "Le contenu doit pouvoir être géré directement dans l'éditeur. L'accent est mis sur une interface intuitive et claire.",
+      "fact-one": "Structure claire",
+      "fact-two": "Modifier le contenu",
+      "fact-three": "Les modifications sont visibles immédiatement"
+    },
+    "facts-box-four": {
+      "title": "Publier un portfolio",
+      "description": "Une fois finalisé, le portfolio doit être accessible en ligne afin de pouvoir présenter son travail sous forme numérique.",
+      "fact-one": "Page de portfolio accessible en ligne",
+      "fact-two": "Republier les modifications",
+      "fact-three": "Présentation personnelle sur le Web"
+    }
+  },
+  "editor":{
+    "sectionTitle": {
+      "title": "Comment fonctionne l'éditeur modulaire",
+      "tag": "L'éditeur",
+      "description": "Chaque section de ton portfolio est conçue comme un bloc et peut être modifiée et réorganisée dans l'éditeur."
+    },
+    "fact-one": {
+      "title": "Sélectionner un bloc",
+      "description": "Parmi les types de blocs disponibles, sélectionne la section que tu souhaites utiliser dans ton portfolio."
+    },
+    "fact-two": {
+      "title": "Modifier le contenu",
+      "description": "Ajoute des textes, des images et d'autres informations directement dans la section correspondante de ton portfolio."
+    },
+    "fact-three": {
+      "title": "Adapter la structure",
+      "description": "Organise les différentes sections de manière à ce que ton portfolio soit clair et adapté à ton contenu."
+    },
+    "fact-four": {
+      "title": "Publier un portfolio",
+      "description": "Une fois ton contenu prêt, ton portfolio peut être mis en ligne et mis à jour ultérieurement."
+    },
+    "visual": {
+      "title": "Mon portfolio - Ébauche",
+      "nav-one": "Modifier",
+      "nav-two": "Aperçu",
+      "nav-three": "Paramètres",
+      "box-one": {
+        "title": "Section Héros",
+        "subtitle": "Nom, titre, image, bouton d'appel à l'action"
+      },
+      "box-two": {
+        "title": "À propos de moi",
+        "subtitle": "Biographie et photo"
+      },
+      "box-three": {
+        "title": "Galerie de projets",
+        "subtitle": "Projets avec description et références"
+      },
+      "box-four": {
+        "title": "Liste des compétences",
+        "subtitle": "L'expérience et les compétences actuelles"
+      }
+    }
+  },
+  "howWorks": {
+    "sectionTitle": {
+      "title": "Du compte à votre propre portefeuille en trois étapes",
+      "tag": "Comment ça marche",
+      "description": "La procédure est claire : s'inscrire, saisir les contenus et mettre son portfolio en ligne"
+    },
+    "fact-one": {
+      "title": "S'inscrire",
+      "description": "Créez un compte pour accéder à votre espace personnel et à l'éditeur de portfolio.",
+      "bp-one": "Entrez votre adresse e-mail et votre mot de passe",
+      "bp-two": "Accéder à l'espace utilisateur",
+      "bp-three": "Commencer par le portefeuille"
+    },
+    "fact-two": {
+      "title": "Créer un portfolio",
+      "description": "Ajoute du contenu par blocs et organise les informations de la manière qui te convient le mieux.",
+      "bp-one": "Sélectionner des blocs",
+      "bp-two": "Saisir du contenu dans l'éditeur",
+      "bp-three": "Modifier l'ordre des sections"
+    },
+    "fact-three": {
+      "title": "Publier",
+      "description": "Une fois ton portfolio terminé, tu peux le consulter en ligne et le modifier ultérieurement si nécessaire.",
+      "bp-one": "Présenter son portfolio en ligne",
+      "bp-two": "Modifier les modifications ultérieurement",
+      "bp-three": "Présenter ses propres contenus sous forme numérique"
+    }
+  },
+  "target": {
+    "sectionTitle": {
+      "title": "Conçu pour ceux qui souhaitent présenter leur travail sous forme numérique",
+      "tag": "À qui s'adresse createyourself",
+      "description": "CreateYourself s'adresse à tous ceux qui souhaitent présenter leurs contenus en ligne de manière structurée"
+    },
+    "fact-one": {
+      "subtitle": "Apprentis et candidats",
+      "title": "Présente ton parcours et tes projets de manière claire",
+      "description": "Rassemblez des informations sur vous-même, vos compétences et vos travaux sur une page dédiée à votre portfolio.",
+      "bp-one": "Afficher les informations personnelles",
+      "bp-two": "Présenter ses projets et ses compétences",
+      "bp-three": "Utiliser son portfolio comme présentation numérique"
+    },
+    "fact-two": {
+      "subtitle": "Développeurs et développeuses",
+      "title": "Présentez vos projets techniques sur une page dédiée",
+      "description": "Décris tes projets, présente les technologies utilisées et donne un aperçu structuré de ton travail.",
+      "bp-one": "Présenter les projets de manière structurée",
+      "bp-two": "Énumérer les technologies et les compétences",
+      "bp-three": "Publier ses propres travaux en ligne"
+    },
+    "fact-three": {
+      "subtitle": "Créatifs et designers",
+      "title": "Présentez le contenu selon une structure visuelle claire",
+      "description": "Utilise les différentes sections du portfolio pour présenter clairement tes travaux, leurs descriptions et tes informations personnelles.",
+      "bp-one": "Structurer visuellement le contenu",
+      "bp-two": "Combiner projets et textes",
+      "bp-three": "Créer sa propre page de présentation"
+    }
+  },
+  "public": {
+    "visual": {
+      "title": "Publication",
+      "public": "Prêt à être publié",
+      "box-one": {
+        "title": "Portefeuille",
+        "value": "URL personnelle"
+      },
+      "box-two": {
+        "title": "En ligne",
+        "value": "Accessible sur le Web"
+      },
+      "bp-one": "Portfolio visible",
+      "bp-two": "Mettre à jour le contenu",
+      "bp-three": "Modifier le brouillon"
+    },
+    "title": "Afficher en ligne et continuer à modifier plus tard",
+    "fact-one": {
+      "title": "Page personnelle de portfolio",
+      "description": "L'objectif de ce site web est de présenter en ligne des contenus personnels sous la forme d'un portfolio individuel."
+    },
+    "fact-two": {
+      "title": "Modifier et publier",
+      "description": "Les contenus sont préparés dans l'éditeur et peuvent ensuite être transférés vers la page du portfolio."
+    },
+    "fact-three": {
+      "title": "Modifier le contenu ultérieurement",
+      "description": "Le portfolio peut être modifié et mis à jour à nouveau après sa publication."
+    },
+    "fact-four": {
+      "title": "Présentation numérique",
+      "description": "CreateYourself a pour but de permettre de présenter en ligne, de manière regroupée, des informations personnelles et des projets."
+    }
+  },
+  "cta": {
+    "title": "Prêt à créer ton portfolio ?",
+    "subtitle": "Rassemble tes projets, tes compétences et tes informations sur ta propre page de portfolio. Tout est regroupé au même endroit, clairement structuré et prêt à être présenté en ligne.",
+    "cta-one": "Commencer maintenant",
+    "cta-two": "Se connecter"
+  }
+}

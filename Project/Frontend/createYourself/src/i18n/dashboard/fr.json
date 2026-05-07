@@ -1,0 +1,23 @@
+{
+  "start": {
+    "Preview": "Aperçu",
+    "title": "Mes portfolios",
+    "description": "Gère, modifie et publie tes portfolios",
+    "create-button": "Nouveau portefeuille",
+    "listed-portfolios-one": "Total",
+    "listed-portfolios-two": "Publié",
+    "listed-portfolios-three": "projet",
+    "bars-and-sort-functions":
+    {
+      "search-bar": "Rechercher un portfolio...",
+      "status-sorter-standard": "Tous les statuts",
+      "status-sorter-published": "Publié",
+      "status-sorter-draft": "projet",
+      "sort": "Trier"
+    },
+    "new-card": {
+      "description": "Créer un nouveau portefeuille",
+      "click-effect": "Cliquez pour démarrer"
+    }
+  }
+}

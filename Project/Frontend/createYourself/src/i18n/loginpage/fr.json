@@ -1,0 +1,24 @@
+{
+  "beginning": {
+    "Title": "CreateYourself",
+    "Choice-left": "Se connecter",
+    "Choice-right": "S'inscrire"
+  },
+  "card": {
+    "start": {
+      "title": "Bienvenue à nouveau",
+      "description": "Connecte-toi pour modifier ton portfolio."
+    },
+    "log-in-textboxes": {
+      "textbox-one": "Adresse e-mail",
+      "textbox-two": "Mot de passe",
+      "check-up": "Mot de passe oublié ?"
+    },
+    "log-in-and-register-help": {
+      "log-in-button": "Se connecter",
+      "other-Option": "ou",
+      "help": "Vous n'avez pas encore de compte ?",
+      "register": "Inscrivez-vous dès maintenant"
+    }
+  }
+}

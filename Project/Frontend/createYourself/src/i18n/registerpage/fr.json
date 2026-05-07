@@ -1,0 +1,26 @@
+{
+  "beginning": {
+    "Title": "CreateYourself",
+    "Choice-left": "Se connecter",
+    "Choice-right": "S'inscrire"
+  },
+  "card": {
+    "start": {
+      "title": "Créer un compte",
+      "description": "Commencez gratuitement et créez votre premier portfolio en quelques minutes."
+    },
+    "register-textboxes": {
+      "textbox-one": "Adresse e-mail",
+      "textbox-two": "Mot de passe",
+      "textbox-two-content": "Au moins 8 caractères",
+      "textbox-three": "Confirmer le mot de passe",
+      "textbox-three-content": "Confirmez votre mot de passe"
+    },
+    "register-and-log-in-help": {
+      "register-button": "Créer un compte",
+      "other-Option": "ou",
+      "help": "Vous êtes déjà inscrit ?",
+      "login": "Se connecter"
+    }
+  }
+}
