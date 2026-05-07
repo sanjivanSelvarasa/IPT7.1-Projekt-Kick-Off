@@ -38,9 +38,12 @@ CreateYourself ist eine Webanwendung, mit der Nutzer einfach und schnell ein eig
 
 ## Rollen
 
-**Sanjivan:** Teamleiter, Frontend Specialist: Erledigt fast alle Frontend-Aufgaben und geht jede Änderung durch.
+ **Sanjivan:** Teamleiter, Frontend Specialist: Erledigt fast alle Frontend-Aufgaben und geht jede Änderung durch.
+
 **Gian:** Backend-Specialist: Erstellt und dokumentiert das ganze Backend.
+
 **Egor:** Database-Specialist: Erstellt die ganze Datenbank und die dazugehörigen Diagramme. Hilft beim Frontend.
+
 **Kenan:** Dokumentator: Erstellt die meisten grundlegenen Dokumente und übernimmt die Übersetzung bei der Mehrsprachigkeit.
 
 
