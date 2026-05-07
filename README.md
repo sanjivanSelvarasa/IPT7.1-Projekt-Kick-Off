@@ -23,12 +23,28 @@ CreateYourself ist eine Webanwendung, mit der Nutzer einfach und schnell ein eig
 - Die auswählbaren Layouts sollen dem Benutzer helfen mit Leichtigkeit ein Professionell oder kreativ aussehendes Portfolio zu erstellen.
 - Portfolio erhält eine dauerhafte, eindeutige URL (Hash-basiert). Womit der Benutzer sein Portfolio teilen kann.
 
-## Unsere Ziele mit CreateYorself
+## Inhalt und Umfang
 
-1. Der User soll sich instinktiv mit der Webseite zurechtfinden. Dafür benutzen wir Bedienelemente welche allgemein bekannt sind, um die Lernkurve flach zu halten.
-2. Man soll als Benutzer die Möglichkeit haben, mit einer "Zurück-Taste" seine Änderungen zu verwerfen. Diese widerrufene Änderungen können dann durch einer "Vorwärts-Taste" wiederhergestellt werden.
-3. Wenn es eine Fehlerangabe gibt, soll diese genau zeigen, wo sich der Fehler befindet. Egal ob Backend oder Frontend
-4. Wir schauen das die Webseite mit Topgeschwindigkeit geladen werden kann.
+-	Account und Login
+-	Portfolio erstellen
+-	Baukasten-Editor
+-	Design Grundlagen (Theme auswählen + Farben und Font)
+-	Veröffentlichen
+-	Speichern / Versionstand
+-	Portfolio verwalten
+-	Security / Grundschutz
+-	Mehrsprachigkeit
+-   Drag and Drop im Editor
+
+## Rollen
+
+**Sanjivan:** Teamleiter, Frontend Specialist: Erledigt fast alle Frontend-Aufgaben und geht jede Änderung durch.
+**Gian:** Backend-Specialist: Erstellt und dokumentiert das ganze Backend.
+**Egor:** Database-Specialist: Erstellt die ganze Datenbank und die dazugehörigen Diagramme. Hilft beim Frontend.
+**Kenan:** Dokumentator: Erstellt die meisten grundlegenen Dokumente und übernimmt die Übersetzung bei der Mehrsprachigkeit.
+
+
+
 
 
 
