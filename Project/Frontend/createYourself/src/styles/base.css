@@ -35,6 +35,18 @@ h2{
   background-size: 45px 45px;
 }
 
+main, header{
+  max-width: 1200px;
+}
+
+button{
+  @apply cursor-pointer;
+}
+
+.divider{
+  @apply my-5 w-full h-[1px] bg-gray-200;
+}
+
 ::-webkit-scrollbar{
   width: 5px;
 }
