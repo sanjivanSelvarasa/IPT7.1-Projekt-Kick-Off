@@ -745,4 +745,8 @@ function changeLang(lang: string) {
   .animate-ping-slow {
     animation: ping 3s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
+
+  main, header{
+    max-width: none;
+  }
 </style>
